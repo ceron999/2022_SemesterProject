@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public enum Types
+{
+    Null, Dialogue
+}
+
 [Serializable]
 public class Dialogue
 {
@@ -22,4 +27,9 @@ public class Dialogue
         routeSecond = null;
         routeThird = null;
     }
+
+    //public void Parse()
+    //{
+
+    //}
 }

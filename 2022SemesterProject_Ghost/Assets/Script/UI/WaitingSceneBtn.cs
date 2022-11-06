@@ -7,7 +7,7 @@ public class WaitingSceneBtn : MonoBehaviour
 {
     public void TouchDialogueLogBtn()
     {
-        //·Î±× º¸¿©ÁÖ¼À
+        //ë¡œê·¸ ë³´ì—¬ì£¼ì…ˆ
     }
 
     public void TouchGalleryBtn()
@@ -17,6 +17,6 @@ public class WaitingSceneBtn : MonoBehaviour
 
     public void TouchExitBtn()
     {
-        //¿µÈ¥°ú Àá½Ã ¸Ö¾îÁö°Ú½À´Ï±î? yes/no ¼±ÅÃ ÈÄ ÀÌµ¿
+        //ì˜í˜¼ê³¼ ì ì‹œ ë©€ì–´ì§€ê² ìŠµë‹ˆê¹Œ? yes/no ì„ íƒ í›„ ì´ë™
     }
 }

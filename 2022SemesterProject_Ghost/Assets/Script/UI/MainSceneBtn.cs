@@ -7,12 +7,12 @@ public class MainSceneBtn : MonoBehaviour
 {
     public void TouchStartBtn()
     {
-        SceneManager.LoadScene("WaitingScene");
+        SceneManager.LoadScene("StoryScene");
     }
 
     public void TouchLoadBtn()
     {
-        //´ëÃæ ·ÎµåÇØ¼­ °¡Á®¿À¼À
+        //ëŒ€ì¶© ë¡œë“œí•´ì„œ ê°€ì ¸ì˜¤ì…ˆ
     }
 
     public void TouchQuitBtn()

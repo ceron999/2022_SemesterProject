@@ -12,5 +12,9 @@ public class DialogueWrapper
 
     }
 
-
+    //public void Parse()
+    //{
+    //    for(int i = 0; i < dialogueArray.Length; i++)
+    //        dialogueArray[i].Parse();
+    //}
 }
