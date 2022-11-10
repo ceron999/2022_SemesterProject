@@ -1,0 +1,15 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"일을 하다 보면 나른하고 녹는 기분이 들 때가 있어."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"그럴 때마다 서랍 한 켠에 놓아둔 커피를 한 잔씩 타서 마시곤 하는데, 커피가 유독 이 공간의 분위기와 잘 어울리는 것 같아."
+        }
+    ]
+}

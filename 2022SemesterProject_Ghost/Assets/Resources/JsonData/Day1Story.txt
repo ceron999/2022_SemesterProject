@@ -1,0 +1,63 @@
+{
+    "dialogueArray": 
+	[
+		{
+			"type":"Dialog",
+			"characterName":"narration",
+			"dialogue":"우선 몸을 닦아주려고 한다."
+		},
+		{
+			"type":"Dialog",
+			"characterName":"narration",
+			"dialogue":"영혼의 몸은 어떤 형태일까?",
+			"routeFirst":"곡선이 많다.",
+			"routeSecond":"직선이 많다."
+		},
+		{
+			"type":"Dialog",
+			"characterName":"player",
+			"dialogue":"이정도면 충분한 것 같아."
+		},
+		{
+			"type":"Dialog",
+			"characterName":"player",
+			"dialogue":"향수를 뿌려줄게."
+		},
+		{
+			"type":"Dialog",
+			"characterName":"narration",
+			"dialogue":"내가 사용하는 향수는",
+			"routeFirst":"물향",
+			"routeSecond":"꽃향",
+			"routeThird":"과일향",
+			"routeFourth":"나무향",
+			"routeFifth":"가죽향",
+			"routeSixtj":"기타",
+			"routeSeventh":"향수 안뿌린다"},
+		{
+			"type":"Dialog",
+			"characterName":"narration",
+			"dialogue":"영혼이 나에게 질문을 던졌다."
+		},
+		{
+			"type":"Dialog",
+			"characterName":"soul",
+			"dialogue":"나는 사람들의 말투와 성격은 서로 닮아있다고 생각해. 뜬금없지만 너의 말버릇이 궁금해."
+		},
+		{
+			"type":"Dialog",
+			"characterName":"player",
+			"dialogue":"(말버릇을 입력해주세요)"
+		},
+		{
+			"type":"Dialog",
+			"characterName":"soul",
+			"dialogue":"꽤 재밌는 말버릇이네."
+		},
+		{
+			"type":"Dialog",
+			"characterName":"soul",
+			"dialogue":"이제 할 말이 없네, 나 이만 쉴게. 너도 너 할 일 해. 내일 봐."
+		}	
+	]        
+}

@@ -42,6 +42,8 @@ public class DialogueManager : MonoBehaviour
     {
         jsonManager = new JsonManager();
         dialogueWrapper = jsonManager.ResourceDataLoad<DialogueWrapper>(dialogueWrapperName);
+        dialogueWrapper.Parse();
+        Debug.Log(dialogueWrapper.dialogueArray[0].dialogueTypes.ToString());
         characterNameText.text = "";
         dialogueText.text = "";
         nowDialogueIndex = 0;
@@ -106,11 +108,12 @@ public class DialogueManager : MonoBehaviour
                 dialogueText.text = "";
                 Debug.Log("뚯뚜루~");
                 StartCoroutine(PrintDialogue());
+            }
 
-                if (nowDialogueIndex >= dialogueWrapper.dialogueArray.Length)
-                {
-                    isDialogueEnd = true;
-                }
+
+            if (nowDialogueIndex >= dialogueWrapper.dialogueArray.Length)
+            {
+                isDialogueEnd = true;
             }
         }
 

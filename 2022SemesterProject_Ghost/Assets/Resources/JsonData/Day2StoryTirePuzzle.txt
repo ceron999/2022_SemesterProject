@@ -1,0 +1,25 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"그날은 늦게까지 해야할 일이 있어서, 내가 마지막으로 남은 후 새벽에 퇴근했던 날이었어."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"피곤해서 어서 집에 들어가고 싶었지. 집 도착 전 마지막 신호등이 초록불로 빨리 바뀌기만을 기다리고 있었는데,"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"저 멀리서 순식간에 달려온 밝은 헤드라이트가 묵직하게 나를 치고 말았어."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"몇 초가 지났는지 몸통 안이 뜨거워졌어."
+        }
+    ]
+}

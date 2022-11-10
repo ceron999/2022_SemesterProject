@@ -1,0 +1,14 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"내가 근무하던 곳에서는 수험 공부를 하러 온 사람들을 꽤 자주 만날 수 있어."},
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"열심히 하는 모습만으로도 멋있고 행운을 빌어주고 싶어서, 출입구 앞 책상에 화분을 놓고 네잎클로버를 키우기도 했지."
+        }
+    ] 
+}

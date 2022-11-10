@@ -5,7 +5,7 @@ using System;
 
 public enum Types
 {
-    Null, Dialogue
+    Null, Dialog, 
 }
 
 [Serializable]
@@ -17,6 +17,7 @@ public class Dialogue
     public string routeFirst;
     public string routeSecond;
     public string routeThird;
+    public Types dialogueTypes;
 
     public Dialogue()
     {
@@ -26,10 +27,15 @@ public class Dialogue
         routeFirst = null;
         routeSecond = null;
         routeThird = null;
+
+        dialogueTypes = Types.Null;
     }
 
-    //public void Parse()
-    //{
-
-    //}
+    public void Parse()
+    {
+        if(type != null)
+        {
+            dialogueTypes = (Types)Enum.Parse(typeof(Types), type);
+        }
+    }
 }

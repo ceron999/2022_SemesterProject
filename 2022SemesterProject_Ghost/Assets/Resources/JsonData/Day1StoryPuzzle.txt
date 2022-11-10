@@ -1,0 +1,10 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"나랑 놀아주면 선물을 줄게."
+        }
+    ]
+}

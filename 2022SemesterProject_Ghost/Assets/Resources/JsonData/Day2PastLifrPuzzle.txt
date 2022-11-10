@@ -1,0 +1,10 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"나의 근무지에서는 네가 알고 싶은 거 다 알아낼 수 있을걸?"
+        }
+    ]
+}

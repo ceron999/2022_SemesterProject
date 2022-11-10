@@ -1,0 +1,94 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"안녕 좋은 하루. 오늘도 잘 부탁해."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"player",
+            "dialogue":"응"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"narration",
+            "dialogue":"영혼의 팔과 다리를 만지니 으스스한 기분이 들었다."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"narration",
+            "dialogue":"영혼이 나에게 질문을 건네왔다."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"추운 날씨를 좋아해 뜨거운 날씨를 좋아해? (플레이어의 말버릇)"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"player",
+            "dialogue":"",
+            "routeFirst":"추운 날씨",
+            "routeSecond":"뜨거운 날씨"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"맞아 더운 것보단 낫지. or 맞아 추운 것보단 낫지."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"player",
+            "dialogue":"... 그렇긴 해도 사실 추운 날에는 더운 날들을, 더울 때는 추울 때를 그리워해."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"응 맞아. 나도 그랬어."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"narration",
+            "dialogue":"TV 영화 채널에서 오래 전 영화가 흘러나온다."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"나는 이 세상에서 <고스트버스터즈>가 가장 무서운 영화라고 생각해. 으으."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"네가 가장 무서워하는 것은 뭐야?"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"player",
+            "dialogue":"내가 모르는 것",
+            "routeFirst":"내가 알고있는 것",
+            "routeSecond":"난 세상에 무서운 게 하나도 없지.",
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"...맞아. 내가 모르는 미지의 것에 대한 두려움은 가끔 새로움에 대한 도전도 두렵게 만드는 것 같아. or ...맞아. 아는 게 가장 무섭다고, 알고 있지만 피할 수 없는 죽음이 너무 무서운 것 같아. or ...오.. 멋진걸..? (시선회피)"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"narration",
+            "dialogue":"영혼과 대화하는 새에 영혼의 팔과 다리의 형체가 보이기 시작했다."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"음 이제 거의 다 된 것 같은데."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"하지만 나 너랑 좀 더 있고 싶으니 나머지는 내일 만들어줘."
+        }
+    ]
+}
