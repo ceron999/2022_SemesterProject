@@ -5,7 +5,7 @@ using System;
 
 public enum Types
 {
-    Null, Dialog, 
+    Null, Dialog, GetHabit, Customizing, ViewPaper
 }
 
 [Serializable]
