@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public JsonManager jsonManager;
 
+    [HideInInspector]
+    //시간 변수
+
     public static GameManager Instance
     {
         get

@@ -370,7 +370,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 555095918}
-        m_TargetAssemblyTypeName: MainSceneBtn, Assembly-CSharp
+        m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
         m_MethodName: TouchLoadBtn
         m_Mode: 1
         m_Arguments:
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 555095913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 317175d7d723d504e9eb1e588b8e233d, type: 3}
+  m_Script: {fileID: 11500000, guid: c3df66c33f759f74184c375abc3079de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &683059201
@@ -516,7 +516,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 683059206}
-        m_TargetAssemblyTypeName: MainSceneBtn, Assembly-CSharp
+        m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
         m_MethodName: TouchQuitBtn
         m_Mode: 1
         m_Arguments:
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 683059201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 317175d7d723d504e9eb1e588b8e233d, type: 3}
+  m_Script: {fileID: 11500000, guid: c3df66c33f759f74184c375abc3079de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &723440061
@@ -989,7 +989,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1815808230}
-        m_TargetAssemblyTypeName: MainSceneBtn, Assembly-CSharp
+        m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
         m_MethodName: TouchStartBtn
         m_Mode: 1
         m_Arguments:
@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1815808225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 317175d7d723d504e9eb1e588b8e233d, type: 3}
+  m_Script: {fileID: 11500000, guid: c3df66c33f759f74184c375abc3079de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1906418814
