@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 127992113}
   - component: {fileID: 127992115}
   - component: {fileID: 127992114}
+  - component: {fileID: 127992116}
   m_Layer: 5
   m_Name: WakeUpTime
   m_TagString: Untagged
@@ -193,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "00\uC2DC"
+  m_Text: "08\uC2DC"
 --- !u!222 &127992115
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -202,6 +203,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127992112}
   m_CullTransparentMesh: 1
+--- !u!114 &127992116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127992112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86069df21bc891742b8f909abe2e1a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterText: {fileID: 736579432}
+  wakeupDateText: {fileID: 695173981}
+  wakeupTimeText: {fileID: 127992114}
+  wakeupText: {fileID: 1601414244}
 --- !u!1 &171162380
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +537,7 @@ GameObject:
   - component: {fileID: 695173980}
   - component: {fileID: 695173982}
   - component: {fileID: 695173981}
+  - component: {fileID: 695173983}
   m_Layer: 5
   m_Name: WakeUpDate
   m_TagString: Untagged
@@ -543,8 +561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -154.39014, y: 50.496}
-  m_SizeDelta: {x: 444.2634, y: 100.9925}
+  m_AnchoredPosition: {x: -124.3901, y: 50.496}
+  m_SizeDelta: {x: 500, y: 100.9925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695173981
 MonoBehaviour:
@@ -588,6 +606,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695173979}
   m_CullTransparentMesh: 1
+--- !u!114 &695173983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695173979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86069df21bc891742b8f909abe2e1a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterText: {fileID: 736579432}
+  wakeupDateText: {fileID: 695173981}
+  wakeupTimeText: {fileID: 127992114}
+  wakeupText: {fileID: 1601414244}
 --- !u!1 &736579430
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +633,7 @@ GameObject:
   - component: {fileID: 736579431}
   - component: {fileID: 736579433}
   - component: {fileID: 736579432}
+  - component: {fileID: 736579434}
   m_Layer: 5
   m_Name: Counter
   m_TagString: Untagged
@@ -623,7 +658,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.00000095367, y: -464}
-  m_SizeDelta: {x: 748.5132, y: 250.0707}
+  m_SizeDelta: {x: 900, y: 250.0707}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &736579432
 MonoBehaviour:
@@ -658,7 +693,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 00:00
+  m_Text: 00:00:00
 --- !u!222 &736579433
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -667,6 +702,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736579430}
   m_CullTransparentMesh: 1
+--- !u!114 &736579434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736579430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86069df21bc891742b8f909abe2e1a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterText: {fileID: 736579432}
+  wakeupDateText: {fileID: 695173981}
+  wakeupTimeText: {fileID: 127992114}
+  wakeupText: {fileID: 1601414244}
 --- !u!1 &989637402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1075,7 @@ GameObject:
   - component: {fileID: 1601414243}
   - component: {fileID: 1601414245}
   - component: {fileID: 1601414244}
+  - component: {fileID: 1601414246}
   m_Layer: 5
   m_Name: WakeUp
   m_TagString: Untagged
@@ -1092,6 +1144,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601414242}
   m_CullTransparentMesh: 1
+--- !u!114 &1601414246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601414242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86069df21bc891742b8f909abe2e1a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterText: {fileID: 736579432}
+  wakeupDateText: {fileID: 695173981}
+  wakeupTimeText: {fileID: 127992114}
+  wakeupText: {fileID: 1601414244}
 --- !u!1 &1649088829
 GameObject:
   m_ObjectHideFlags: 0
