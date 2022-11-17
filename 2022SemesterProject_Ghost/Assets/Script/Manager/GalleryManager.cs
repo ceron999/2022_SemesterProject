@@ -2,95 +2,119 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GalleryManager : MonoBehaviour
 {
-    //캔버스 목록
-    public Canvas canvas00;
-    public Canvas canvas01;
-    public Canvas canvas02;
+    public enum NowCanvas
+    {
+        canvas00, canvas01, canvas02
+    }
 
-    public CanvasGroup canvasGroup00;
-    public CanvasGroup canvasGroup01;
-    public CanvasGroup canvasGroup02;
+    NowCanvas nowCanvas;
+    [SerializeField]
+    Text date;
+    [SerializeField]
+    Button homeBtn;
+    [SerializeField]
+    Button leftBtn;
+    [SerializeField]
+    Button rightBtn;
+
+    //캔버스 목록
+    [SerializeField]
+    Canvas canvas00;
+    [SerializeField]
+    Canvas canvas01;
+    [SerializeField]
+    Canvas canvas02;
+
+    [SerializeField]
+    CanvasGroup canvasGroup00;
+    [SerializeField]
+    CanvasGroup canvasGroup01;
+    [SerializeField]
+    CanvasGroup canvasGroup02;
 
     void Start() {
-        Debug.Log("갤러리 화면");
+        nowCanvas = NowCanvas.canvas00;
+        date.text = "";
+        SetCanvas();
+    }
 
-        canvasGroup00.alpha =1;
-        canvas00.enabled = true;
+    void SetCanvas()
+    {
+        switch (nowCanvas)
+        {
+            case NowCanvas.canvas00:
+                date.text = "1일차";
+                canvasGroup00.alpha = 1;
+                canvas00.enabled = true;
 
-        canvasGroup01.alpha =0;
-        canvas01.enabled = false;
+                canvasGroup01.alpha = 0;
+                canvas01.enabled = false;
 
-        canvasGroup02.alpha =0;
-        canvas02.enabled = false;
+                canvasGroup02.alpha = 0;
+                canvas02.enabled = false;
+                break;
+            case NowCanvas.canvas01:
+                date.text = "2일차";
+                canvasGroup00.alpha = 0;
+                canvas00.enabled = false;
+
+                canvasGroup01.alpha = 1;
+                canvas01.enabled = true;
+
+                canvasGroup02.alpha = 0;
+                canvas02.enabled = false;
+                break;
+            case NowCanvas.canvas02:
+                date.text = "3일차";
+                canvasGroup00.alpha = 0;
+                canvas00.enabled = false;
+
+                canvasGroup01.alpha = 0;
+                canvas01.enabled = false;
+
+                canvasGroup02.alpha = 1;
+                canvas02.enabled = true;
+                break;
+        }
     }
     //갤러리 들어가면 해당 소품 관련 퍼즐 표현 + 클릭하면 이동 + 해당 퍼즐이 클리어되었으면 오픈 등
     //메인 화면 이동
-    public void ChangeMainScence (){
-        Debug.Log("메인 화면 이동");
-        SceneManager.LoadScene(0);
-    }
 
-    //퍼즐 화면 이동
-    public void ChangePuzzleScence (){
-        Debug.Log("퍼즐 화면 이동");
-        SceneManager.LoadScene(5);
-    }
-
-    //갤러리 화면 전환
-    public void ChangeGalleryScence (){
-        if (canvas00.enabled == true){
-        canvasGroup00.alpha =0;
-        canvas00.enabled = false;
-
-        canvasGroup01.alpha =1;
-        canvas01.enabled = true;
-
-        canvasGroup02.alpha =0;
-        canvas02.enabled = false;
-        Debug.Log("전생 오른쪽");
-
-        
-        }
-
-        else if (canvas01.enabled == true){
-            if (gameObject.name == "Rightarrow"){
-                canvasGroup00.alpha =0;
-                canvas00.enabled = false;
-
-                canvasGroup01.alpha =0;
-                canvas01.enabled = false;
-
-                canvasGroup02.alpha =1;
-                canvas02.enabled = true;
-                Debug.Log("1일차 오른쪽");
-            }
-            else{
-                canvasGroup00.alpha =1;
-                canvas00.enabled = true;
-
-                canvasGroup01.alpha =0;
-                canvas01.enabled = false;
-
-                canvasGroup02.alpha =0;
-                canvas02.enabled = false;
-                Debug.Log("1일차 왼쪽");
-            }
-        }
-
-        else if (canvas02.enabled == true){
-        canvasGroup00.alpha =0;
-        canvas00.enabled = false;
-
-        canvasGroup01.alpha =1;
-        canvas01.enabled = true;
-
-        canvasGroup02.alpha =0;
-        canvas02.enabled = false;
-        Debug.Log("2일차 왼쪽");
+    public void TouchLeftBtn()
+    {
+        switch(nowCanvas)
+        {
+            case NowCanvas.canvas01:
+                nowCanvas = NowCanvas.canvas00;
+                SetCanvas();
+                leftBtn.gameObject.SetActive(false);
+                break;
+            case NowCanvas.canvas02:
+                nowCanvas = NowCanvas.canvas01;
+                SetCanvas();
+                rightBtn.gameObject.SetActive(true);
+                break;
         }
     }
 
+    public void TouchRightBtn()
+    {
+        switch (nowCanvas)
+        {
+            case NowCanvas.canvas00:
+                nowCanvas = NowCanvas.canvas01;
+                SetCanvas();
+                leftBtn.gameObject.SetActive(true);
+                break;
+            case NowCanvas.canvas01:
+                nowCanvas = NowCanvas.canvas02;
+                SetCanvas();
+                rightBtn.gameObject.SetActive(false);
+                break;
+        }
+    }
 }

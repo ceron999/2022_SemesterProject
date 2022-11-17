@@ -8,10 +8,10 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField]
     private Transform tilesParent;
     [SerializeField]
-    private List<Tile> tileList;//»ı¼º Å¸ÀÏ Á¤º¸ ÀúÀå
+    private List<Tile> tileList;//ìƒì„± íƒ€ì¼ ì •ë³´ ì €ì¥
     private Vector2Int puzzleSize = new Vector2Int(3, 3);
 
-    private float neighborTileDistance = 320; //ÀÎÁ¢ÇÑ Å¸ÀÏ »çÀÌÀÇ °Å¸®
+    private float neighborTileDistance = 320; //ì¸ì ‘í•œ íƒ€ì¼ ì‚¬ì´ì˜ ê±°ë¦¬
     public Vector3 EmptyTilePosition { set; get; }
    
 
@@ -57,7 +57,7 @@ public class PuzzleManager : MonoBehaviour
         {
             for (int i = 0; i < arraysize; ++i)
             {
-                array[i] = tilesParent.GetChild(i).GetComponent<Tile>().Numeric;//ÀÚ½ÄÀÌ ¹èÄ¡µÈ ¼ø¼­
+                array[i] = tilesParent.GetChild(i).GetComponent<Tile>().Numeric;//ìì‹ì´ ë°°ì¹˜ëœ ìˆœì„œ
             }
             for (int i = 0; i < 9; i++)
             {
@@ -75,7 +75,7 @@ public class PuzzleManager : MonoBehaviour
         }
         EmptyTilePosition = tileList[tileList.Count - 1].GetComponent<RectTransform>().localPosition;
     }
-    public void IsMoveTile(Tile tile)//Å¸ÀÏ ÀÌµ¿
+    public void IsMoveTile(Tile tile)//íƒ€ì¼ ì´ë™
     {
         if (Vector3.Distance(EmptyTilePosition, tile.GetComponent<RectTransform>().localPosition) == neighborTileDistance)
         {
@@ -85,7 +85,7 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    public void IsGameOver()//¾Ë¸ÂÀº À§Ä¡ÀÇ ÆÛÁñÀ» Ä«¿îÆ®, ¸ğµÎ ¸ÂÀ» °æ¿ì GameClear Ãâ·Â
+    public void IsGameOver()//ì•Œë§ì€ ìœ„ì¹˜ì˜ í¼ì¦ì„ ì¹´ìš´íŠ¸, ëª¨ë‘ ë§ì„ ê²½ìš° GameClear ì¶œë ¥
     {
         List<Tile> tiles = tileList.FindAll(x => x.IsCorrected == true);
 
@@ -95,13 +95,13 @@ public class PuzzleManager : MonoBehaviour
             Debug.Log("GameClear");
         }
     }
-    private bool CheckEntropy()//entropy °Ë»ç
+    private bool CheckEntropy()//entropy ê²€ì‚¬
     {
         int[] array = new int[tilesParent.childCount];
         int arraysize = tilesParent.childCount;
         for (int i = 0; i < arraysize; ++i)
         {
-            array[i] = tilesParent.GetChild(i).GetComponent<Tile>().Numeric;//ÀÚ½ÄÀÌ ¹èÄ¡µÈ ¼ø¼­
+            array[i] = tilesParent.GetChild(i).GetComponent<Tile>().Numeric;//ìì‹ì´ ë°°ì¹˜ëœ ìˆœì„œ
         }
         int entropy = 0;
         for (int i = 0; i < arraysize; ++i)
@@ -111,7 +111,7 @@ public class PuzzleManager : MonoBehaviour
                 if (array[i] > array[j] && array[i] != 9) ++entropy;
             }
         }
-        if (entropy % 2 != 0 || entropy == 0)//entropy°¡ È¦¼ö¸é °è¼Ó suffle
+        if (entropy % 2 != 0 || entropy == 0)//entropyê°€ í™€ìˆ˜ë©´ ê³„ì† suffle
             return true;
         else
             return false;

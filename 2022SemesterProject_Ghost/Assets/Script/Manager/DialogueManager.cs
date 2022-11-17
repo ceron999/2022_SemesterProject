@@ -28,8 +28,7 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField]
     DialogueWrapper dialogueWrapper;
-    [SerializeField]
-    string dialogueWrapperName;
+    public string dialogueWrapperName;
 
     public JsonManager jsonManager;
 
@@ -38,16 +37,20 @@ public class DialogueManager : MonoBehaviour
     bool isDialoguePrinting = false;
     int nowDialogueIndex;
 
-    private void Start()
+    public void Start()
     {
         jsonManager = new JsonManager();
-        dialogueWrapper = jsonManager.ResourceDataLoad<DialogueWrapper>(dialogueWrapperName);
-        dialogueWrapper.Parse();
-        Debug.Log(dialogueWrapper.dialogueArray[0].dialogueTypes.ToString());
+
         characterNameText.text = "";
         dialogueText.text = "";
         nowDialogueIndex = 0;
-        StartDialogue();
+
+        if (dialogueWrapperName != "")
+        {
+            dialogueWrapper = jsonManager.ResourceDataLoad<DialogueWrapper>(dialogueWrapperName);
+            dialogueWrapper.Parse();
+            StartDialogue();
+        }
     }
 
     private void Update()
@@ -106,17 +109,29 @@ public class DialogueManager : MonoBehaviour
             else if (!isDialogueEnd && !isDialoguePrinting)
             {
                 dialogueText.text = "";
-                Debug.Log("뚯뚜루~");
                 StartCoroutine(PrintDialogue());
-            }
-
-
-            if (nowDialogueIndex >= dialogueWrapper.dialogueArray.Length)
-            {
-                isDialogueEnd = true;
             }
         }
 
-        if (isDialogueEnd) Debug.Log("대화 끄읏");
+        if (nowDialogueIndex == dialogueWrapper.dialogueArray.Length)
+        {
+            isDialogueEnd = true;
+        }
+
+        if (isDialogueEnd)
+        {
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "StoryScene")
+                UnityEngine.SceneManagement.SceneManager.LoadScene("RoomScene");
+            else
+            {
+                SetScreenTouchCanvas(false);
+                dialoguePrefab.SetActive(false);
+            }
+        }
+    }
+
+    public void SetScreenTouchCanvas(bool active)
+    {
+        ScreenTouchCanvas.SetActive(active);
     }
 }

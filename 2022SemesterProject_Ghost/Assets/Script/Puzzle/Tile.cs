@@ -6,6 +6,7 @@ using TMPro;
 
 public class Tile : MonoBehaviour, IPointerClickHandler
 {
+//ㅁㄴㅇㄹ
     TextMeshProUGUI textNumeric;
     [SerializeField]
     private PuzzleManager puzzleManager;
