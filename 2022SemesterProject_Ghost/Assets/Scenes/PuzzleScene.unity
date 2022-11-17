@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e433cbb3489f2724cab5a118d7943e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleManager: {fileID: 300662462}
 --- !u!1 &267243158
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +457,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 300662461}
+  - component: {fileID: 300662462}
   m_Layer: 0
   m_Name: PuzzleManager
   m_TagString: Untagged
@@ -477,6 +479,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &300662462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300662460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cd59141693f8448b208df9fbd6ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilesParent: {fileID: 342729143}
+  tileList: []
 --- !u!1 &342558817
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e433cbb3489f2724cab5a118d7943e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleManager: {fileID: 300662462}
 --- !u!1 &342729142
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +595,6 @@ GameObject:
   - component: {fileID: 342729145}
   - component: {fileID: 342729144}
   - component: {fileID: 342729146}
-  - component: {fileID: 342729148}
   m_Layer: 5
   m_Name: board
   m_TagString: Untagged
@@ -676,19 +692,6 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 3
---- !u!114 &342729148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342729142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cd59141693f8448b208df9fbd6ced, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilesParent: {fileID: 342729143}
 --- !u!1 &392432213
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,6 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e433cbb3489f2724cab5a118d7943e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleManager: {fileID: 300662462}
 --- !u!1 &517034731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e433cbb3489f2724cab5a118d7943e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleManager: {fileID: 300662462}
 --- !u!1 &520163540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e433cbb3489f2724cab5a118d7943e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleManager: {fileID: 300662462}
 --- !u!1 &609208815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,6 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e433cbb3489f2724cab5a118d7943e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleManager: {fileID: 300662462}
 --- !u!1 &615533784
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,6 +2090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e433cbb3489f2724cab5a118d7943e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleManager: {fileID: 300662462}
 --- !u!1 &1570918765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,6 +2569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e433cbb3489f2724cab5a118d7943e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleManager: {fileID: 300662462}
 --- !u!1 &1858843676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,6 +2659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e433cbb3489f2724cab5a118d7943e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleManager: {fileID: 300662462}
 --- !u!1 &1983408812
 GameObject:
   m_ObjectHideFlags: 0
