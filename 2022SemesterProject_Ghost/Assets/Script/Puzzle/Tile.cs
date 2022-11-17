@@ -6,8 +6,9 @@ using TMPro;
 
 public class Tile : MonoBehaviour, IPointerClickHandler
 {
-    private TextMeshProUGUI textNumeric;
-    private PuzzleManager board;
+    TextMeshProUGUI textNumeric;
+    [SerializeField]
+    private PuzzleManager puzzleManager;
     private Vector3 correctPosition;
 
     public bool IsCorrected { private set; get; } = false;
@@ -22,9 +23,8 @@ public class Tile : MonoBehaviour, IPointerClickHandler
         }
         get => numeric;
     }
-    public void Setup(PuzzleManager board, int hideNumeric, int numeric)
+    public void Setup(int hideNumeric, int numeric)
     {
-        this.board = board;
         textNumeric = GetComponentInChildren<TextMeshProUGUI>();
 
         Numeric = numeric;
@@ -40,9 +40,7 @@ public class Tile : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-       // Debug.Log("Click" + Numeric);//클릭했을 때 행동
-
-        board.IsMoveTile(this);
+        puzzleManager.IsMoveTile(this);
     }
     public void OnMoveTo(Vector3 end)
     {
@@ -67,6 +65,6 @@ public class Tile : MonoBehaviour, IPointerClickHandler
 
         IsCorrected = correctPosition == GetComponent<RectTransform>().localPosition ? true : false;
 
-        board.IsGameOver();
+        puzzleManager.IsGameOver();
     }
 }

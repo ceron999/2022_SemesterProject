@@ -8,7 +8,6 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField]
     private Transform tilesParent;
     [SerializeField]
-    private Button button;
     private List<Tile> tileList;//생성 타일 정보 저장
     private Vector2Int puzzleSize = new Vector2Int(3, 3);
 
@@ -38,11 +37,11 @@ public class PuzzleManager : MonoBehaviour
         {
             for (int x = 0; x < puzzleSize.x; ++x)
             {
-                GameObject tileObject = transform.GetChild(num).gameObject;
+                GameObject tileObject = tilesParent.GetChild(num).gameObject;
 
                 Tile tile = tileObject.GetComponent<Tile>();
-
-                tile.Setup(this, puzzleSize.x * puzzleSize.y, y * puzzleSize.x + x + 1);
+                
+                tile.Setup(puzzleSize.x * puzzleSize.y, y * puzzleSize.x + x + 1);
 
                 tileList.Add(tile);
                 ++num;
@@ -52,13 +51,13 @@ public class PuzzleManager : MonoBehaviour
 
     public void Suffle()
     {
-        int[] array = new int[transform.childCount];
-        int arraysize = transform.childCount;
+        int[] array = new int[tilesParent.childCount];
+        int arraysize = tilesParent.childCount;
         while (CheckEntropy())
         {
             for (int i = 0; i < arraysize; ++i)
             {
-                array[i] = transform.GetChild(i).GetComponent<Tile>().Numeric;//자식이 배치된 순서
+                array[i] = tilesParent.GetChild(i).GetComponent<Tile>().Numeric;//자식이 배치된 순서
             }
             for (int i = 0; i < 9; i++)
             {
@@ -98,11 +97,11 @@ public class PuzzleManager : MonoBehaviour
     }
     private bool CheckEntropy()//entropy 검사
     {
-        int[] array = new int[transform.childCount];
-        int arraysize = transform.childCount;
+        int[] array = new int[tilesParent.childCount];
+        int arraysize = tilesParent.childCount;
         for (int i = 0; i < arraysize; ++i)
         {
-            array[i] = transform.GetChild(i).GetComponent<Tile>().Numeric;//자식이 배치된 순서
+            array[i] = tilesParent.GetChild(i).GetComponent<Tile>().Numeric;//자식이 배치된 순서
         }
         int entropy = 0;
         for (int i = 0; i < arraysize; ++i)
