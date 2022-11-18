@@ -48,7 +48,6 @@ public class PuzzleManager : MonoBehaviour
             }
         }
     }
-
     public void Suffle()
     {
         int[] array = new int[tilesParent.childCount];
@@ -74,6 +73,8 @@ public class PuzzleManager : MonoBehaviour
             }
         }
         EmptyTilePosition = tileList[tileList.Count - 1].GetComponent<RectTransform>().localPosition;
+        for (int i = 0; i < 8; i++)
+            tileList[i].OnMoveTo(EmptyTilePosition);
     }
     public void IsMoveTile(Tile tile)//타일 이동
     {
