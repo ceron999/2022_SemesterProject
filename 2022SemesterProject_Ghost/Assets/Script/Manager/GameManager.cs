@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
     public JsonManager jsonManager;
 
     public string pastSceneName;
+    public string setDialogueName;
 
     public bool isTalkTIme;
+
+    public SaveDataClass saveData;
 
     public static GameManager Instance
     {
@@ -41,6 +44,32 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         jsonManager = new JsonManager();
+
+        saveData = jsonManager.LoadSaveData();
+        //SetSaveDataClear();
+    }
+
+    public void SetSaveDataClear()
+    {
+        saveData = new SaveDataClass();
+        jsonManager.SaveJson(saveData, "SaveData");
+        Debug.Log("clear");
+    }
+
+    public void SetIsWatchStory(string dialogueWrapperName)
+    {
+        switch(dialogueWrapperName)
+        {
+            case "Day1Story":
+                saveData.isWatchDayStory[0] = true;
+                break;
+            case "Day2Story":
+                saveData.isWatchDayStory[1] = true;
+                break;
+            case "Day3Story":
+                saveData.isWatchDayStory[2] = true;
+                break;
+        }
     }
 
 }

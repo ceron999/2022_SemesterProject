@@ -44,6 +44,7 @@ public class DialogueManager : MonoBehaviour
         characterNameText.text = "";
         dialogueText.text = "";
         nowDialogueIndex = 0;
+        dialogueWrapperName = GameManager.Instance.setDialogueName;
 
         if (dialogueWrapperName != "")
         {
@@ -127,6 +128,11 @@ public class DialogueManager : MonoBehaviour
                 SetScreenTouchCanvas(false);
                 dialoguePrefab.SetActive(false);
             }
+
+            GameManager.Instance.SetIsWatchStory(dialogueWrapperName);
+            jsonManager.SaveJson(GameManager.Instance.saveData, "SaveData");
+            Debug.Log(GameManager.Instance.saveData.isWatchDayStory[0]);
+            Debug.Log("진행상황 세이브 완료");
         }
     }
 

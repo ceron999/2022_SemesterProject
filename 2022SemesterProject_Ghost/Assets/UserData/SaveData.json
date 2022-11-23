@@ -1,0 +1,26 @@
+{
+    "isFirstPlay": false,
+    "startYear": 2022,
+    "startMonth": 11,
+    "startDay": 23,
+    "nowDay": 1,
+    "isWatchDayStory": [
+        true,
+        false,
+        false
+    ],
+    "isClearPuzzle": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ]
+}
