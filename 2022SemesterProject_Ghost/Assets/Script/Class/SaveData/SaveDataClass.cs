@@ -6,11 +6,11 @@ using System;
 [System.Serializable]
 public class SaveDataClass
 {
-    ///¼¼ÀÌºê µ¥ÀÌÅÍ ÇÊ¿äÇÑ °æ¿ì
-    ///     1. Ã³À½ ½ÃÀÛÇÒ ¶§ ÇÃ·¹ÀÌÇÏ°í ÀÖ´Â ³¯
-    ///     2. ÇØ´ç ³¯Â¥¿¡ ÇÊ¼ö ½ºÅä¸®¸¦ º¸¾Ò´Â°¡?
-    ///     3. °¢ ÆÛÁñ¸¶´Ù Å¬¸®¾î¸¦ Çß´Â°¡?
-    ///     4. 
+    ///ì„¸ì´ë¸Œ ë°ì´í„° í•„ìš”í•œ ê²½ìš°
+    ///     1. ì²˜ìŒ ì‹œì‘í•  ë•Œ í”Œë ˆì´í•˜ê³  ìˆëŠ” ë‚ 
+    ///     2. í•´ë‹¹ ë‚ ì§œì— í•„ìˆ˜ ìŠ¤í† ë¦¬ë¥¼ ë³´ì•˜ëŠ”ê°€?
+    ///     3. ê° í¼ì¦ë§ˆë‹¤ í´ë¦¬ì–´ë¥¼ í–ˆëŠ”ê°€?
+    ///     4. í”Œë ˆì´ì–´ ë§ë²„ë¦‡, ì˜í˜¼ ì´ë¦„
     ///     
     public bool isFirstPlay;
     public int startYear;
@@ -19,6 +19,10 @@ public class SaveDataClass
     public int nowDay;
     public List<bool> isWatchDayStory;
     public List<bool> isClearPuzzle;
+
+
+    public string playerSpeechHabit;
+    public string soulName;
 
     public SaveDataClass()
     {
@@ -33,5 +37,8 @@ public class SaveDataClass
         isClearPuzzle = new List<bool>();
         for (int i = 0; i < 12; i++)
             isClearPuzzle.Add(false);
+
+        playerSpeechHabit = "";
+        soulName = "";
     }
 }

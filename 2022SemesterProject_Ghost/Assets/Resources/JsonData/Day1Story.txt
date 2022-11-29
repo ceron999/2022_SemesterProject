@@ -32,8 +32,9 @@
 			"routeThird":"과일향",
 			"routeFourth":"나무향",
 			"routeFifth":"가죽향",
-			"routeSixtj":"기타",
-			"routeSeventh":"향수 안뿌린다"},
+			"routeSixth":"기타",
+			"routeSeventh":"향수 안뿌린다"
+		},
 		{
 			"type":"Dialog",
 			"characterName":"narration",
@@ -47,6 +48,7 @@
 		{
 			"type":"Dialog",
 			"characterName":"player",
+			"actionKeywordString":"GetSpeechHabit",
 			"dialogue":"(말버릇을 입력해주세요)"
 		},
 		{

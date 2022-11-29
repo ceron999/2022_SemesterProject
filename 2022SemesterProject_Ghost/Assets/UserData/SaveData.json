@@ -2,7 +2,7 @@
     "isFirstPlay": false,
     "startYear": 2022,
     "startMonth": 11,
-    "startDay": 23,
+    "startDay": 30,
     "nowDay": 1,
     "isWatchDayStory": [
         true,
@@ -22,5 +22,7 @@
         false,
         false,
         false
-    ]
+    ],
+    "playerSpeechHabit": "fdsa",
+    "soulName": ""
 }

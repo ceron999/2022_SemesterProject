@@ -1185,12 +1185,23 @@ MonoBehaviour:
   dialoguePrefab: {fileID: 1934323248}
   characterNameText: {fileID: 2018587355}
   dialogueText: {fileID: 2018587354}
+  inputField: {fileID: 0}
+  getStringText: {fileID: 0}
+  enterStringBtn: {fileID: 0}
   routeFirstParent: {fileID: 2018587353}
   routeFirstText: {fileID: 2018587352}
   routeSecondParent: {fileID: 2018587351}
   routeSecondText: {fileID: 2018587350}
   routeThirdParent: {fileID: 2018587349}
   routeThirdText: {fileID: 2018587348}
+  routeFourthParent: {fileID: 0}
+  routeFourthText: {fileID: 0}
+  routeFifthParent: {fileID: 0}
+  routeFifthText: {fileID: 0}
+  routeSixthParent: {fileID: 0}
+  routeSixthText: {fileID: 0}
+  routeSeventhParent: {fileID: 0}
+  routeSeventhText: {fileID: 0}
   dialogueWrapper:
     dialogueArray: []
   dialogueWrapperName: 
@@ -2568,6 +2579,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1480976884}
     m_Modifications:
+    - target: {fileID: 733310518182635372, guid: dcc04aae9f395734093926eaf9a234de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3817049219576532541, guid: dcc04aae9f395734093926eaf9a234de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548513957555986208, guid: dcc04aae9f395734093926eaf9a234de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062959468935714124, guid: dcc04aae9f395734093926eaf9a234de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120250882948416521, guid: dcc04aae9f395734093926eaf9a234de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090340888293778327, guid: dcc04aae9f395734093926eaf9a234de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9102424003959217855, guid: dcc04aae9f395734093926eaf9a234de, type: 3}
       propertyPath: m_Text
       value: "\uB300\uC0AC"

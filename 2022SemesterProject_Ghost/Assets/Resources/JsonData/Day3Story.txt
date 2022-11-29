@@ -32,6 +32,7 @@
         {
             "type":"Dialog",
             "characterName":"player",
+            "actionKeyword":"GetSoulName"
             "dialogue":"(영혼에게 이름을 지어주세요.)"
         },
         {
