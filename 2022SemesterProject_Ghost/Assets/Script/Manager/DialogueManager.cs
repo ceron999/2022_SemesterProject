@@ -57,6 +57,7 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector]
     bool isDialogueEnd = false;
     bool isDialoguePrinting = false;
+    bool isRouteActive = false;
     int nowDialogueIndex;
     ActionKeyword nowAction;
 
@@ -91,7 +92,6 @@ public class DialogueManager : MonoBehaviour
 
     public void ScreenTouch()
     {
-        Debug.Log(nowAction.ToString());
         switch(nowAction)
         {
             case ActionKeyword.Null:
@@ -119,19 +119,21 @@ public class DialogueManager : MonoBehaviour
             nowAction = nowDialogue.actionKeyword;
 
         characterNameText.text = nowDialogue.characterName;
+
+
+        if (nowDialogue.routeFirst != null)
+        {
+            isRouteActive = true;
+        }
+
         for (int i = 0; i < nowDialogue.dialogue.Length; i++)
         {
             dialogueText.text += nowDialogue.dialogue[i];
             yield return new WaitForSeconds(0.07f);
         }
 
-        if (nowDialogue.routeFirst == null)
-        {
-            isDialoguePrinting = false;
-            nowDialogueIndex++;
-        }
-        else
-            SetRouteText();
+        isDialoguePrinting = false;
+        nowDialogueIndex++;
     }
 
     public void SkipDialogue()
@@ -154,19 +156,26 @@ public class DialogueManager : MonoBehaviour
             if (nowDialogue.actionKeywordString != null)
                 nowAction = nowDialogue.actionKeyword;
 
-            if (isDialoguePrinting)
+            if (!isDialogueEnd && !isDialoguePrinting)
             {
-                SpreadDialogue(nowDialogue);
+                dialogueText.text = "";
+                StartCoroutine(PrintDialogue()); 
+                if (isRouteActive)
+                    StartCoroutine(SetRouteText(nowDialogue));
+            }
+            else if (isDialoguePrinting)
+            {
                 StopAllCoroutines();
+                SpreadDialogue(nowDialogue);
+
                 isDialoguePrinting = false;
+                if (isRouteActive)
+                    StartCoroutine(SetRouteText(nowDialogue));
+
                 nowDialogueIndex++;
             }
 
-            else if (!isDialogueEnd && !isDialoguePrinting)
-            {
-                dialogueText.text = "";
-                StartCoroutine(PrintDialogue());
-            }
+            
         }
 
         if (isDialogueEnd)
@@ -196,10 +205,12 @@ public class DialogueManager : MonoBehaviour
         ScreenTouchCanvas.SetActive(active);
     }
 
-    void SetRouteText()
+    IEnumerator SetRouteText(Dialogue nowDialogue)
     {
+        while(isDialoguePrinting)
+            yield return null;
+
         SetScreenTouchCanvas(false);
-        Dialogue nowDialogue = dialogueWrapper.dialogueArray[nowDialogueIndex];
 
         if(nowDialogue.routeFirst != null)
         {
@@ -253,6 +264,8 @@ public class DialogueManager : MonoBehaviour
         nowDialogueIndex++;
 
         SetScreenTouchCanvas(true);
+        isRouteActive = false;
+        ScreenTouch();
     }
 
     IEnumerator GetTextString()

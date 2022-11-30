@@ -345,8 +345,8 @@ MonoBehaviour:
   routeSecondText: {fileID: 9102424004053678698}
   routeThirdParent: {fileID: 9102424004053678697}
   routeThirdText: {fileID: 9102424004053678696}
-  routeFourthParent: {fileID: 0}
-  routeFourthText: {fileID: 0}
+  routeFourthParent: {fileID: 9102424004053678715}
+  routeFourthText: {fileID: 9102424004053678714}
   routeFifthParent: {fileID: 9102424004053678710}
   routeFifthText: {fileID: 9102424004053678709}
   routeSixthParent: {fileID: 9102424004053678708}
@@ -1203,3 +1203,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9102424004053678714 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7855949343958030540, guid: dcc04aae9f395734093926eaf9a234de, type: 3}
+  m_PrefabInstance: {fileID: 9102424004053678695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &9102424004053678715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8090340888293778327, guid: dcc04aae9f395734093926eaf9a234de, type: 3}
+  m_PrefabInstance: {fileID: 9102424004053678695}
+  m_PrefabAsset: {fileID: 0}
