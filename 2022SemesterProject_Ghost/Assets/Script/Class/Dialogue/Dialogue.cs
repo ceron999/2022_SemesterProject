@@ -21,6 +21,9 @@ public class Dialogue
     public string actionKeywordString;
     public string dialogue;
 
+    public bool isDialogueJump;
+    public int dialogueJumpParameter;
+
     public string routeFirst;
     public string routeSecond;
     public string routeThird;
@@ -38,6 +41,10 @@ public class Dialogue
         characterName = null;
         actionKeywordString = null;
         dialogue = null;
+
+        isDialogueJump = false;
+        dialogueJumpParameter = 0;
+
         routeFirst = null;
         routeSecond = null;
         routeThird = null;

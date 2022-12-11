@@ -18,11 +18,16 @@ public class SaveDataClass
     public int startDay;
     public int nowDay;
     public List<bool> isWatchDayStory;
+
     public List<bool> isClearPuzzle;
 
-
+    //대화
     public string playerSpeechHabit;
     public string soulName;
+
+    //선택지
+    public string soulShape;
+    public string perfumeScent;
 
     public SaveDataClass()
     {
@@ -34,11 +39,15 @@ public class SaveDataClass
         isWatchDayStory = new List<bool>();
         for (int i = 0; i < 3; i++)
             isWatchDayStory.Add(false);
+
         isClearPuzzle = new List<bool>();
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 8; i++)
             isClearPuzzle.Add(false);
 
         playerSpeechHabit = "";
         soulName = "";
+
+        soulShape = "";
+        perfumeScent = "";
     }
 }

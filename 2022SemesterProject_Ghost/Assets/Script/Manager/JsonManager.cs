@@ -17,7 +17,7 @@ public class JsonManager
         builder.Append(appender1);
 
         TextAsset jsonString = Resources.Load<TextAsset>(builder.ToString());
-
+        
         gameData = JsonUtility.FromJson<T>(jsonString.ToString());
         
         return gameData;
@@ -26,7 +26,7 @@ public class JsonManager
     public void SaveJson<T>(T saveData, string name)
     {
         string jsonText;
-        //¾Èµå·ÎÀÌµå¿¡¼­ÀÇ ÀúÀå À§Ä¡¸¦ ´Ù¸£°Ô ÇØÁÖ¾î¾ß ÇÑ´Ù
+        //ì•ˆë“œë¡œì´ë“œì—ì„œì˜ ì €ì¥ ìœ„ì¹˜ë¥¼ ë‹¤ë¥´ê²Œ í•´ì£¼ì–´ì•¼ í•œë‹¤
 
         string savePath = Application.dataPath;
         string appender = "/UserData/";
@@ -42,17 +42,17 @@ public class JsonManager
         builder.Append(appender);
         if (!Directory.Exists(builder.ToString()))
         {
-            //µğ·ºÅä¸®°¡ ¾ø´Â°æ¿ì ¸¸µé¾îÁØ´Ù
+            //ë””ë ‰í† ë¦¬ê°€ ì—†ëŠ”ê²½ìš° ë§Œë“¤ì–´ì¤€ë‹¤
             Directory.CreateDirectory(builder.ToString());
 
         }
         builder.Append(nameString);
 
         jsonText = JsonUtility.ToJson(saveData, true);
-        //ÀÌ·¯¸éÀº ÀÏ´Ü µ¥ÀÌÅÍ°¡ ÅØ½ºÆ®·Î º¯È¯ÀÌ µÈ´Ù
-        //jsonUtility¸¦ ÀÌ¿ëÇÏ¿© data¸¦ jsonÇü½ÄÀÇ text·Î ¹Ù²Ù¾îÁØ´Ù
+        //ì´ëŸ¬ë©´ì€ ì¼ë‹¨ ë°ì´í„°ê°€ í…ìŠ¤íŠ¸ë¡œ ë³€í™˜ì´ ëœë‹¤
+        //jsonUtilityë¥¼ ì´ìš©í•˜ì—¬ dataë¥¼ jsoní˜•ì‹ì˜ textë¡œ ë°”ê¾¸ì–´ì¤€ë‹¤
 
-        //ÆÄÀÏ½ºÆ®¸²À» ÀÌ·¸°Ô ÁöÁ¤ÇØÁÖ°í ÀúÀåÇØÁÖ¸éµÈ´ç ²ı
+        //íŒŒì¼ìŠ¤íŠ¸ë¦¼ì„ ì´ë ‡ê²Œ ì§€ì •í•´ì£¼ê³  ì €ì¥í•´ì£¼ë©´ëœë‹¹ ë—
         FileStream fileStream = new FileStream(builder.ToString(), FileMode.Create);
         byte[] bytes = Encoding.UTF8.GetBytes(jsonText);
         fileStream.Write(bytes, 0, bytes.Length);
@@ -61,7 +61,7 @@ public class JsonManager
 
     public SaveDataClass LoadSaveData()
     {
-        //ÀÌÁ¦ ¿ì¸®°¡ ÀÌÀü¿¡ ÀúÀåÇß´ø µ¥ÀÌÅÍ¸¦ ²¨³»¾ßÇÑ´Ù
+        //ì´ì œ ìš°ë¦¬ê°€ ì´ì „ì— ì €ì¥í–ˆë˜ ë°ì´í„°ë¥¼ êº¼ë‚´ì•¼í•œë‹¤
         SaveDataClass gameData;
         string loadPath = Application.dataPath;
         string directory = "/UserData";
@@ -79,12 +79,12 @@ public class JsonManager
 #endif
         StringBuilder builder = new StringBuilder(loadPath);
         builder.Append(directory);
-        //À§±îÁö´Â ¼¼ÀÌºê¶û ¶È°°´Ù
-        //ÆÄÀÏ½ºÆ®¸²À» ¸¸µé¾îÁØ´Ù. ÆÄÀÏ¸ğµå¸¦ openÀ¸·Î ÇØ¼­ ¿­¾îÁØ´Ù. ´Ù ±¸±Û¸µÀÌ´Ù
+        //ìœ„ê¹Œì§€ëŠ” ì„¸ì´ë¸Œë‘ ë˜‘ê°™ë‹¤
+        //íŒŒì¼ìŠ¤íŠ¸ë¦¼ì„ ë§Œë“¤ì–´ì¤€ë‹¤. íŒŒì¼ëª¨ë“œë¥¼ openìœ¼ë¡œ í•´ì„œ ì—´ì–´ì¤€ë‹¤. ë‹¤ êµ¬ê¸€ë§ì´ë‹¤
         string builderToString = builder.ToString();
         if (!Directory.Exists(builderToString))
         {
-            //µğ·ºÅä¸®°¡ ¾ø´Â°æ¿ì ¸¸µé¾îÁØ´Ù
+            //ë””ë ‰í† ë¦¬ê°€ ì—†ëŠ”ê²½ìš° ë§Œë“¤ì–´ì¤€ë‹¤
             Directory.CreateDirectory(builderToString);
 
         }
@@ -93,7 +93,7 @@ public class JsonManager
 
         if (File.Exists(builder.ToString()))
         {
-            //¼¼ÀÌºê ÆÄÀÏÀÌ ÀÖ´Â°æ¿ì
+            //ì„¸ì´ë¸Œ íŒŒì¼ì´ ìˆëŠ”ê²½ìš°
 
             FileStream stream = new FileStream(builder.ToString(), FileMode.Open);
 
@@ -102,18 +102,18 @@ public class JsonManager
             stream.Close();
             string jsonData = Encoding.UTF8.GetString(bytes);
 
-            //ÅØ½ºÆ®¸¦ stringÀ¸·Î ¹Ù²Û´ÙÀ½¿¡ FromJson¿¡ ³Ö¾îÁÖ¸éÀº ¿ì¸®°¡ ¾µ ¼ö ÀÖ´Â °´Ã¼·Î ¹Ù²Ü ¼ö ÀÖ´Ù
+            //í…ìŠ¤íŠ¸ë¥¼ stringìœ¼ë¡œ ë°”ê¾¼ë‹¤ìŒì— FromJsonì— ë„£ì–´ì£¼ë©´ì€ ìš°ë¦¬ê°€ ì“¸ ìˆ˜ ìˆëŠ” ê°ì²´ë¡œ ë°”ê¿€ ìˆ˜ ìˆë‹¤
             gameData = JsonUtility.FromJson<SaveDataClass>(jsonData);
         }
         else
         {
-            //¼¼ÀÌºêÆÄÀÏÀÌ ¾ø´Â°æ¿ì
+            //ì„¸ì´ë¸ŒíŒŒì¼ì´ ì—†ëŠ”ê²½ìš°
             gameData = null;
             //    = new SaveDataClass();
             //gameData.AddMedicineBySymptom(medicineDataWrapper, Symptom.water, Symptom.fire);
         }
         return gameData;
-        //ÀÌ Á¤º¸¸¦ °ÔÀÓ¸Å´ÏÀú³ª, ·ÎµùÀ¸·Î ³Ñ°ÜÁÖ´Â °ÍÀÌ´ç
+        //ì´ ì •ë³´ë¥¼ ê²Œì„ë§¤ë‹ˆì €ë‚˜, ë¡œë”©ìœ¼ë¡œ ë„˜ê²¨ì£¼ëŠ” ê²ƒì´ë‹¹
     }
 }
 

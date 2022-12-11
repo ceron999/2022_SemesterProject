@@ -47,6 +47,10 @@ public class DialogueManager : MonoBehaviour
     GameObject routeSeventhParent;
     [SerializeField]
     Text routeSeventhText;
+    [SerializeField]
+    Image viewPaperImage;
+    [SerializeField]
+    Image fadeScreenImage;
 
     [SerializeField]
     DialogueWrapper dialogueWrapper;
@@ -57,7 +61,9 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector]
     bool isDialogueEnd = false;
     bool isDialoguePrinting = false;
+    bool isSaveDataPrinting = false;
     bool isRouteActive = false;
+    bool isViewPaperClick = false;
     int nowDialogueIndex;
     ActionKeyword nowAction;
 
@@ -67,7 +73,13 @@ public class DialogueManager : MonoBehaviour
 
         characterNameText.text = "";
         dialogueText.text = "";
-        nowDialogueIndex = 0;
+        if (GameManager.Instance.isCustomizingEnd)
+        {
+            nowDialogueIndex = 4;
+            GameManager.Instance.isCustomizingEnd = false;
+        }
+        else
+            nowDialogueIndex = 0;
         dialogueWrapperName = GameManager.Instance.setDialogueName;
 
         if (dialogueWrapperName != "")
@@ -92,27 +104,51 @@ public class DialogueManager : MonoBehaviour
 
     public void ScreenTouch()
     {
-        switch(nowAction)
+        if (nowDialogueIndex < dialogueWrapper.dialogueArray.Length)
         {
-            case ActionKeyword.Null:
-                ContinueDialogue();
-                break;
-            case ActionKeyword.GetSpeechHabit:
-                ContinueDialogue();
-                StartCoroutine(GetTextString());
-                break;
-            case ActionKeyword.PrintSpeechHabit:
-                ContinueDialogue();
-                break;
-            case ActionKeyword.GetSoulName:
-                ContinueDialogue();
-                StartCoroutine(GetTextString());
-                break;
+            Dialogue nowDialogue = dialogueWrapper.dialogueArray[nowDialogueIndex];
+            if (nowDialogue.dialogueTypes == Types.Dialog)
+                switch (nowAction)
+                {
+                    case ActionKeyword.Null:
+                        ContinueDialogue();
+                        break;
+                    case ActionKeyword.GetSpeechHabit:
+                        ContinueDialogue();
+                        StartCoroutine(GetTextString());
+                        break;
+                    case ActionKeyword.PrintSpeechHabit:
+                        ContinueDialogue();
+                        break;
+                    case ActionKeyword.GetSoulName:
+                        Debug.Log("GetSoulName");
+                        ContinueDialogue();
+                        StartCoroutine(GetTextString());
+                        break;
+                }
+            else if (nowDialogue.dialogueTypes == Types.Customizing)
+            {
+                Debug.Log("커마하러");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("CustomizingScene");
+            }
+            else if (nowDialogue.dialogueTypes == Types.ViewPaper)
+            {
+                Debug.Log("ViewPaper");
+                StartCoroutine(ViewPaperFade());
+                nowDialogueIndex++;
+            }
+            else
+            {
+                Debug.Log("dialogueType error!");
+                Debug.Log("now dialogueType : " + nowDialogue.dialogueTypes.ToString());
+            }
         }
+        else ContinueDialogue();
     }
 
     IEnumerator PrintDialogue()
     {
+        Debug.Log("nowIdx: " + nowDialogueIndex);
         isDialoguePrinting = true;
         Dialogue nowDialogue = dialogueWrapper.dialogueArray[nowDialogueIndex];
         if (nowDialogue.actionKeywordString != null)
@@ -128,12 +164,39 @@ public class DialogueManager : MonoBehaviour
 
         for (int i = 0; i < nowDialogue.dialogue.Length; i++)
         {
-            dialogueText.text += nowDialogue.dialogue[i];
+            if(nowDialogue.dialogue[i] != '^' && nowDialogue.dialogue[i] != '@')
+                dialogueText.text += nowDialogue.dialogue[i];
+            else
+            {
+                StartCoroutine(PrintSaveData(nowDialogue.dialogue[i]));
+                while (isSaveDataPrinting)
+                    yield return null;
+            }
             yield return new WaitForSeconds(0.07f);
         }
 
         isDialoguePrinting = false;
         nowDialogueIndex++;
+        if (nowDialogue.dialogueJumpParameter != 0)
+            nowDialogueIndex += nowDialogue.dialogueJumpParameter;
+    }
+
+    IEnumerator PrintSaveData(char getChar)
+    {
+        isSaveDataPrinting = true;
+        string getSaveDataText;
+
+        if (getChar == '^')
+            getSaveDataText = GameManager.Instance.saveData.playerSpeechHabit;
+        else
+            getSaveDataText = GameManager.Instance.saveData.soulName;
+
+        for (int i = 0; i < getSaveDataText.Length; i++)
+        {
+                dialogueText.text += getSaveDataText[i];
+                yield return new WaitForSeconds(0.07f);
+        }
+        isSaveDataPrinting = false;
     }
 
     public void SkipDialogue()
@@ -145,7 +208,15 @@ public class DialogueManager : MonoBehaviour
     {
         //한번에 쭉 뿌림
         dialogueText.text = "";
-        dialogueText.text = nowDialog.dialogue;
+        for(int i =0; i < nowDialog.dialogue.Length; i++)
+        {
+            if (nowDialog.dialogue[i] != '^' && nowDialog.dialogue[i] != '@')
+                dialogueText.text += nowDialog.dialogue[i];
+            else if(nowDialog.dialogue[i] == '^')
+                dialogueText.text += GameManager.Instance.saveData.playerSpeechHabit;
+            else if (nowDialog.dialogue[i] == '@')
+                dialogueText.text += GameManager.Instance.saveData.soulName;
+        }
     }
 
     public void ContinueDialogue()
@@ -171,8 +242,10 @@ public class DialogueManager : MonoBehaviour
                 isDialoguePrinting = false;
                 if (isRouteActive)
                     StartCoroutine(SetRouteText(nowDialogue));
-
+                
                 nowDialogueIndex++;
+                if (nowDialogue.dialogueJumpParameter != 0)
+                    nowDialogueIndex += nowDialogue.dialogueJumpParameter;
             }
 
             
@@ -249,6 +322,44 @@ public class DialogueManager : MonoBehaviour
         }
 
     }
+    
+    public void SaveRoute(Text getText)
+    {
+        switch(dialogueWrapperName)
+        {
+            case "Day1Story":
+                if (GameManager.Instance.saveData.soulShape == "")
+                    GameManager.Instance.saveData.soulShape = getText.text;
+                else if (GameManager.Instance.saveData.perfumeScent == "")
+                    GameManager.Instance.saveData.perfumeScent = getText.text;
+                else
+                    return;
+                break;
+            case "Day2Story":
+                if(dialogueWrapper.dialogueArray[nowDialogueIndex - 1].isDialogueJump)
+                {
+                    Debug.Log("Dialogue Jump");
+                    Debug.Log(getText.name);
+                    SetDialogueIndex(getText.name);
+                }
+                break;
+        }
+    }
+
+    void SetDialogueIndex(string textName)
+    {
+        switch(textName)
+        {
+            case "RouteFirstText":
+                break;
+            case "RouteSecondText":
+                nowDialogueIndex++;
+                break;
+            case "RouteThirdText":
+                nowDialogueIndex += 2;
+                break;
+        }
+    }
 
     public void TurnOffRoutes()
     {
@@ -261,7 +372,6 @@ public class DialogueManager : MonoBehaviour
         routeSeventhParent.SetActive(false);
 
         isDialoguePrinting = false;
-        nowDialogueIndex++;
 
         SetScreenTouchCanvas(true);
         isRouteActive = false;
@@ -294,5 +404,35 @@ public class DialogueManager : MonoBehaviour
         enterStringBtn.SetActive(false);
         nowAction = ActionKeyword.Null;
         ContinueDialogue();
+    }
+
+    IEnumerator ViewPaperFade()
+    {
+        SetScreenTouchCanvas(false);
+        viewPaperImage.gameObject.SetActive(true);
+        float fadeFloat = 0;
+
+        while(fadeFloat <= 1)
+        {
+            fadeFloat += 0.05f;
+            viewPaperImage.color = new Color(255, 255, 255, fadeFloat);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        //임시로 만듬
+        while (Input.GetMouseButtonDown(0))
+        {
+            yield return null;
+        }
+
+        while (fadeFloat >= 0)
+        {
+            fadeFloat -= 0.05f;
+            viewPaperImage.color = new Color(255, 255, 255, fadeFloat);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        SetScreenTouchCanvas(true);
+        viewPaperImage.gameObject.SetActive(false);
     }
 }

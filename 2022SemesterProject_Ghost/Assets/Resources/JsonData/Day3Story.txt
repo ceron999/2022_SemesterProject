@@ -4,7 +4,7 @@
         {
             "type":"Dialog",
             "characterName":"soul",
-            "dialogue":"안녕 오늘이 마지막이 될 것 같아. (플레이어의 말버릇)"
+            "dialogue":"안녕 오늘이 마지막이 될 것 같아. ^"
         },
         {
             "type":"Dialog",
@@ -32,13 +32,13 @@
         {
             "type":"Dialog",
             "characterName":"player",
-            "actionKeyword":"GetSoulName"
-            "dialogue":"(영혼에게 이름을 지어주세요.)"
+            "actionKeywordString":"GetSoulName",
+            "dialogue":"영혼에게 이름을 지어주세요."
         },
         {
             "type":"Dialog",
             "characterName":"soul",
-            "dialogue":"(이름), 나의 새로운 이름이야. 고마워."
+            "dialogue":"@, 나의 새로운 이름이야. 고마워."
         },
         {
             "type":"Dialog",

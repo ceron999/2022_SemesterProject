@@ -120,4 +120,11 @@ public class BtnManager : MonoBehaviour
                 break;
         }
     }
+
+    //CustomizingSceneBtn
+    public void TouchTempBtn()
+    {
+        GameManager.Instance.isCustomizingEnd = true;
+        SceneManager.LoadScene("StoryScene");
+    }
 }
