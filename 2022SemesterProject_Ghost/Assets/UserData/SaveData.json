@@ -2,12 +2,12 @@
     "isFirstPlay": false,
     "startYear": 2022,
     "startMonth": 12,
-    "startDay": 9,
-    "nowDay": 3,
+    "startDay": 20,
+    "nowDay": 2,
     "isWatchDayStory": [
         true,
-        true,
-        true
+        false,
+        false
     ],
     "isClearPuzzle": [
         false,
