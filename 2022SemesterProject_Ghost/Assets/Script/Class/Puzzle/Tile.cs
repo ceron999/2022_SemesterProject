@@ -68,4 +68,8 @@ public class Tile : MonoBehaviour, IPointerClickHandler
 
         puzzleManager.IsGameOver();
     }
+    public void MakeCorrectTrue()
+    {
+        IsCorrected = true;
+    }
 }

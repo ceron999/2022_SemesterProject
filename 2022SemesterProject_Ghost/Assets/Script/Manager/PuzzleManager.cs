@@ -74,7 +74,11 @@ public class PuzzleManager : MonoBehaviour
         }
         EmptyTilePosition = tileList[tileList.Count - 1].GetComponent<RectTransform>().localPosition;
         for (int i = 0; i < 8; i++)
-            tileList[i].OnMoveTo(EmptyTilePosition);
+        {
+            //tileList[i].OnMoveTo(EmptyTilePosition);
+            if (tilesParent.GetChild(i).GetComponent<Tile>().Numeric == i + 1)
+                tileList[i].MakeCorrectTrue();
+        }
     }
     public void IsMoveTile(Tile tile)//타일 이동
     {
