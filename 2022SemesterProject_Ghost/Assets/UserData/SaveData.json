@@ -1,0 +1,26 @@
+{
+    "isFirstPlay": false,
+    "startYear": 2022,
+    "startMonth": 12,
+    "startDay": 22,
+    "nowDay": 1,
+    "isWatchDayStory": [
+        false,
+        false,
+        false
+    ],
+    "isClearPuzzle": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ],
+    "playerSpeechHabit": "",
+    "soulName": "",
+    "soulShape": "",
+    "perfumeScent": ""
+}

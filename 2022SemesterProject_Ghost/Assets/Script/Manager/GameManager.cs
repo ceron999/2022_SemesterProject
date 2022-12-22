@@ -38,5 +38,41 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         jsonManager = new JsonManager();
+<<<<<<< Updated upstream
+=======
+
+        saveData = jsonManager.LoadSaveData();
+    }
+
+
+    //관리자용 함수
+    public void SetSaveDataClear()
+    {
+        saveData = new SaveDataClass();
+        jsonManager.SaveJson(saveData, "SaveData");
+        Debug.Log("clear");
+    }
+
+    public void SetDay2()
+    {
+        saveData = new SaveDataClass();
+
+        saveData.isFirstPlay = false;
+        saveData.startYear = DateTime.Now.Year;
+        saveData.startMonth = DateTime.Now.Month;
+        saveData.startDay = DateTime.Now.Day - 1;
+        saveData.nowDay = 2;
+        saveData.isWatchDayStory[0] = true;
+
+        saveData.playerSpeechHabit = "habit";
+        saveData.soulName = "";
+
+        saveData.soulShape = "곡선이 많다.";
+        saveData.perfumeScent = "물향";
+
+
+        jsonManager.SaveJson(saveData, "SaveData");
+        Debug.Log("Set Day2 Clear");
+>>>>>>> Stashed changes
     }
 }
