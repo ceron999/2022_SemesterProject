@@ -29,5 +29,7 @@ public class UIFadeModule : MonoBehaviour
         }
         fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, endAlpha);
         yield return null;
+
+        fadeImage.gameObject.SetActive(false);
     }
 }

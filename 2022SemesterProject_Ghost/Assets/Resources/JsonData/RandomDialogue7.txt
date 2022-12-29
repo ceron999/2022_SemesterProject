@@ -1,0 +1,30 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"넌 나에게 뭘 바라고 늘 찾아와 말을 거니?"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"내가 좋니? 원하는 게 있니?"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"뭐 기분이 나쁘진 않지만 가끔은 불안해져."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"너가 안 찾아오면 무지하게 신경쓰이거든."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"내가 너한테 길들여졌나보다."
+        }
+    ]
+}

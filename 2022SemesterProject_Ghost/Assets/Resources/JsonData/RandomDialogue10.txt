@@ -1,0 +1,20 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"꿈의 세세한 내용은 잘 기억할 수 없다는 거 알고 있니?"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"그말은 우리에게 내용보다 느낌이 더 강하게 남는다는거지."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"어쩌면 너도 미래에는 현재의 기분만 기억나지 않을까?"
+        }
+    ]
+}

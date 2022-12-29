@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Text;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         jsonManager = new JsonManager();
 
         saveData = jsonManager.LoadSaveData();
+        SetNowDay();
     }
 
     //관리자용 함수
@@ -116,5 +118,34 @@ public class GameManager : MonoBehaviour
                 saveData.isWatchDayStory[2] = true;
                 break;
         }
+    }
+
+    void SetNowDay()
+    {
+        DateTime nowTime = DateTime.Now;
+        DateTime startTime;
+
+        startTime = new DateTime(saveData.startYear, saveData.startMonth, saveData.startDay);
+        
+        Debug.Log((nowTime - startTime).Days);
+
+        switch (saveData.nowDay)
+        {
+            case 1:
+                if (!saveData.isWatchDayStory[0])
+                    return;
+                if ((nowTime - startTime).Days >= 1)
+                    saveData.nowDay = 2;
+                break;
+            case 2:
+                if (!saveData.isWatchDayStory[1])
+                    return;
+                if ((nowTime - startTime).Days >= 2)
+                    saveData.nowDay = 3;
+                break;
+            case 3:
+                break;
+        }
+        jsonManager.SaveJson(saveData, "SaveData");
     }
 }

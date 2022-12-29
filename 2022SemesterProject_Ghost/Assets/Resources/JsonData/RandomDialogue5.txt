@@ -1,0 +1,30 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"오직 너만이 이 세상을 구할 수 있다고 상상해봐."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"대신 세상을 구하려면 너는 죽어야 해."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"그런데 너가 죽으면 너의 세상도 동시에 소멸하는 거 아닌가?"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"그럼 결국엔 똑같이 너도 죽고 세상도 죽는거네."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"역시 세상은 공평해."
+        }
+    ]
+}

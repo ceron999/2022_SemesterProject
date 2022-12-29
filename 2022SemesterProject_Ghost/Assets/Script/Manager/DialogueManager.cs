@@ -50,7 +50,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     Image viewPaperImage;
     [SerializeField]
-    Image fadeScreenImage;
+    GameObject fadeScreenCanvas;
+    UIFadeModule screenFadeModule;
 
     [SerializeField]
     DialogueWrapper dialogueWrapper;
@@ -67,10 +68,10 @@ public class DialogueManager : MonoBehaviour
     int nowDialogueIndex;
     ActionKeyword nowAction;
 
-    public void Start()
+    public IEnumerator Start()
     {
         jsonManager = new JsonManager();
-
+        DialoguePrefabToggle(false);
         characterNameText.text = "";
         dialogueText.text = "";
         if (GameManager.Instance.isCustomizingEnd)
@@ -82,18 +83,33 @@ public class DialogueManager : MonoBehaviour
             nowDialogueIndex = 0;
         dialogueWrapperName = GameManager.Instance.setDialogueName;
 
+        screenFadeModule = fadeScreenCanvas.GetComponent<UIFadeModule>();
+
         if (dialogueWrapperName != "")
         {
             dialogueWrapper = jsonManager.ResourceDataLoad<DialogueWrapper>(dialogueWrapperName);
             dialogueWrapper.Parse();
+
+            screenFadeModule.ScreenFade(1, 0, 1);
+            yield return new WaitForSeconds(1);
+            DialoguePrefabToggle(true);
             StartDialogue();
         }
     }
 
-    private void Update()
+    public void LoadDialogue()
     {
-        //if (Input.GetKeyDown(KeyCode.LeftControl))
-        //    SkipDialogue();
+        nowDialogueIndex = 0;
+        if (isDialogueEnd) 
+            isDialogueEnd = false;
+        dialogueText.text = "";
+        dialogueWrapperName = GameManager.Instance.setDialogueName;
+        dialogueWrapper = jsonManager.ResourceDataLoad<DialogueWrapper>(dialogueWrapperName);
+        dialogueWrapper.Parse();
+        SetScreenTouchCanvas(true);
+        DialoguePrefabToggle(true);
+        Debug.Log(nowDialogueIndex + "/" + dialogueWrapper.dialogueArray.Length);
+        StartDialogue();
     }
 
     public void StartDialogue()
@@ -199,11 +215,6 @@ public class DialogueManager : MonoBehaviour
         isSaveDataPrinting = false;
     }
 
-    public void SkipDialogue()
-    {
-        Debug.Log("누르면 쭉 스킵하게 만들거임");
-    }
-
     public void SpreadDialogue(Dialogue nowDialog)
     {
         //한번에 쭉 뿌림
@@ -254,14 +265,20 @@ public class DialogueManager : MonoBehaviour
         if (isDialogueEnd)
         {
             if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "StoryScene")
+            {
+                screenFadeModule.ScreenFade(0, 1, 1);
+                Invoke("", 1f);
                 UnityEngine.SceneManagement.SceneManager.LoadScene("RoomScene");
+            }
             else
             {
+                GameManager.Instance.setDialogueName = "";
                 SetScreenTouchCanvas(false);
-                dialoguePrefab.SetActive(false);
+                DialoguePrefabToggle(false);
             }
-
+            
             GameManager.Instance.SetIsWatchStory(dialogueWrapperName);
+            GameManager.Instance.setDialogueName = "";
             jsonManager.SaveJson(GameManager.Instance.saveData, "SaveData");
             Debug.Log(GameManager.Instance.saveData.isWatchDayStory[0]);
             Debug.Log("진행상황 세이브 완료");
@@ -434,5 +451,10 @@ public class DialogueManager : MonoBehaviour
 
         SetScreenTouchCanvas(true);
         viewPaperImage.gameObject.SetActive(false);
+    }
+
+    public void DialoguePrefabToggle(bool active)
+    {
+        dialoguePrefab.SetActive(active);
     }
 }

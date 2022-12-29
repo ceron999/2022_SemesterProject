@@ -1,0 +1,20 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"색맹인 사람에겐 색을 설명해줄 방법이 없어."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"색이란 결코 언어로 풀어낼 수 없는 감각이란 거지."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"과연 내가 보는 빨간색과 너가 보는 빨간색이 같은 색일거 같아?"
+        }
+    ]
+}

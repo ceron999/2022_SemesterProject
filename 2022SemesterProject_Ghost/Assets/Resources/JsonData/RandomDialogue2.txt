@@ -1,0 +1,30 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"많은 경우 많은 사람들이 어제 한 일을 후회하고는 하지."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"어제가 어제인 이유는 시간의 방향이 일방통행이기 때문이야."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"시간축 위를 자유자재로 거닐 수 있다면 어제가 내일이 될 수도 있을 텐데...!"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"하지만 어제가 내일이 될 수 있다면 아무도 눈물 흘리지 않을거야."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"참 싱거운 세상이지."
+        }
+    ]
+}

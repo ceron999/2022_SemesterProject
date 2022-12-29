@@ -6,8 +6,16 @@ using System;
 
 public class BtnManager : MonoBehaviour
 {
+    [SerializeField]
+    GameObject fadeCanvas;
+
     //MainSceneBtn
     public void TouchStartBtn()
+    {
+        StartCoroutine(TouchStartBtnCoroutine());
+    }
+
+    IEnumerator TouchStartBtnCoroutine()
     {
         if (GameManager.Instance.saveData.isFirstPlay)
         {
@@ -17,27 +25,22 @@ public class BtnManager : MonoBehaviour
             GameManager.Instance.saveData.startMonth = DateTime.Now.Month;
             GameManager.Instance.saveData.startDay = DateTime.Now.Day;
             GameManager.Instance.setDialogueName = "Day1Encounter";
+
+            UIFadeModule screenFadeModule = fadeCanvas.GetComponent<UIFadeModule>();
+            screenFadeModule.ScreenFade(0, 1, 1);
+            yield return new WaitForSeconds(1);
+
             SceneManager.LoadScene("StoryScene");
         }
         else
         {
+            UIFadeModule screenFadeModule = fadeCanvas.GetComponent<UIFadeModule>();
+            screenFadeModule.ScreenFade(0, 1, 1);
+            yield return new WaitForSeconds(1);
             //if(대화가 가능한 시간이 되었다면)
             SceneManager.LoadScene("WaitingScene");
         }
     }
-
-    //public void TouchLoadBtn()
-    //{
-    //    /// if(대화를 할 수 있는 시간이 되었음)
-    //    ///     SceneManager.LoadScene("StoryScene");
-    //    /// else
-    //    ///     SceneManager.LoadScene("WaitingScene");
-    //}
-
-    //public void TouchQuitBtn()
-    //{
-    //    Application.Quit();
-    //}
 
     //WaitingSceneBtn
     public void TouchWaitingSceneSoulBtn()

@@ -1,0 +1,25 @@
+{
+    "dialogueArray": 
+    [
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"밖에 돌아다닐 때 항상 조심하고!"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"도로 건널 때는 차 오나 안오나 살피고!"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"낯선 사람이 주는 거 함부로 받지 말고!"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"soul",
+            "dialogue":"이게 다 너를 위해서 하는 말이다~"
+        }
+    ]
+}

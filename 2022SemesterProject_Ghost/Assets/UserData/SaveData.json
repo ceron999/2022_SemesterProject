@@ -1,13 +1,13 @@
 {
-    "isFirstPlay": false,
+    "isFirstPlay": true,
     "startYear": 2022,
     "startMonth": 12,
-    "startDay": 26,
-    "nowDay": 3,
+    "startDay": 29,
+    "nowDay": 1,
     "isWatchDayStory": [
-        true,
-        true,
-        true
+        false,
+        false,
+        false
     ],
     "isClearPuzzle": [
         false,
@@ -19,8 +19,8 @@
         false,
         false
     ],
-    "playerSpeechHabit": "habit",
-    "soulName": "dsadsa",
-    "soulShape": "곡선이 많다.",
-    "perfumeScent": "물향"
+    "playerSpeechHabit": "",
+    "soulName": "",
+    "soulShape": "",
+    "perfumeScent": ""
 }
