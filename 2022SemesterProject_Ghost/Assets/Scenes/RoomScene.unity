@@ -453,7 +453,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &644050786
 GameObject:
@@ -1009,7 +1009,9 @@ MonoBehaviour:
   routeSixthText: {fileID: 2018587358}
   routeSeventhParent: {fileID: 2018587357}
   routeSeventhText: {fileID: 2018587356}
+  soul: {fileID: 0}
   viewPaperImage: {fileID: 0}
+  roomImage: {fileID: 0}
   fadeScreenCanvas: {fileID: 797648128}
   dialogueWrapper:
     dialogueArray: []
@@ -1125,7 +1127,7 @@ GameObject:
   - component: {fileID: 1195273130}
   - component: {fileID: 1195273129}
   m_Layer: 0
-  m_Name: Square
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1194,7 +1196,7 @@ Transform:
   m_LocalScale: {x: 0.52449095, y: 0.52125204, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214067510
 GameObject:
@@ -1411,7 +1413,7 @@ Transform:
   - {fileID: 1528662638}
   - {fileID: 1070847055}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480976880
 GameObject:

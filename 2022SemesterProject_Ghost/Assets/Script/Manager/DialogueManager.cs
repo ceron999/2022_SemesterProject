@@ -48,7 +48,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     Text routeSeventhText;
     [SerializeField]
+    GameObject soul;
+    [SerializeField]
     Image viewPaperImage;
+    [SerializeField]
+    GameObject roomImage;
     [SerializeField]
     GameObject fadeScreenCanvas;
     UIFadeModule screenFadeModule;
@@ -72,6 +76,7 @@ public class DialogueManager : MonoBehaviour
     {
         jsonManager = new JsonManager();
         DialoguePrefabToggle(false);
+        SetScreenTouchCanvas(false);
         characterNameText.text = "";
         dialogueText.text = "";
         if (GameManager.Instance.isCustomizingEnd)
@@ -93,6 +98,7 @@ public class DialogueManager : MonoBehaviour
             screenFadeModule.ScreenFade(1, 0, 1);
             yield return new WaitForSeconds(1);
             DialoguePrefabToggle(true);
+            SetScreenTouchCanvas(true);
             StartDialogue();
         }
     }
@@ -147,11 +153,29 @@ public class DialogueManager : MonoBehaviour
                 Debug.Log("커마하러");
                 UnityEngine.SceneManagement.SceneManager.LoadScene("CustomizingScene");
             }
+            else if (nowDialogue.dialogueTypes == Types.SoulGone)
+            {
+                Debug.Log("SoulGone");
+                StartCoroutine(SoulGoneCoroutine());
+                nowDialogueIndex++;
+            }
             else if (nowDialogue.dialogueTypes == Types.ViewPaper)
             {
                 Debug.Log("ViewPaper");
-                StartCoroutine(ViewPaperFade());
                 nowDialogueIndex++;
+                StartCoroutine(ViewPaperFadeCoroutine());
+            }
+            else if (nowDialogue.dialogueTypes == Types.RoomFade)
+            {
+                Debug.Log("RoomFade");
+                nowDialogueIndex++;
+                StartCoroutine(RoomFadeCoroutine());
+            }
+            else if (nowDialogue.dialogueTypes == Types.EndCredit)
+            {
+                Debug.Log("EndCredit");
+                nowDialogueIndex++;
+                StartCoroutine(EndCreditCoroutine());
             }
             else
             {
@@ -266,9 +290,7 @@ public class DialogueManager : MonoBehaviour
         {
             if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "StoryScene")
             {
-                screenFadeModule.ScreenFade(0, 1, 1);
-                Invoke("", 1f);
-                UnityEngine.SceneManagement.SceneManager.LoadScene("RoomScene");
+                StartCoroutine(EndDialogueCoroutine());
             }
             else
             {
@@ -288,6 +310,13 @@ public class DialogueManager : MonoBehaviour
         {
             isDialogueEnd = true;
         }
+    }
+
+    IEnumerator EndDialogueCoroutine()
+    {
+        screenFadeModule.ScreenFade(0, 1, 1);
+        yield return new WaitForSeconds(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("RoomScene");
     }
 
     public void SetScreenTouchCanvas(bool active)
@@ -423,7 +452,17 @@ public class DialogueManager : MonoBehaviour
         ContinueDialogue();
     }
 
-    IEnumerator ViewPaperFade()
+    IEnumerator SoulGoneCoroutine()
+    {
+        SetScreenTouchCanvas(false);
+        UIFadeModule soulModule = soul.GetComponent<UIFadeModule>();
+        soulModule.ObjectFade(soul, 1, 0, 1);
+        yield return new WaitForSeconds(1);
+        SetScreenTouchCanvas(true);
+        ScreenTouch();
+    }
+
+    IEnumerator ViewPaperFadeCoroutine()
     {
         SetScreenTouchCanvas(false);
         viewPaperImage.gameObject.SetActive(true);
@@ -451,6 +490,26 @@ public class DialogueManager : MonoBehaviour
 
         SetScreenTouchCanvas(true);
         viewPaperImage.gameObject.SetActive(false);
+        ScreenTouch();
+    }
+
+    IEnumerator RoomFadeCoroutine()
+    {
+        SetScreenTouchCanvas(false);
+        UIFadeModule roomModule = roomImage.GetComponent<UIFadeModule>();
+        roomModule.ObjectFade(roomImage, 0, 1, 1);
+        yield return new WaitForSeconds(1);
+        SetScreenTouchCanvas(true);
+        ScreenTouch();
+    }
+
+    IEnumerator EndCreditCoroutine()
+    {
+        DialoguePrefabToggle(false);
+        SetScreenTouchCanvas(false);
+        screenFadeModule.ScreenFade(0, 1, 1);
+        yield return new WaitForSeconds(1f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndCreditScene");
     }
 
     public void DialoguePrefabToggle(bool active)

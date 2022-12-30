@@ -46,6 +46,9 @@
             "dialogue":"그리고 잘 있어!"
         },
         {
+            "type":"SoulGone"
+        },
+        {
             "type":"Dialog",
             "characterName":"narration",
             "dialogue":"영혼은 의문의 종이 한 장을 두고 떠났다."
@@ -57,6 +60,27 @@
             "type":"Dialog",
             "characterName":"narration",
             "dialogue":"당신의 영혼 친구는 어째선지 당신을 닮아있는 것 같군요."
+        },
+        {
+            "type":"RoomFade"
+        },
+        {
+            "type":"Dialog",
+            "characterName":"player",
+            "dialogue":"...내 방에 혼자가 되니 괜히 적적한 느낌이 들었다."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"player",
+            "dialogue":"무언가 허전하고, 붕뜬 느낌이 들기도 하고..."
+        },
+        {
+            "type":"Dialog",
+            "characterName":"player",
+            "dialogue":"앗 맞다! 지각이다!"
+        },
+        {
+            "type":"EndCredit"
         }
     ]
 }

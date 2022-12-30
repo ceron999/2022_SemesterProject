@@ -4,22 +4,22 @@
         {
             "type":"Dialog",
             "characterName":"soul",
-            "Dialogue":"불행한 사람은 행복해지고 싶어해."
+            "dialogue":"불행한 사람은 행복해지고 싶어해."
         },
         {
             "type":"Dialog",
             "characterName":"soul",
-            "Dialogue":"그런데 과연 행복이라는 게 실제 존재하는 걸까?"
+            "dialogue":"그런데 과연 행복이라는 게 실제 존재하는 걸까?"
         },
         {
             "type":"Dialog",
             "characterName":"soul",
-            "Dialogue":"그렇다면 불행은 행복의 부재일까? 아니면 행복의 반대 속성을 가진 무언가?"
+            "dialogue":"그렇다면 불행은 행복의 부재일까? 아니면 행복의 반대 속성을 가진 무언가?"
         },
         {
             "type":"Dialog",
             "characterName":"soul",
-            "Dialogue":"아, 골치아픈 생각하니까 불행해지는 거 같다."
+            "dialogue":"아, 골치아픈 생각하니까 불행해지는 거 같다."
         }
     ]
 }

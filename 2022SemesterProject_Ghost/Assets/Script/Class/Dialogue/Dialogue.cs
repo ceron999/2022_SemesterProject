@@ -5,7 +5,7 @@ using System;
 
 public enum Types
 {
-    Null, Dialog, Customizing, ViewPaper
+    Null, Dialog, Customizing, ViewPaper, SoulGone, RoomFade,EndCredit
 }
 
 public enum ActionKeyword
