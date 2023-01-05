@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -58,6 +59,9 @@ public class DialogueManager : MonoBehaviour
     UIFadeModule screenFadeModule;
 
     [SerializeField]
+    GameObject customizingPrefab;
+
+    [SerializeField]
     DialogueWrapper dialogueWrapper;
     public string dialogueWrapperName;
 
@@ -74,6 +78,9 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator Start()
     {
+        DontDestroyOnLoad(customizingPrefab);
+        customizingPrefab.SetActive(true);
+
         jsonManager = new JsonManager();
         DialoguePrefabToggle(false);
         SetScreenTouchCanvas(false);
@@ -100,7 +107,7 @@ public class DialogueManager : MonoBehaviour
             DialoguePrefabToggle(true);
             SetScreenTouchCanvas(true);
             StartDialogue();
-        }
+        } 
     }
 
     public void LoadDialogue()
