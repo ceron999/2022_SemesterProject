@@ -8,6 +8,8 @@ public class BtnManager : MonoBehaviour
 {
     [SerializeField]
     GameObject fadeCanvas;
+    [SerializeField]
+    GameObject customizingPrefab;
 
     //MainSceneBtn
     public void TouchStartBtn()
@@ -190,8 +192,27 @@ public class BtnManager : MonoBehaviour
 
     //CustomizingSceneBtn
     public void TouchTempBtn()
-    {
+    {   
         GameManager.Instance.isCustomizingEnd = true;
-        SceneManager.LoadScene("StoryScene");
+        //SceneManager.LoadScene("StoryScene"); 이거대신 코루틴넣음
+        
+        StartCoroutine(LoadStoryScene());
+    }
+
+    IEnumerator LoadStoryScene()
+    {   
+        Scene currentScene = SceneManager.GetActiveScene(); // currentScene = CustomizingScene
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("StoryScene");
+        
+        //Scene load가 준비되지 않으면 return null
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
+        SceneManager.MoveGameObjectToScene(customizingPrefab, SceneManager.GetSceneByName("StoryScene"));
+
+        SceneManager.UnloadSceneAsync(currentScene); //현재 Scene을 unload
     }
 }
