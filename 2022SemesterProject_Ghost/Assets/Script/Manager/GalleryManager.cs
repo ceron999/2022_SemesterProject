@@ -8,7 +8,7 @@ public class GalleryManager : MonoBehaviour
 {
     public enum NowCanvas
     {
-        canvas00, canvas01, canvas02
+        canvas00, canvas01
     }
 
     NowCanvas nowCanvas;
@@ -26,20 +26,22 @@ public class GalleryManager : MonoBehaviour
     Canvas canvas00;
     [SerializeField]
     Canvas canvas01;
-    [SerializeField]
-    Canvas canvas02;
 
     [SerializeField]
     CanvasGroup canvasGroup00;
     [SerializeField]
     CanvasGroup canvasGroup01;
+
     [SerializeField]
-    CanvasGroup canvasGroup02;
+    Button[] puzzleBtnArr;
+    [SerializeField]
+    GameObject[] lockImages;
 
     void Start() {
         nowCanvas = NowCanvas.canvas00;
         date.text = "";
         SetCanvas();
+        SetPuzzleBtnImage();
     }
 
     void SetCanvas()
@@ -53,9 +55,6 @@ public class GalleryManager : MonoBehaviour
 
                 canvasGroup01.alpha = 0;
                 canvas01.enabled = false;
-
-                canvasGroup02.alpha = 0;
-                canvas02.enabled = false;
                 break;
             case NowCanvas.canvas01:
                 date.text = "2일차";
@@ -64,20 +63,6 @@ public class GalleryManager : MonoBehaviour
 
                 canvasGroup01.alpha = 1;
                 canvas01.enabled = true;
-
-                canvasGroup02.alpha = 0;
-                canvas02.enabled = false;
-                break;
-            case NowCanvas.canvas02:
-                date.text = "3일차";
-                canvasGroup00.alpha = 0;
-                canvas00.enabled = false;
-
-                canvasGroup01.alpha = 0;
-                canvas01.enabled = false;
-
-                canvasGroup02.alpha = 1;
-                canvas02.enabled = true;
                 break;
         }
     }
@@ -92,10 +77,6 @@ public class GalleryManager : MonoBehaviour
                 nowCanvas = NowCanvas.canvas00;
                 SetCanvas();
                 leftBtn.gameObject.SetActive(false);
-                break;
-            case NowCanvas.canvas02:
-                nowCanvas = NowCanvas.canvas01;
-                SetCanvas();
                 rightBtn.gameObject.SetActive(true);
                 break;
         }
@@ -109,12 +90,23 @@ public class GalleryManager : MonoBehaviour
                 nowCanvas = NowCanvas.canvas01;
                 SetCanvas();
                 leftBtn.gameObject.SetActive(true);
-                break;
-            case NowCanvas.canvas01:
-                nowCanvas = NowCanvas.canvas02;
-                SetCanvas();
                 rightBtn.gameObject.SetActive(false);
                 break;
+        }
+    }
+
+    void SetPuzzleBtnImage()
+    {
+        List<bool> isPuzzleOpen;
+        isPuzzleOpen = GameManager.Instance.saveData.isPuzzleOpen;
+        for(int i =0; i<8; i++)
+        {
+            if (!isPuzzleOpen[i])
+            {
+                //잠금
+                puzzleBtnArr[i].interactable = false;
+                lockImages[i].SetActive(true);
+            }
         }
     }
 }

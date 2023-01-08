@@ -78,8 +78,12 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator Start()
     {
-        DontDestroyOnLoad(customizingPrefab);
-        customizingPrefab.SetActive(true);
+        customizingPrefab = GameObject.Find("CustomizingPrefab");
+        if (customizingPrefab != null)
+        {
+            DontDestroyOnLoad(customizingPrefab);
+            customizingPrefab.SetActive(true);
+        }
 
         jsonManager = new JsonManager();
         DialoguePrefabToggle(false);

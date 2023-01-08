@@ -19,6 +19,7 @@ public class SaveDataClass
     public int nowDay;
     public List<bool> isWatchDayStory;
 
+    public List<bool> isPuzzleOpen;
     public List<bool> isClearPuzzle;
 
     //대화
@@ -39,6 +40,10 @@ public class SaveDataClass
         isWatchDayStory = new List<bool>();
         for (int i = 0; i < 3; i++)
             isWatchDayStory.Add(false);
+
+        isPuzzleOpen = new List<bool>();
+        for (int i = 0; i < 8; i++)
+            isPuzzleOpen.Add(false);
 
         isClearPuzzle = new List<bool>();
         for (int i = 0; i < 8; i++)

@@ -158,4 +158,9 @@ public class GameManager : MonoBehaviour
     {
         //SceneManager.LoadScene("StoryScene");
     }
+
+    public void SaveAllData()
+    {
+        jsonManager.SaveJson(saveData, "SaveData");
+    }
 }

@@ -11,6 +11,8 @@ public class BtnManager : MonoBehaviour
     [SerializeField]
     GameObject customizingPrefab;
 
+    public GameObject img; //실험용
+
     //MainSceneBtn
     public void TouchStartBtn()
     {
@@ -94,6 +96,15 @@ public class BtnManager : MonoBehaviour
     }
 
     //RoomSceneBtn
+    void PuzzleDataSave(int puzzleIdx)
+    {
+        if (!GameManager.Instance.saveData.isPuzzleOpen[puzzleIdx])
+        {
+            GameManager.Instance.saveData.isPuzzleOpen[puzzleIdx] = true;
+            GameManager.Instance.SaveAllData();
+        }
+    }
+
     public void TouchInteriorObjectBtnlight1()
     {
         GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
@@ -104,11 +115,15 @@ public class BtnManager : MonoBehaviour
         {
             GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Rectangular";
             GameManager.Instance.beforeSetDialogueName = "Day1PastLifePuzzle2";
+
+            PuzzleDataSave(0);
         }
         else
         {
             GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Sherlock";
             GameManager.Instance.beforeSetDialogueName = "Day2PastLifePuzzle";
+
+            PuzzleDataSave(4);
         }
         SceneManager.LoadScene("PuzzleScene");
     }
@@ -125,18 +140,24 @@ public class BtnManager : MonoBehaviour
                 GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Clover";
                 GameManager.Instance.beforeSetDialogueName = "Day1StoryCloverPuzzle";
                 GameManager.Instance.countCheck++;
+
+                PuzzleDataSave(1);
             }
             else if (GameManager.Instance.countCheck % 3 == 2)
             {
                 GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Leash";
                 GameManager.Instance.beforeSetDialogueName = "Day1StoryCollarPuzzle";
                 GameManager.Instance.countCheck++;
+
+                PuzzleDataSave(2);
             }
             else
             {
                 GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Soccer_ball";
                 GameManager.Instance.beforeSetDialogueName = "Day1StoryFootballPuzzle";
                 GameManager.Instance.countCheck = 1;
+
+                PuzzleDataSave(3);
             }
         }
         else
@@ -146,18 +167,24 @@ public class BtnManager : MonoBehaviour
                 GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Band";
                 GameManager.Instance.beforeSetDialogueName = "Day2StoryBandPuzzle";
                 GameManager.Instance.countCheck++;
+
+                PuzzleDataSave(5);
             }
             else if (GameManager.Instance.countCheck % 3 == 2)
             {
                 GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Cup";
                 GameManager.Instance.beforeSetDialogueName = "Day2StoryCoffeePuzzle";
                 GameManager.Instance.countCheck++;
+
+                PuzzleDataSave(6);
             }
             else
             {
                 GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Wheel";
                 GameManager.Instance.beforeSetDialogueName = "Day2StoryTirePuzzle";
                 GameManager.Instance.countCheck = 1;
+
+                PuzzleDataSave(7);
             }
         }
         SceneManager.LoadScene("PuzzleScene");
