@@ -2,85 +2,111 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class CustomizingManager : MonoBehaviour
 {   
     [SerializeField]
     GameObject customizingPrefab;
-    public List<GameObject> eyeList = new List<GameObject>();
-    public List<GameObject> mouthList = new List<GameObject>();
-    public List<GameObject> itemList = new List<GameObject>();
 
-    public List<GameObject> soulFaceEyeList = new List<GameObject>();
-    public List<GameObject> soulFaceMouthList = new List<GameObject>();
-    public List<GameObject> soulFaceItemList = new List<GameObject>();
-    int eyeIndex=0;
-    int mouthIndex=0;
-    int itemIndex=0;    
+    GameObject prefab_obj;
+    List<GameObject> eyeList = new List<GameObject>();
+    List<GameObject> mouthList = new List<GameObject>();
+    List<GameObject> itemList = new List<GameObject>();
+
+    List<GameObject> soulBackGroundList = new List<GameObject>();
+    List<GameObject> soulFaceEyeList = new List<GameObject>();
+    List<GameObject> soulFaceMouthList = new List<GameObject>();
+    List<GameObject> soulFaceItemList = new List<GameObject>();
+    public static int eyeIndex=0;
+    public static int mouthIndex=0;
+    public static int itemIndex=0;  
+    public SaveDataClass saveData; 
+    public JsonManager jsonManager;
 
     void Awake(){
+        // 프리팹 인스턴스화하기
+        prefab_obj = Resources.Load("Prefabs/CustomizingPrefab") as GameObject;
+        customizingPrefab = MonoBehaviour.Instantiate(prefab_obj, GameObject.Find("Canvas").transform);
+        customizingPrefab.name = "customizingPrefab";
+        Vector2 pos = new Vector2(720, 2000);
+        customizingPrefab.transform.position = pos;
+        
         string tempstr="";
         string tempstr2="";
         GameObject tempObj;
         GameObject tempObj2;
-        for(int i=0; i<10; i++){ // 눈 10개
-            tempstr = "";
+        for(int i=0; i<2; i++){ //resources/ CharacterImage/ Character1 Or Character2
+            tempstr2 = "";
+            tempstr2 = "SoulBackGround"+i.ToString();
+            tempObj2 = GameObject.Find(tempstr2);
+            soulBackGroundList.Add(tempObj2);
+            soulBackGroundList[i].SetActive(false);
+        }
+        for(int i=0; i<6; i++){ 
+            tempstr = ""; // Eye0~5
             tempstr = "Eye"+i.ToString();
             tempObj = GameObject.Find(tempstr);
             eyeList.Add(tempObj);
             eyeList[i].SetActive(false);
 
-            tempstr2 = "";
-            tempstr2 = "SoulFaceEye"+i.ToString();
-            tempObj2 = GameObject.Find(tempstr2);
-            soulFaceEyeList.Add(tempObj2);
-            soulFaceEyeList[i].SetActive(false);
-
-            tempstr = "";
+            tempstr = ""; // Mouth0~5
             tempstr = "Mouth"+i.ToString();
             tempObj = GameObject.Find(tempstr);
             mouthList.Add(tempObj);
             mouthList[i].SetActive(false);
 
-            tempstr2 = "";
+            tempstr2 = ""; // SoulFaceEye0~5 (Prefab)
+            tempstr2 = "SoulFaceEye"+i.ToString();
+            tempObj2 = GameObject.Find(tempstr2);
+            soulFaceEyeList.Add(tempObj2);
+            soulFaceEyeList[i].SetActive(false);           
+
+            tempstr2 = ""; // SoulFaceMouth0~5 (Prefab)
             tempstr2 = "SoulFaceMouth"+i.ToString();
             tempObj2 = GameObject.Find(tempstr2);
             soulFaceMouthList.Add(tempObj2);
             soulFaceMouthList[i].SetActive(false);
         }
-        for(int i=0; i<6; i++){ // item 6개
-            tempstr = "";
+        for(int i=0; i<7; i++){
+            tempstr = ""; // item0~6
             tempstr = "Item"+i.ToString();
             tempObj = GameObject.Find(tempstr);
             itemList.Add(tempObj);
             itemList[i].SetActive(false);
 
-            tempstr2 = "";
+            tempstr2 = ""; // SoulFaceitem0~6 (Prefab)
             tempstr2 = "SoulFaceItem"+i.ToString();
             tempObj2 = GameObject.Find(tempstr2);
             soulFaceItemList.Add(tempObj2);
             soulFaceItemList[i].SetActive(false);
-        }
-        
-        customizingPrefab = GameObject.Find("CustomizingPrefab");
+        }    
     }
 
     void Start(){ // 첫번째 눈, 입, 아이템 보이게 설정
         eyeList[0].SetActive(true);
         mouthList[0].SetActive(true);
         itemList[0].SetActive(true);
-
+        
         soulFaceEyeList[0].SetActive(true);
         soulFaceMouthList[0].SetActive(true);
         soulFaceItemList[0].SetActive(true);
+
+        //곡선이 많다 = Character1 / 직선이 많다 = Character2
+        jsonManager = new JsonManager();
+        saveData = jsonManager.LoadSaveData();
+        if(saveData.soulShape == "곡선이 많다."){
+            soulBackGroundList[0].SetActive(true); // Character1
+        }
+        else{
+            soulBackGroundList[1].SetActive(true); // Character2
+        }
     }
 
     public void ClickEyeLeftBtn(){
         eyeList[eyeIndex].SetActive(false);
         soulFaceEyeList[eyeIndex].SetActive(false); // 현재 이미지 감추기
         if(eyeIndex==0){
-            eyeIndex=9;
+            eyeIndex=5;
         }
         else{
             eyeIndex--;
@@ -91,8 +117,8 @@ public class CustomizingManager : MonoBehaviour
 
     public void ClickEyeRightBtn(){ 
         eyeList[eyeIndex].SetActive(false); 
-        soulFaceEyeList[eyeIndex].SetActive(false);;// 현재 이미지 감추기
-        if(eyeIndex==9){
+        soulFaceEyeList[eyeIndex].SetActive(false);// 현재 이미지 감추기
+        if(eyeIndex==5){
             eyeIndex=0;
         }
         else{
@@ -106,7 +132,7 @@ public class CustomizingManager : MonoBehaviour
         mouthList[mouthIndex].SetActive(false); 
         soulFaceMouthList[mouthIndex].SetActive(false);
         if(mouthIndex==0){
-            mouthIndex=9;
+            mouthIndex=5;
         }
         else{
             mouthIndex--;
@@ -118,7 +144,7 @@ public class CustomizingManager : MonoBehaviour
     public void ClickMouthRightBtn(){
         mouthList[mouthIndex].SetActive(false);
         soulFaceMouthList[mouthIndex].SetActive(false);
-        if(mouthIndex==9){
+        if(mouthIndex==5){
             mouthIndex=0;
         }
         else{

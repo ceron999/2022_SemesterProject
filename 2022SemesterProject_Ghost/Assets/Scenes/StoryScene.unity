@@ -710,7 +710,6 @@ MonoBehaviour:
   viewPaperImage: {fileID: 1263005213}
   roomImage: {fileID: 375909135}
   fadeScreenCanvas: {fileID: 468642592}
-  customizingPrefab: {fileID: 0}
   dialogueWrapper:
     dialogueArray: []
   dialogueWrapperName: Day1Encounter

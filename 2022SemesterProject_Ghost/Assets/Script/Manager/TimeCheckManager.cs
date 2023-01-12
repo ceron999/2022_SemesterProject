@@ -25,7 +25,6 @@ public class TimeCheckManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.isTalkTIme = false;
-
         SetTImeText();
     }
 

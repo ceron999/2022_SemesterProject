@@ -1524,13 +1524,18 @@ MonoBehaviour:
     startDay: 23
     nowDay: 1
     isWatchDayStory: 000000
+    isPuzzleOpen: 0000000000000000
     isClearPuzzle: 000000000000000000000000
     playerSpeechHabit: 
     soulName: 
     soulShape: 
     perfumeScent: 
   puzzleImage: 
-  countcheck: 1
+  countCheck: 1
+  beforeSetDialogueName: 
+  puzzleArrayNum: 0
+  puzzleClearArray: 0000000000000000
+  puzzleDialogue: 0
 --- !u!4 &1859244211
 Transform:
   m_ObjectHideFlags: 0
@@ -1575,6 +1580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeCanvas: {fileID: 918932480}
+  customizingPrefab: {fileID: 0}
+  img: {fileID: 0}
 --- !u!4 &1976390718
 Transform:
   m_ObjectHideFlags: 0
