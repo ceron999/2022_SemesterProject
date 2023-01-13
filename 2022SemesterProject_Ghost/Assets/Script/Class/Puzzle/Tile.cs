@@ -39,7 +39,7 @@ public class Tile : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!GameManager.Instance.puzzleClearArray[GameManager.Instance.puzzleArrayNum])
+        if (!GameManager.Instance.saveData.isClearPuzzle[GameManager.Instance.puzzleArrayNum])
         {
             puzzleManager.IsMoveTile(this);
         }
