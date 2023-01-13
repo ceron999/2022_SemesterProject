@@ -94,34 +94,22 @@ public class BtnManager : MonoBehaviour
     }
 
     //RoomSceneBtn
-    void PuzzleDataSave(int puzzleIdx)
-    {
-        if (!GameManager.Instance.saveData.isPuzzleOpen[puzzleIdx])
-        {
-            GameManager.Instance.saveData.isPuzzleOpen[puzzleIdx] = true;
-            GameManager.Instance.SaveAllData();
-        }
-    }
 
     public void TouchInteriorObjectBtnlight1()
     {
         GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
         int nowDay = GameManager.Instance.saveData.nowDay;
-        bool[] array = GameManager.Instance.puzzleClearArray;
-        GameManager.Instance.puzzleArrayNum = nowDay;
-        if (nowDay == 1)
+        if (!GameManager.Instance.saveData.isClearPuzzle[0])
         {
             GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Rectangular";
             GameManager.Instance.beforeSetDialogueName = "Day1PastLifePuzzle2";
-
-            PuzzleDataSave(0);
+            GameManager.Instance.puzzleArrayNum = 0;
         }
-        else
+        else if (!GameManager.Instance.saveData.isClearPuzzle[1] && nowDay == 2) 
         {
             GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Sherlock";
             GameManager.Instance.beforeSetDialogueName = "Day2PastLifePuzzle";
-
-            PuzzleDataSave(4);
+            GameManager.Instance.puzzleArrayNum = 1;
         }
         SceneManager.LoadScene("PuzzleScene");
     }
@@ -129,62 +117,54 @@ public class BtnManager : MonoBehaviour
     {
         GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
         int nowDay = GameManager.Instance.saveData.nowDay;
-        bool[] array = GameManager.Instance.puzzleClearArray;
-        GameManager.Instance.puzzleArrayNum = GameManager.Instance.countCheck * (nowDay * 2 - 1) + 1;
-        if (nowDay == 1)
+        if (!(GameManager.Instance.countCheck < (3 * nowDay + 2) && GameManager.Instance.countCheck >1))
+            GameManager.Instance.countCheck = 2;
+        for (int i = GameManager.Instance.countCheck; i < 3 * nowDay + 2; i++) 
         {
-            if (GameManager.Instance.countCheck % 3 == 1)
+            if (GameManager.Instance.saveData.isClearPuzzle[i] == false)
             {
-                GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Clover";
-                GameManager.Instance.beforeSetDialogueName = "Day1StoryCloverPuzzle";
-                GameManager.Instance.countCheck++;
-
-                PuzzleDataSave(1);
-            }
-            else if (GameManager.Instance.countCheck % 3 == 2)
-            {
-                GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Leash";
-                GameManager.Instance.beforeSetDialogueName = "Day1StoryCollarPuzzle";
-                GameManager.Instance.countCheck++;
-
-                PuzzleDataSave(2);
-            }
-            else
-            {
-                GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Soccer_ball";
-                GameManager.Instance.beforeSetDialogueName = "Day1StoryFootballPuzzle";
-                GameManager.Instance.countCheck = 1;
-
-                PuzzleDataSave(3);
+                GameManager.Instance.countCheck = i;
+                break;
             }
         }
-        else
+        if (GameManager.Instance.countCheck == 2)
         {
-            if (GameManager.Instance.countCheck % 3 == 1)
-            {
-                GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Band";
-                GameManager.Instance.beforeSetDialogueName = "Day2StoryBandPuzzle";
-                GameManager.Instance.countCheck++;
-
-                PuzzleDataSave(5);
-            }
-            else if (GameManager.Instance.countCheck % 3 == 2)
-            {
-                GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Cup";
-                GameManager.Instance.beforeSetDialogueName = "Day2StoryCoffeePuzzle";
-                GameManager.Instance.countCheck++;
-
-                PuzzleDataSave(6);
-            }
-            else
-            {
-                GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Wheel";
-                GameManager.Instance.beforeSetDialogueName = "Day2StoryTirePuzzle";
-                GameManager.Instance.countCheck = 1;
-
-                PuzzleDataSave(7);
-            }
+            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Clover";
+            GameManager.Instance.beforeSetDialogueName = "Day1StoryCloverPuzzle";
+            GameManager.Instance.puzzleArrayNum = 2;
         }
+        else if (GameManager.Instance.countCheck == 3)
+        {
+            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Leash";
+            GameManager.Instance.beforeSetDialogueName = "Day1StoryCollarPuzzle";
+            GameManager.Instance.puzzleArrayNum = 3;
+        }
+        else if (GameManager.Instance.countCheck == 4)
+        {
+            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Soccer_ball";
+            GameManager.Instance.beforeSetDialogueName = "Day1StoryFootballPuzzle";
+            GameManager.Instance.puzzleArrayNum = 4;
+        }
+        else if (GameManager.Instance.countCheck == 5 && nowDay == 2)
+        {
+            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Band";
+            GameManager.Instance.beforeSetDialogueName = "Day2StoryBandPuzzle";
+            GameManager.Instance.puzzleArrayNum = 5;
+        }
+        else if (GameManager.Instance.countCheck == 6 && nowDay == 2)
+        {
+            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Cup";
+            GameManager.Instance.beforeSetDialogueName = "Day2StoryCoffeePuzzle";
+            GameManager.Instance.puzzleArrayNum = 6;
+        }
+        else if (GameManager.Instance.countCheck == 7 && nowDay == 2)
+        {
+            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Wheel";
+            GameManager.Instance.beforeSetDialogueName = "Day2StoryTirePuzzle";
+            GameManager.Instance.puzzleArrayNum = 7;
+        }
+        
+        GameManager.Instance.countCheck++;
         SceneManager.LoadScene("PuzzleScene");
     }
 

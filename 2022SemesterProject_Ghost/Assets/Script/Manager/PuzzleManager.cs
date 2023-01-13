@@ -22,9 +22,7 @@ public class PuzzleManager : MonoBehaviour
     private IEnumerator Start()
     {
         tileList = new List<Tile>();
-
         SpawnTiles();
-
         SetPuzzle();
         if (ClearCheck())
         {
@@ -104,7 +102,7 @@ public class PuzzleManager : MonoBehaviour
         if (tiles.Count == puzzleSize.x * puzzleSize.y - 1)
         {
             Debug.Log("GameClear");
-            GameManager.Instance.puzzleClearArray[GameManager.Instance.puzzleArrayNum] = true;
+            PuzzleDataSave(GameManager.Instance.puzzleArrayNum);
             GameManager.Instance.puzzleDialogue = true;
             SceneManager.LoadScene("RoomScene");
         }
@@ -149,11 +147,10 @@ public class PuzzleManager : MonoBehaviour
     bool ClearCheck()
     {
         GameObject clearText = GameObject.Find("GameClear");
-        if (GameManager.Instance.puzzleClearArray[GameManager.Instance.puzzleArrayNum])
+        if (GameManager.Instance.saveData.isClearPuzzle[GameManager.Instance.puzzleArrayNum])
         {
             clearText.GetComponent<UnityEngine.UI.Image>().enabled = true;
             clearText.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
-            //SceneManager.LoadScene("RoomScene");
             return false;
         }
         else
@@ -161,6 +158,14 @@ public class PuzzleManager : MonoBehaviour
             clearText.GetComponent<UnityEngine.UI.Image>().enabled = false;
             clearText.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
             return true;
+        }
+    }
+    void PuzzleDataSave(int puzzleIdx)
+    {
+        if (!GameManager.Instance.saveData.isClearPuzzle[puzzleIdx])
+        {
+            GameManager.Instance.saveData.isClearPuzzle[puzzleIdx] = true;
+            GameManager.Instance.SaveAllData();
         }
     }
 }

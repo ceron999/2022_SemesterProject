@@ -97,15 +97,22 @@ public class GalleryManager : MonoBehaviour
 
     void SetPuzzleBtnImage()
     {
-        List<bool> isPuzzleOpen;
-        isPuzzleOpen = GameManager.Instance.saveData.isPuzzleOpen;
+        List<bool> isClearPuzzle;
+        isClearPuzzle = GameManager.Instance.saveData.isClearPuzzle;
+        int changenum=0;
         for(int i =0; i<8; i++)
         {
-            if (!isPuzzleOpen[i])
+            if (!isClearPuzzle[i])
             {
                 //잠금
-                puzzleBtnArr[i].interactable = false;
-                lockImages[i].SetActive(true);
+                if (i == 1)//과거퍼즐 0,1을  0,4로 변경
+                    changenum = 4;
+                else if (i > 1 && i < 5)
+                    changenum = i - 1;
+                else
+                    changenum = i;
+                puzzleBtnArr[changenum].interactable = false;
+                lockImages[changenum].SetActive(true);
             }
         }
     }

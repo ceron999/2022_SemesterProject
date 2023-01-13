@@ -42,7 +42,7 @@ public class RoomManager : MonoBehaviour
     }
     public void SetPuzzleStory()
     {
-        if (GameManager.Instance.puzzleDialogue == true)
+        if (GameManager.Instance.puzzleDialogue)
         {
             GameManager.Instance.setDialogueName = GameManager.Instance.beforeSetDialogueName;
             dialogueManager.LoadDialogue();

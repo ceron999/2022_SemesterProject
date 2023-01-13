@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
     public int countCheck = 1;
     public string beforeSetDialogueName;
     public int puzzleArrayNum;
-    public bool[] puzzleClearArray = { false, false, false, false, false, false, false, false };
     public bool puzzleDialogue = false;
     public static GameManager Instance
     {
@@ -68,7 +67,7 @@ public class GameManager : MonoBehaviour
     public void SetDay2()
     {
         saveData = new SaveDataClass();
-
+        saveData = jsonManager.LoadSaveData();
         saveData.isFirstPlay = false;
         saveData.startYear = DateTime.Now.Year;
         saveData.startMonth = DateTime.Now.Month;
