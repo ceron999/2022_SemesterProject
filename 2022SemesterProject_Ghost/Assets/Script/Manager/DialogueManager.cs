@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -59,9 +58,6 @@ public class DialogueManager : MonoBehaviour
     UIFadeModule screenFadeModule;
 
     [SerializeField]
-    GameObject customizingPrefab;
-
-    [SerializeField]
     DialogueWrapper dialogueWrapper;
     public string dialogueWrapperName;
 
@@ -75,52 +71,9 @@ public class DialogueManager : MonoBehaviour
     bool isViewPaperClick = false;
     int nowDialogueIndex;
     ActionKeyword nowAction;
-
-    GameObject prefab_obj;
-    public GameObject customizingManager;
-    List<GameObject> soulFaceEyeList = new List<GameObject>();
-    List<GameObject> soulFaceMouthList = new List<GameObject>();
-    List<GameObject> soulFaceItemList = new List<GameObject>();
-
+    
     public IEnumerator Start()
-    {  
-        if(GameManager.Instance.isCustomizingEnd == true){ //  Prefab 불러오기
-            prefab_obj = Resources.Load("Prefabs/CustomizingPrefab") as GameObject; // 저장된 Prefab 불러오기
-            customizingPrefab = MonoBehaviour.Instantiate(prefab_obj, GameObject.Find("Canvas").transform); // Canvas위에 인스턴스화
-            customizingPrefab.name = "customizingPrefab"; // Prefab name 지정
-            Vector2 pos = new Vector2(720, 2000); // Prefab 위치 지정
-            customizingPrefab.transform.position = pos;
-
-            //CustomizingManager.awake랑 유사
-            string tempstr2="";
-            GameObject tempObj2;
-            for(int i=0; i<6; i++){
-                tempstr2 = "";
-                tempstr2 = "SoulFaceEye"+i.ToString();
-                tempObj2 = GameObject.Find(tempstr2);
-                soulFaceEyeList.Add(tempObj2);
-                soulFaceEyeList[i].SetActive(false);           
-
-                tempstr2 = "";
-                tempstr2 = "SoulFaceMouth"+i.ToString();
-                tempObj2 = GameObject.Find(tempstr2);
-                soulFaceMouthList.Add(tempObj2);
-                soulFaceMouthList[i].SetActive(false);
-            }
-            for(int i=0; i<7; i++){
-                tempstr2 = "";
-                tempstr2 = "SoulFaceItem"+i.ToString();
-                tempObj2 = GameObject.Find(tempstr2);
-                soulFaceItemList.Add(tempObj2);
-                soulFaceItemList[i].SetActive(false);
-            }
-
-            //CustomizingScene에서 정한 눈, 입, 아이템만 보이게 설정
-            soulFaceEyeList[CustomizingManager.eyeIndex].SetActive(true);
-            soulFaceMouthList[CustomizingManager.mouthIndex].SetActive(true);
-            soulFaceItemList[CustomizingManager.itemIndex].SetActive(true);
-        }
-
+    {
         jsonManager = new JsonManager();
         DialoguePrefabToggle(false);
         SetScreenTouchCanvas(false);
@@ -147,7 +100,7 @@ public class DialogueManager : MonoBehaviour
             DialoguePrefabToggle(true);
             SetScreenTouchCanvas(true);
             StartDialogue();
-        } 
+        }
     }
 
     public void LoadDialogue()
@@ -193,7 +146,7 @@ public class DialogueManager : MonoBehaviour
                         Debug.Log("GetSoulName");
                         ContinueDialogue();
                         StartCoroutine(GetTextString());
-                        break;                   
+                        break;
                 }
             else if (nowDialogue.dialogueTypes == Types.Customizing)
             {
@@ -303,6 +256,7 @@ public class DialogueManager : MonoBehaviour
 
     public void ContinueDialogue()
     {
+        SoundManager.Instance.PlaySound3();
         if (nowDialogueIndex < dialogueWrapper.dialogueArray.Length)
         {
             Dialogue nowDialogue = dialogueWrapper.dialogueArray[nowDialogueIndex];

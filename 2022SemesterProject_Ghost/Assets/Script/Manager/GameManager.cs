@@ -18,11 +18,6 @@ public class GameManager : MonoBehaviour
 
     public SaveDataClass saveData;
 
-    public string puzzleImage;
-    public int countCheck = 1;
-    public string beforeSetDialogueName;
-    public int puzzleArrayNum;
-    public bool puzzleDialogue = false;
     public static GameManager Instance
     {
         get
@@ -67,7 +62,7 @@ public class GameManager : MonoBehaviour
     public void SetDay2()
     {
         saveData = new SaveDataClass();
-        saveData = jsonManager.LoadSaveData();
+
         saveData.isFirstPlay = false;
         saveData.startYear = DateTime.Now.Year;
         saveData.startMonth = DateTime.Now.Month;
@@ -151,15 +146,6 @@ public class GameManager : MonoBehaviour
             case 3:
                 break;
         }
-        jsonManager.SaveJson(saveData, "SaveData");
-    }
-    public void SetPuzzleStory()
-    {
-        //SceneManager.LoadScene("StoryScene");
-    }
-
-    public void SaveAllData()
-    {
         jsonManager.SaveJson(saveData, "SaveData");
     }
 }

@@ -18,11 +18,11 @@ public class RoomManager : MonoBehaviour
     void Start()
     {
         dialogueName = "RandomDialogue";
-        SetPuzzleStory();
     }
 
     public void TalkWithSoul()
     {
+        SoundManager.Instance.PlaySound1();
         if (GameManager.Instance.isTalkTIme == true)
         {
             SetRandomDialogue();
@@ -39,15 +39,5 @@ public class RoomManager : MonoBehaviour
         int randomNum = Random.Range(1, 12);
         GameManager.Instance.setDialogueName = dialogueName + randomNum.ToString();
         Debug.Log(dialogueName + randomNum);
-    }
-    public void SetPuzzleStory()
-    {
-        if (GameManager.Instance.puzzleDialogue)
-        {
-            GameManager.Instance.setDialogueName = GameManager.Instance.beforeSetDialogueName;
-            dialogueManager.LoadDialogue();
-            GameManager.Instance.puzzleDialogue = false;
-        }
-        
     }
 }

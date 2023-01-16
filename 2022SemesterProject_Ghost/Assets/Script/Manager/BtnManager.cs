@@ -8,13 +8,13 @@ public class BtnManager : MonoBehaviour
 {
     [SerializeField]
     GameObject fadeCanvas;
-    [SerializeField]
-    GameObject customizingPrefab;
 
     //MainSceneBtn
     public void TouchStartBtn()
     {
+        SoundManager.Instance.PlaySound1();
         StartCoroutine(TouchStartBtnCoroutine());
+
     }
 
     IEnumerator TouchStartBtnCoroutine()
@@ -47,6 +47,7 @@ public class BtnManager : MonoBehaviour
     //WaitingSceneBtn
     public void TouchWaitingSceneSoulBtn()
     {
+        SoundManager.Instance.PlaySound1();
         if (GameManager.Instance.isTalkTIme == true)
         {
             //만약 그 날짜의 스토리를 보지 않았다면 스토리씬으로
@@ -85,6 +86,7 @@ public class BtnManager : MonoBehaviour
 
     public void TouchGalleryBtn()
     {
+        SoundManager.Instance.PlaySound3();
         SceneManager.LoadScene("GalleryScene");
     }
 
@@ -94,89 +96,23 @@ public class BtnManager : MonoBehaviour
     }
 
     //RoomSceneBtn
-
-    public void TouchInteriorObjectBtnlight1()
+    public void TouchInteriorObjectBtn()
     {
+        SoundManager.Instance.PlaySound2();
         GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
-        int nowDay = GameManager.Instance.saveData.nowDay;
-        if (!GameManager.Instance.saveData.isClearPuzzle[0])
-        {
-            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Rectangular";
-            GameManager.Instance.beforeSetDialogueName = "Day1PastLifePuzzle2";
-            GameManager.Instance.puzzleArrayNum = 0;
-        }
-        else if (!GameManager.Instance.saveData.isClearPuzzle[1] && nowDay == 2) 
-        {
-            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Sherlock";
-            GameManager.Instance.beforeSetDialogueName = "Day2PastLifePuzzle";
-            GameManager.Instance.puzzleArrayNum = 1;
-        }
         SceneManager.LoadScene("PuzzleScene");
     }
-    public void TouchInteriorObjectBtnlight2()
-    {
-        GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
-        int nowDay = GameManager.Instance.saveData.nowDay;
-        if (!(GameManager.Instance.countCheck < (3 * nowDay + 2) && GameManager.Instance.countCheck >1))
-            GameManager.Instance.countCheck = 2;
-        for (int i = GameManager.Instance.countCheck; i < 3 * nowDay + 2; i++) 
-        {
-            if (GameManager.Instance.saveData.isClearPuzzle[i] == false)
-            {
-                GameManager.Instance.countCheck = i;
-                break;
-            }
-        }
-        if (GameManager.Instance.countCheck == 2)
-        {
-            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Clover";
-            GameManager.Instance.beforeSetDialogueName = "Day1StoryCloverPuzzle";
-            GameManager.Instance.puzzleArrayNum = 2;
-        }
-        else if (GameManager.Instance.countCheck == 3)
-        {
-            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Leash";
-            GameManager.Instance.beforeSetDialogueName = "Day1StoryCollarPuzzle";
-            GameManager.Instance.puzzleArrayNum = 3;
-        }
-        else if (GameManager.Instance.countCheck == 4)
-        {
-            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Soccer_ball";
-            GameManager.Instance.beforeSetDialogueName = "Day1StoryFootballPuzzle";
-            GameManager.Instance.puzzleArrayNum = 4;
-        }
-        else if (GameManager.Instance.countCheck == 5 && nowDay == 2)
-        {
-            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Band";
-            GameManager.Instance.beforeSetDialogueName = "Day2StoryBandPuzzle";
-            GameManager.Instance.puzzleArrayNum = 5;
-        }
-        else if (GameManager.Instance.countCheck == 6 && nowDay == 2)
-        {
-            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Cup";
-            GameManager.Instance.beforeSetDialogueName = "Day2StoryCoffeePuzzle";
-            GameManager.Instance.puzzleArrayNum = 6;
-        }
-        else if (GameManager.Instance.countCheck == 7 && nowDay == 2)
-        {
-            GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Wheel";
-            GameManager.Instance.beforeSetDialogueName = "Day2StoryTirePuzzle";
-            GameManager.Instance.puzzleArrayNum = 7;
-        }
-        
-        GameManager.Instance.countCheck++;
-        SceneManager.LoadScene("PuzzleScene");
-    }
-
 
     //GallerySceneBtn
     public void TouchHomeBtn()
     {
+        SoundManager.Instance.PlaySound3();
         SceneManager.LoadScene("WaitingScene");
     }
 
     public void TouchPuzzleBtn()
     {
+        SoundManager.Instance.PlaySound1();
         GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("PuzzleScene");
     }
@@ -197,19 +133,8 @@ public class BtnManager : MonoBehaviour
 
     //CustomizingSceneBtn
     public void TouchTempBtn()
-    {   
+    {
         GameManager.Instance.isCustomizingEnd = true;
-        StartCoroutine(LoadStoryScene());
-    }
-
-    IEnumerator LoadStoryScene()
-    {   
-        Scene currentScene = SceneManager.GetActiveScene(); // currentScene = CustomizingScene
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("StoryScene");
-        while (!asyncLoad.isDone) //Scene load가 준비되지 않으면 return null
-        {
-            yield return null;
-        }
-        SceneManager.UnloadSceneAsync(currentScene); //현재 Scene을 unload
+        SceneManager.LoadScene("StoryScene");
     }
 }
