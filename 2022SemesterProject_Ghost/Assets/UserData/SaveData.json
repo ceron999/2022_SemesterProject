@@ -2,7 +2,7 @@
     "isFirstPlay": false,
     "startYear": 2023,
     "startMonth": 1,
-    "startDay": 13,
+    "startDay": 16,
     "nowDay": 2,
     "isWatchDayStory": [
         true,
@@ -22,7 +22,7 @@
     "isClearPuzzle": [
         false,
         false,
-        false,
+        true,
         false,
         false,
         false,

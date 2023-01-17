@@ -22,6 +22,20 @@ public class CustomizingManager : MonoBehaviour
     public static int itemIndex=0;  
     public SaveDataClass saveData; 
     public JsonManager jsonManager;
+    
+    public AudioSource audioSource;
+    public AudioClip audioClip1;
+    public AudioClip audioClip2;
+ 
+    public void PlaySound1()
+    {
+        audioSource.PlayOneShot(audioClip1);
+    }
+
+    public void PlaySound2()
+    {
+        audioSource.PlayOneShot(audioClip2);
+    }
 
     void Awake(){
         // 프리팹 인스턴스화하기
@@ -103,6 +117,7 @@ public class CustomizingManager : MonoBehaviour
     }
 
     public void ClickEyeLeftBtn(){
+        PlaySound1();
         eyeList[eyeIndex].SetActive(false);
         soulFaceEyeList[eyeIndex].SetActive(false); // 현재 이미지 감추기
         if(eyeIndex==0){
@@ -116,6 +131,7 @@ public class CustomizingManager : MonoBehaviour
     }
 
     public void ClickEyeRightBtn(){ 
+        PlaySound2();
         eyeList[eyeIndex].SetActive(false); 
         soulFaceEyeList[eyeIndex].SetActive(false);// 현재 이미지 감추기
         if(eyeIndex==5){
@@ -129,6 +145,7 @@ public class CustomizingManager : MonoBehaviour
     }
 
     public void ClickMouthLeftBtn(){
+        PlaySound1();
         mouthList[mouthIndex].SetActive(false); 
         soulFaceMouthList[mouthIndex].SetActive(false);
         if(mouthIndex==0){
@@ -142,6 +159,7 @@ public class CustomizingManager : MonoBehaviour
     }
 
     public void ClickMouthRightBtn(){
+        PlaySound2();
         mouthList[mouthIndex].SetActive(false);
         soulFaceMouthList[mouthIndex].SetActive(false);
         if(mouthIndex==5){
@@ -155,6 +173,7 @@ public class CustomizingManager : MonoBehaviour
     }
 
     public void ClickItemLeftBtn(){
+        PlaySound1();
         itemList[itemIndex].SetActive(false); 
         soulFaceItemList[itemIndex].SetActive(false); 
         if(itemIndex==0){
@@ -168,6 +187,7 @@ public class CustomizingManager : MonoBehaviour
     }
 
     public void ClickItemRightBtn(){
+        PlaySound2();
         itemList[itemIndex].SetActive(false);
         soulFaceItemList[itemIndex].SetActive(false); 
         if(itemIndex==5){

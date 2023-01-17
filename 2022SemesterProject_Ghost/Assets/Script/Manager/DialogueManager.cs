@@ -82,6 +82,14 @@ public class DialogueManager : MonoBehaviour
     List<GameObject> soulFaceMouthList = new List<GameObject>();
     List<GameObject> soulFaceItemList = new List<GameObject>();
 
+    public AudioSource audioSource;
+    public AudioClip audioClip1;
+    
+    public void PlaySound1()
+    {
+        audioSource.PlayOneShot(audioClip1);
+    }
+    
     public IEnumerator Start()
     {  
         if(GameManager.Instance.isCustomizingEnd == true){ //  Prefab 불러오기
@@ -303,6 +311,7 @@ public class DialogueManager : MonoBehaviour
 
     public void ContinueDialogue()
     {
+        PlaySound1();
         if (nowDialogueIndex < dialogueWrapper.dialogueArray.Length)
         {
             Dialogue nowDialogue = dialogueWrapper.dialogueArray[nowDialogueIndex];

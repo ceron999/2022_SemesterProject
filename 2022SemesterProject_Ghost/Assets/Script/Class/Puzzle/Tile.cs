@@ -12,7 +12,13 @@ public class Tile : MonoBehaviour, IPointerClickHandler
     private Vector3 correctPosition;
 
     public bool IsCorrected { private set; get; } = false;
+    public AudioSource audioSource;
+    public AudioClip audioClip1;
 
+    public void PlaySound1()
+    {
+        audioSource.PlayOneShot(audioClip1);
+    }
     private int numeric;
     public int Numeric
     {
@@ -47,6 +53,7 @@ public class Tile : MonoBehaviour, IPointerClickHandler
     public void OnMoveTo(Vector3 end)
     {
         StartCoroutine("MoveTo", end);
+        PlaySound1();
     }
 
     private IEnumerator MoveTo(Vector3 end)

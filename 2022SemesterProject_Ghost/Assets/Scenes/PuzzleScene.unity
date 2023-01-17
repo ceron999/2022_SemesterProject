@@ -213,6 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleManager: {fileID: 300662462}
+  audioSource: {fileID: 652875866}
+  audioClip1: {fileID: 8300000, guid: 7477ee6c97435d04aa7cd31526006e84, type: 3}
 --- !u!1 &267243158
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +588,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleManager: {fileID: 300662462}
+  audioSource: {fileID: 652875866}
+  audioClip1: {fileID: 8300000, guid: 7477ee6c97435d04aa7cd31526006e84, type: 3}
 --- !u!1 &342729142
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +923,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleManager: {fileID: 300662462}
+  audioSource: {fileID: 652875866}
+  audioClip1: {fileID: 8300000, guid: 7477ee6c97435d04aa7cd31526006e84, type: 3}
 --- !u!1 &517034731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1015,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleManager: {fileID: 300662462}
+  audioSource: {fileID: 652875866}
+  audioClip1: {fileID: 8300000, guid: 7477ee6c97435d04aa7cd31526006e84, type: 3}
 --- !u!1 &520163540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,6 +1241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleManager: {fileID: 300662462}
+  audioSource: {fileID: 652875866}
+  audioClip1: {fileID: 8300000, guid: 7477ee6c97435d04aa7cd31526006e84, type: 3}
 --- !u!1 &609208815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,6 +1333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleManager: {fileID: 300662462}
+  audioSource: {fileID: 652875866}
+  audioClip1: {fileID: 8300000, guid: 7477ee6c97435d04aa7cd31526006e84, type: 3}
 --- !u!1 &615533784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,6 +1469,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615533784}
   m_CullTransparentMesh: 1
+--- !u!1 &652875865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652875867}
+  - component: {fileID: 652875866}
+  m_Layer: 0
+  m_Name: Audio Source_AudioClip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &652875866
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652875865}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &652875867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652875865}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 688.22504, y: 1112.0487, z: -1837.4081}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789873736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2228,6 +2367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleManager: {fileID: 300662462}
+  audioSource: {fileID: 652875866}
+  audioClip1: {fileID: 8300000, guid: 7477ee6c97435d04aa7cd31526006e84, type: 3}
 --- !u!1 &1471747664
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,7 +2476,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeCanvas: {fileID: 0}
   customizingPrefab: {fileID: 0}
-  img: {fileID: 0}
+  audioSource: {fileID: 0}
+  audioClip1: {fileID: 0}
+  audioClip2: {fileID: 0}
+  audioClip3: {fileID: 0}
 --- !u!4 &1504384162
 Transform:
   m_ObjectHideFlags: 0
@@ -2841,6 +2985,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleManager: {fileID: 300662462}
+  audioSource: {fileID: 652875866}
+  audioClip1: {fileID: 8300000, guid: 7477ee6c97435d04aa7cd31526006e84, type: 3}
 --- !u!1 &1858843676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,6 +3077,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleManager: {fileID: 300662462}
+  audioSource: {fileID: 652875866}
+  audioClip1: {fileID: 8300000, guid: 7477ee6c97435d04aa7cd31526006e84, type: 3}
 --- !u!1 &1983408812
 GameObject:
   m_ObjectHideFlags: 0
