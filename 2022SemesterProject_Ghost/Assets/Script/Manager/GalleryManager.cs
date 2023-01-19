@@ -115,6 +115,7 @@ public class GalleryManager : MonoBehaviour
                 else
                     changenum = i;
                 puzzleBtnArr[changenum].interactable = false;
+                puzzleBtnArr[changenum].image.color = new Color(0, 0, 0);
                 lockImages[changenum].SetActive(true);
             }
         }
