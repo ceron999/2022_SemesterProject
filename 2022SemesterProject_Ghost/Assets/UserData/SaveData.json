@@ -2,11 +2,11 @@
     "isFirstPlay": false,
     "startYear": 2023,
     "startMonth": 1,
-    "startDay": 17,
-    "nowDay": 3,
+    "startDay": 19,
+    "nowDay": 1,
     "isWatchDayStory": [
         true,
-        true,
+        false,
         false
     ],
     "isPuzzleOpen": [
@@ -29,7 +29,7 @@
         false,
         false
     ],
-    "playerSpeechHabit": "habit",
+    "playerSpeechHabit": "",
     "soulName": "",
     "soulShape": "곡선이 많다.",
     "perfumeScent": "물향"
