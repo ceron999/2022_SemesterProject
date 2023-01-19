@@ -53,7 +53,7 @@ public class Tile : MonoBehaviour, IPointerClickHandler
     public void OnMoveTo(Vector3 end)
     {
         StartCoroutine("MoveTo", end);
-        PlaySound1();
+        SoundManager.instance.PlaySoundEffect(SoundEffect.PuzzleMove);
     }
 
     private IEnumerator MoveTo(Vector3 end)

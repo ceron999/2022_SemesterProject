@@ -48,7 +48,7 @@ public class EndCreditManager : MonoBehaviour
 
         for(int i=1;i<4; i++)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(10);
             screenFadeModule.ScreenFade(0, 1, 0.8f);
             textFadeModule.TextFade(creditTextObj, 1, 0, 0.8f);
             yield return new WaitForSeconds(0.8f);
@@ -59,7 +59,7 @@ public class EndCreditManager : MonoBehaviour
             yield return new WaitForSeconds(0.8f);
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(10);
 
         screenFadeModule.ScreenFade(0, 1, 1);
         yield return new WaitForSeconds(1);
@@ -71,10 +71,11 @@ public class EndCreditManager : MonoBehaviour
         fadeScreenCanvas.SetActive(false);
         textFadeModule.TextFade(creditText.gameObject, 0, 1, 0.8f);
         creditText.text = "ÇÃ·¹ÀÌ ¤£";
-        yield return new WaitForSeconds(3); 
+        yield return new WaitForSeconds(10); 
         textFadeModule.TextFade(creditText.gameObject, 1, 0, 0.8f);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1.2f);
 
+        SoundManager.instance.PlayBgm(BGM.Main);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 

@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
 
         saveData = jsonManager.LoadSaveData();
         SetNowDay();
+        SoundManager.instance.PlayBgm(BGM.Main);
     }
 
     //관리자용 함수

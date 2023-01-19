@@ -81,14 +81,6 @@ public class DialogueManager : MonoBehaviour
     List<GameObject> soulFaceEyeList = new List<GameObject>();
     List<GameObject> soulFaceMouthList = new List<GameObject>();
     List<GameObject> soulFaceItemList = new List<GameObject>();
-
-    public AudioSource audioSource;
-    public AudioClip audioClip1;
-    
-    public void PlaySound1()
-    {
-        audioSource.PlayOneShot(audioClip1);
-    }
     
     public IEnumerator Start()
     {  
@@ -176,6 +168,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue()
     {
         //씬이 바뀌고 자연스럽게 페이드인 -> 천천히 대화창이 나오게 설정
+        SoundManager.instance.SetBGMVolume(0.1f, 1);
         StartCoroutine(PrintDialogue());
     }
 
@@ -311,9 +304,9 @@ public class DialogueManager : MonoBehaviour
 
     public void ContinueDialogue()
     {
-        PlaySound1();
         if (nowDialogueIndex < dialogueWrapper.dialogueArray.Length)
         {
+            SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
             Dialogue nowDialogue = dialogueWrapper.dialogueArray[nowDialogueIndex];
             if (nowDialogue.actionKeywordString != null)
                 nowAction = nowDialogue.actionKeyword;
@@ -338,12 +331,11 @@ public class DialogueManager : MonoBehaviour
                 if (nowDialogue.dialogueJumpParameter != 0)
                     nowDialogueIndex += nowDialogue.dialogueJumpParameter;
             }
-
-            
         }
 
         if (isDialogueEnd)
         {
+            SoundManager.instance.SetBGMVolume(0.6f, 1f);
             if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "StoryScene")
             {
                 StartCoroutine(EndDialogueCoroutine());
@@ -565,6 +557,7 @@ public class DialogueManager : MonoBehaviour
         SetScreenTouchCanvas(false);
         screenFadeModule.ScreenFade(0, 1, 1);
         yield return new WaitForSeconds(1f);
+        SoundManager.instance.PlayBgm(BGM.Ending);
         UnityEngine.SceneManagement.SceneManager.LoadScene("EndCreditScene");
     }
 

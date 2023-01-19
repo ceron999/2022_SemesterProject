@@ -38,26 +38,6 @@ public class GalleryManager : MonoBehaviour
     [SerializeField]
     GameObject[] lockImages;
 
-    public AudioSource audioSource;
-    public AudioClip audioClip1;
-    public AudioClip audioClip2;
-    public AudioClip audioClip3;
-    
-    public void PlaySound1()
-    {
-        audioSource.PlayOneShot(audioClip1);
-    }
-
-    public void PlaySound2()
-    {
-        audioSource.PlayOneShot(audioClip2);
-    }
-
-    public void PlaySound3()
-    {
-        audioSource.PlayOneShot(audioClip3);
-    }
-
     void Start() {
         nowCanvas = NowCanvas.canvas00;
         date.text = "";
@@ -92,7 +72,7 @@ public class GalleryManager : MonoBehaviour
 
     public void TouchLeftBtn()
     {
-        PlaySound1();
+        SoundManager.instance.PlaySoundEffect(SoundEffect.GalleryLeftArrow);
         switch(nowCanvas)
         {
             case NowCanvas.canvas01:
@@ -106,7 +86,7 @@ public class GalleryManager : MonoBehaviour
 
     public void TouchRightBtn()
     {
-        PlaySound2();
+        SoundManager.instance.PlaySoundEffect(SoundEffect.GalleryRightArrow);
         switch (nowCanvas)
         {
             case NowCanvas.canvas00:

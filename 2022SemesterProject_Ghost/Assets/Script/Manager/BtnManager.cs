@@ -10,31 +10,11 @@ public class BtnManager : MonoBehaviour
     GameObject fadeCanvas;
     [SerializeField]
     GameObject customizingPrefab;
-    
-    public AudioSource audioSource;
-    public AudioClip audioClip1;
-    public AudioClip audioClip2;
-    public AudioClip audioClip3;
-
-    public void PlaySound1()
-    {
-        audioSource.PlayOneShot(audioClip1);
-    }
-
-    public void PlaySound2()
-    {
-        audioSource.PlayOneShot(audioClip2);
-    }
-
-    public void PlaySound3()
-    {
-        audioSource.PlayOneShot(audioClip3);
-    }
 
     //MainSceneBtn
     public void TouchStartBtn()
     {
-        PlaySound1();
+        SoundManager.instance.PlaySoundEffect(SoundEffect.OpenDoorSound);
         StartCoroutine(TouchStartBtnCoroutine());
     }
 
@@ -68,7 +48,7 @@ public class BtnManager : MonoBehaviour
     //WaitingSceneBtn
     public void TouchWaitingSceneSoulBtn()
     {
-        PlaySound1();
+        SoundManager.instance.PlaySoundEffect(SoundEffect.WaterDrop1);
         if (GameManager.Instance.isTalkTIme == true)
         {
             //만약 그 날짜의 스토리를 보지 않았다면 스토리씬으로
@@ -107,7 +87,9 @@ public class BtnManager : MonoBehaviour
 
     public void TouchGalleryBtn()
     {
-        PlaySound3();
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        SoundManager.instance.SetBGMVolume(0.6f, 1);
+        SoundManager.instance.PlayBgm(BGM.Gallery);
         SceneManager.LoadScene("GalleryScene");
     }
 
@@ -120,7 +102,6 @@ public class BtnManager : MonoBehaviour
 
     public void TouchInteriorObjectBtnlight1()
     {
-        PlaySound2();
         GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
         int nowDay = GameManager.Instance.saveData.nowDay;
         if (!GameManager.Instance.saveData.isClearPuzzle[0])
@@ -135,6 +116,7 @@ public class BtnManager : MonoBehaviour
             GameManager.Instance.beforeSetDialogueName = "Day2PastLifePuzzle";
             GameManager.Instance.puzzleArrayNum = 1;
         }
+        SoundManager.instance.PlaySoundEffect(SoundEffect.WaterDrop2);
         SceneManager.LoadScene("PuzzleScene");
     }
     public void TouchInteriorObjectBtnlight2()
@@ -187,16 +169,21 @@ public class BtnManager : MonoBehaviour
             GameManager.Instance.beforeSetDialogueName = "Day2StoryTirePuzzle";
             GameManager.Instance.puzzleArrayNum = 7;
         }
-        PlaySound2();
         GameManager.Instance.countCheck++;
+        SoundManager.instance.PlaySoundEffect(SoundEffect.WaterDrop2);
         SceneManager.LoadScene("PuzzleScene");
+    }
+
+    public void TouchBookClickBtn()
+    {
+        SoundManager.instance.PlaySoundEffect(SoundEffect.FlippingBooks);
     }
 
 
     //GallerySceneBtn
     public void TouchHomeBtn()
     {
-        PlaySound3();
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
         SceneManager.LoadScene("WaitingScene");
     }
 

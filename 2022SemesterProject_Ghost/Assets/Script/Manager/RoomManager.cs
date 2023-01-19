@@ -21,19 +21,10 @@ public class RoomManager : MonoBehaviour
         SetPuzzleStory();
     }
 
-    public AudioSource audioSource;
-    public AudioClip audioClip1;
-
-
-    public void PlaySound1()
-    {
-        audioSource.PlayOneShot(audioClip1);
-    }
-
 
     public void TalkWithSoul()
     {
-        PlaySound1();
+        SoundManager.instance.PlaySoundEffect(SoundEffect.WaterDrop1);
         if (GameManager.Instance.isTalkTIme == true)
         {
             SetRandomDialogue();
