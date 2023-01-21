@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,12 +12,12 @@ public class CustomizingManager : MonoBehaviour
     GameObject prefab_obj;
     List<GameObject> eyeList = new List<GameObject>();
     List<GameObject> mouthList = new List<GameObject>();
-    List<GameObject> itemList = new List<GameObject>();
+    public List<GameObject> itemList = new List<GameObject>();
 
     List<GameObject> soulBackGroundList = new List<GameObject>();
     List<GameObject> soulFaceEyeList = new List<GameObject>();
     List<GameObject> soulFaceMouthList = new List<GameObject>();
-    List<GameObject> soulFaceItemList = new List<GameObject>();
+    public List<GameObject> soulFaceItemList = new List<GameObject>();
     public static int eyeIndex=0;
     public static int mouthIndex=0;
     public static int itemIndex=0;  
@@ -72,13 +73,39 @@ public class CustomizingManager : MonoBehaviour
             tempstr = "Item"+i.ToString();
             tempObj = GameObject.Find(tempstr);
             itemList.Add(tempObj);
-            itemList[i].SetActive(false);
+            tempObj.SetActive(false);
 
             tempstr2 = ""; // SoulFaceitem0~6 (Prefab)
             tempstr2 = "SoulFaceItem"+i.ToString();
             tempObj2 = GameObject.Find(tempstr2);
             soulFaceItemList.Add(tempObj2);
-            soulFaceItemList[i].SetActive(false);
+            tempObj2.SetActive(false);
+
+            if (i != 0)
+            {
+                if (i < 4)
+                {
+                    if (!GameManager.Instance.saveData.isClearPuzzle[i])
+                    {
+                        itemList.RemoveAt(itemList.Count - 1);
+                        soulFaceItemList.RemoveAt(soulFaceItemList.Count - 1);
+
+                        Destroy(tempObj);
+                        Destroy(tempObj2);
+                    }
+                }
+                else if (i >= 4)
+                {
+                    if (!GameManager.Instance.saveData.isClearPuzzle[i + 1])
+                    {
+                        itemList.RemoveAt(itemList.Count - 1);
+                        soulFaceItemList.RemoveAt(soulFaceItemList.Count - 1);
+
+                        Destroy(tempObj);
+                        Destroy(tempObj2);
+                    }
+                }
+            }
         }    
     }
 
@@ -163,7 +190,7 @@ public class CustomizingManager : MonoBehaviour
         itemList[itemIndex].SetActive(false); 
         soulFaceItemList[itemIndex].SetActive(false); 
         if(itemIndex==0){
-            itemIndex=5;
+            itemIndex= itemList.Count - 1;
         }
         else{
             itemIndex--;
@@ -176,7 +203,8 @@ public class CustomizingManager : MonoBehaviour
         SoundManager.instance.PlaySoundEffect(SoundEffect.SlotRightBtn);
         itemList[itemIndex].SetActive(false);
         soulFaceItemList[itemIndex].SetActive(false); 
-        if(itemIndex==5){
+        if(itemIndex == itemList.Count - 1)
+        {
             itemIndex=0;
         }
         else{

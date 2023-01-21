@@ -130,6 +130,8 @@ public class DialogueManager : MonoBehaviour
         {
             nowDialogueIndex = 4;
             GameManager.Instance.isCustomizingEnd = false;
+            soul.SetActive(false);
+            soul = GameObject.Find("customizingPrefab");
         }
         else
             nowDialogueIndex = 0;
@@ -503,8 +505,15 @@ public class DialogueManager : MonoBehaviour
     IEnumerator SoulGoneCoroutine()
     {
         SetScreenTouchCanvas(false);
+        Transform soulBackGround = soul.transform.GetChild(0);
+
         UIFadeModule soulModule = soul.GetComponent<UIFadeModule>();
-        soulModule.ObjectFade(soul, 1, 0, 1);
+        soulModule.ObjectFade(soulBackGround.GetChild(0).gameObject, 1, 0, 1);
+        soulModule.ObjectFade(soulBackGround.GetChild(1).gameObject, 1, 0, 1);
+        soulModule.ObjectFade(soulFaceEyeList[CustomizingManager.eyeIndex].gameObject, 1, 0, 1);
+        soulModule.ObjectFade(soulFaceMouthList[CustomizingManager.mouthIndex].gameObject, 1, 0, 1);
+        soulModule.ObjectFade(soulFaceItemList[CustomizingManager.itemIndex].gameObject, 1, 0, 1);
+
         yield return new WaitForSeconds(1);
         SetScreenTouchCanvas(true);
         ScreenTouch();

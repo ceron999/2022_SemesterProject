@@ -24,15 +24,22 @@ public class PuzzleManager : MonoBehaviour
         tileList = new List<Tile>();
         SpawnTiles();
         SetPuzzle();
-        if (ClearCheck())
-        {
-            UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(tilesParent.GetComponent<RectTransform>());
-            yield return new WaitForEndOfFrame();
+        //if (ClearCheck())
+        //{
+        //    UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(tilesParent.GetComponent<RectTransform>());
+        //    yield return new WaitForEndOfFrame();
 
-            tileList.ForEach(x => x.SetCorrectPosition());
+        //    tileList.ForEach(x => x.SetCorrectPosition());
 
-            Suffle();
-        }
+        //    Suffle();
+        //}
+
+        UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(tilesParent.GetComponent<RectTransform>());
+        yield return new WaitForEndOfFrame();
+
+        tileList.ForEach(x => x.SetCorrectPosition());
+
+        Suffle();
     }
 
     private void SpawnTiles()

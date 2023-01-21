@@ -187,12 +187,79 @@ public class BtnManager : MonoBehaviour
         SceneManager.LoadScene("WaitingScene");
     }
 
-    public void TouchPuzzleBtn()
+    public void TouchBookPuzzleBtn()
     {
-        GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name; 
+        GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Rectangular";
+        GameManager.Instance.beforeSetDialogueName = "Day1PastLifePuzzle2";
+        GameManager.Instance.puzzleArrayNum = 0;
         SceneManager.LoadScene("PuzzleScene");
     }
 
+    public void TouchCloverPuzzleBtn()
+    {
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
+        GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Clover";
+        GameManager.Instance.beforeSetDialogueName = "Day1StoryCloverPuzzle";
+        GameManager.Instance.puzzleArrayNum = 2;
+        SceneManager.LoadScene("PuzzleScene");
+    }
+    public void TouchLeashPuzzleBtn()
+    {
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
+        GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Leash";
+        GameManager.Instance.beforeSetDialogueName = "Day1StoryCollarPuzzle";
+        GameManager.Instance.puzzleArrayNum = 3;
+        SceneManager.LoadScene("PuzzleScene");
+    }
+    public void TouchSoccerBallPuzzleBtn()
+    {
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
+        GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Soccer_ball";
+        GameManager.Instance.beforeSetDialogueName = "Day1StoryFootballPuzzle";
+        GameManager.Instance.puzzleArrayNum = 4;
+        SceneManager.LoadScene("PuzzleScene");
+    }
+    public void TouchSherlockPuzzleBtn()
+    {
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
+        GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Sherlock";
+        GameManager.Instance.beforeSetDialogueName = "Day2PastLifePuzzle";
+        GameManager.Instance.puzzleArrayNum = 1;
+        SceneManager.LoadScene("PuzzleScene");
+    }
+    public void TouchBandPuzzleBtn()
+    {
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
+        GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Band";
+        GameManager.Instance.beforeSetDialogueName = "Day2StoryBandPuzzle";
+        GameManager.Instance.puzzleArrayNum = 5;
+        SceneManager.LoadScene("PuzzleScene");
+    }
+    public void TouchCoffeePuzzleBtn()
+    {
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
+        GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Cup";
+        GameManager.Instance.beforeSetDialogueName = "Day2StoryCoffeePuzzle";
+        GameManager.Instance.puzzleArrayNum = 6;
+        SceneManager.LoadScene("PuzzleScene");
+    }
+    public void TouchTirePuzzleBtn()
+    {
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        GameManager.Instance.pastSceneName = SceneManager.GetActiveScene().name;
+        GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Wheel";
+        GameManager.Instance.beforeSetDialogueName = "Day2StoryTirePuzzle";
+        GameManager.Instance.puzzleArrayNum = 7;
+        SceneManager.LoadScene("PuzzleScene");
+    }
     //PuzzleSceneBtn
     public void TouchPuzzleExitBtn()
     {
