@@ -108,12 +108,13 @@ public class GalleryManager : MonoBehaviour
             if (!isClearPuzzle[i])
             {
                 //잠금
-                if (i == 1)//과거퍼즐 0,1을  0,4로 변경
-                    changenum = 4;
-                else if (i > 1 && i < 5)
-                    changenum = i - 1;
-                else
-                    changenum = i;
+                //if (i == 1)//과거퍼즐 0,1을  0,4로 변경
+                //    changenum = 4;
+                //else if (i > 1 && i < 5)
+                //    changenum = i - 1;
+                //else
+                //    changenum = i;
+                changenum = i;
                 puzzleBtnArr[changenum].interactable = false;
                 puzzleBtnArr[changenum].image.color = new Color(0, 0, 0);
                 lockImages[changenum].SetActive(true);
