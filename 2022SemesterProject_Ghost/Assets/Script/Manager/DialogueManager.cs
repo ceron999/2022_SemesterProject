@@ -53,6 +53,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     Image viewPaperImage;
     [SerializeField]
+    GameObject viewPaperSoulImage;
+    [SerializeField]
     GameObject roomImage;
     [SerializeField]
     GameObject fadeScreenCanvas;
@@ -505,14 +507,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator SoulGoneCoroutine()
     {
         SetScreenTouchCanvas(false);
-        Transform soulBackGround = soul.transform.GetChild(0);
-
-        UIFadeModule soulModule = soul.GetComponent<UIFadeModule>();
-        soulModule.ObjectFade(soulBackGround.GetChild(0).gameObject, 1, 0, 1);
-        soulModule.ObjectFade(soulBackGround.GetChild(1).gameObject, 1, 0, 1);
-        soulModule.ObjectFade(soulFaceEyeList[CustomizingManager.eyeIndex].gameObject, 1, 0, 1);
-        soulModule.ObjectFade(soulFaceMouthList[CustomizingManager.mouthIndex].gameObject, 1, 0, 1);
-        soulModule.ObjectFade(soulFaceItemList[CustomizingManager.itemIndex].gameObject, 1, 0, 1);
+        SoulFade(1,0,1);
 
         yield return new WaitForSeconds(1);
         SetScreenTouchCanvas(true);
@@ -521,30 +516,29 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator ViewPaperFadeCoroutine()
     {
+        DialoguePrefabToggle(false);
         SetScreenTouchCanvas(false);
         viewPaperImage.gameObject.SetActive(true);
-        float fadeFloat = 0;
-
-        while(fadeFloat <= 1)
-        {
-            fadeFloat += 0.05f;
-            viewPaperImage.color = new Color(255, 255, 255, fadeFloat);
-            yield return new WaitForSeconds(0.1f);
-        }
+        soul.transform.SetParent(viewPaperImage.transform);
+        
+        UIFadeModule viewPaperModule = viewPaperImage.GetComponent<UIFadeModule>();
+        viewPaperModule.ObjectFade(viewPaperImage.gameObject, 0, 1, 1);
+        viewPaperModule.ObjectFade(viewPaperSoulImage.gameObject, 0, 1, 1);
+        SoulFade(0,1,1);
 
         //임시로 만듬
-        while (Input.GetMouseButtonDown(0))
+        while (!Input.GetMouseButtonDown(0))
         {
             yield return null;
         }
 
-        while (fadeFloat >= 0)
-        {
-            fadeFloat -= 0.05f;
-            viewPaperImage.color = new Color(255, 255, 255, fadeFloat);
-            yield return new WaitForSeconds(0.1f);
-        }
+        viewPaperModule.ObjectFade(viewPaperImage.gameObject, 1, 0, 1);
+        viewPaperModule.ObjectFade(viewPaperSoulImage.gameObject, 1, 0, 1);
+        SoulFade(1, 0, 1);
 
+        yield return new WaitForSeconds(1);
+
+        DialoguePrefabToggle(true);
         SetScreenTouchCanvas(true);
         viewPaperImage.gameObject.SetActive(false);
         ScreenTouch();
@@ -574,4 +568,15 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePrefab.SetActive(active);
     }
+
+    void SoulFade(float start, float end, float time)
+    {
+        UIFadeModule soulModule = soul.GetComponent<UIFadeModule>();
+        Transform soulBackGround = soul.transform.GetChild(0);
+        soulModule.ObjectFade(soulBackGround.GetChild(0).gameObject, start, end, time);
+        soulModule.ObjectFade(soulBackGround.GetChild(1).gameObject, start, end, time);
+        soulModule.ObjectFade(soulFaceEyeList[CustomizingManager.eyeIndex].gameObject, start, end, time);
+        soulModule.ObjectFade(soulFaceMouthList[CustomizingManager.mouthIndex].gameObject, start, end, time);
+        soulModule.ObjectFade(soulFaceItemList[CustomizingManager.itemIndex].gameObject, start, end, time);
+    }    
 }
