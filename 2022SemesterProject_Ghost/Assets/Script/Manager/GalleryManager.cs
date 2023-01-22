@@ -43,6 +43,7 @@ public class GalleryManager : MonoBehaviour
         date.text = "";
         SetCanvas();
         SetPuzzleBtnImage();
+        GameClear();
     }
 
     void SetCanvas()
@@ -118,6 +119,17 @@ public class GalleryManager : MonoBehaviour
                 puzzleBtnArr[changenum].interactable = false;
                 puzzleBtnArr[changenum].image.color = new Color(0, 0, 0);
                 lockImages[changenum].SetActive(true);
+            }
+        }
+    }
+
+    void GameClear()
+    {
+        if (GameManager.Instance.saveData.isWatchDayStory[2])
+        {
+            for(int i =0; i<8; i++)
+            {
+                puzzleBtnArr[i].interactable = false;
             }
         }
     }

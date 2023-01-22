@@ -12,11 +12,16 @@ public class RoomManager : MonoBehaviour
     [SerializeField]
     GameObject soul;
     [SerializeField]
+    GameObject light1;
+    [SerializeField]
+    GameObject light2;
+    [SerializeField]
     GameObject dialoguePrefab;
     string dialogueName;
 
     void Start()
     {
+        GameClear();
         dialogueName = "RandomDialogue";
         SetPuzzleStory();
     }
@@ -51,5 +56,15 @@ public class RoomManager : MonoBehaviour
             GameManager.Instance.puzzleDialogue = false;
         }
         
+    }
+
+    void GameClear()
+    {
+        if (GameManager.Instance.saveData.isWatchDayStory[2])
+        {
+            Destroy(soul);
+            Destroy(light1);
+            Destroy(light2);
+        }
     }
 }

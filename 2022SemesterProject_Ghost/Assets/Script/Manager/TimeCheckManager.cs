@@ -7,6 +7,8 @@ using System;
 public class TimeCheckManager : MonoBehaviour
 {
     [SerializeField]
+    GameObject soul;
+    [SerializeField]
     Text counterText;
     [SerializeField] 
     Text wakeupDateText;
@@ -21,6 +23,7 @@ public class TimeCheckManager : MonoBehaviour
     public DateTime midnightTime;
     public DateTime standardTime;
     public DateTime nowTime;
+    bool isSoulGone = false;
 
     private void Start()
     {
@@ -30,7 +33,8 @@ public class TimeCheckManager : MonoBehaviour
 
     void Update()
     {
-        SetSpareTime();
+        if(!isSoulGone)
+            SetSpareTime();
     }
 
     void SetTImeText()
@@ -77,6 +81,20 @@ public class TimeCheckManager : MonoBehaviour
         { // 오전 8시 이전(영혼 취침 중)
             spare = standardTime - nowTime;
             counterText.text = "<color=#32CD32>" + spare.ToString(@"hh\:mm\:ss") + "</color>";
+        }
+    }
+
+    void GameClear()
+    {
+        if (GameManager.Instance.saveData.isWatchDayStory[2])
+        {
+            isSoulGone = true;
+            Destroy(soul);
+            Destroy(wakeupDateText);
+            Destroy(wakeupTimeText);
+
+            wakeupText.text = "영혼이 떠났다...";
+            Destroy(counterText);
         }
     }
 }

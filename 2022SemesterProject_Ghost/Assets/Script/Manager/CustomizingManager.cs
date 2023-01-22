@@ -18,6 +18,8 @@ public class CustomizingManager : MonoBehaviour
     List<GameObject> soulFaceEyeList = new List<GameObject>();
     List<GameObject> soulFaceMouthList = new List<GameObject>();
     public List<GameObject> soulFaceItemList = new List<GameObject>();
+    public static Color soulColor;
+    public static int backgroundIndex = 0;
     public static int eyeIndex=0;
     public static int mouthIndex=0;
     public static int itemIndex=0;  
@@ -123,10 +125,14 @@ public class CustomizingManager : MonoBehaviour
         saveData = jsonManager.LoadSaveData();
         if(saveData.soulShape == "곡선이 많다."){
             soulBackGroundList[0].SetActive(true); // Character1
+            backgroundIndex = 0;
         }
         else{
             soulBackGroundList[1].SetActive(true); // Character2
+            backgroundIndex = 1;
         }
+
+        SetSoulColor(soulBackGroundList[backgroundIndex]);
     }
 
     public void ClickEyeLeftBtn(){
@@ -212,5 +218,40 @@ public class CustomizingManager : MonoBehaviour
         }
         itemList[itemIndex].SetActive(true);
         soulFaceItemList[itemIndex].SetActive(true); 
+    }
+
+    public void SetSoulColor(GameObject getBackground)
+    {
+        switch (GameManager.Instance.saveData.perfumeScent)
+        {
+            case "물향":
+                getBackground.GetComponent<Image>().color = new Color(201 / 255f, 2311 / 255f, 2551 / 255f);
+                soulColor = new Color(201 / 255f, 2311 / 255f, 2551 / 255f);
+                break;
+            case "꽃향":
+                getBackground.GetComponent<Image>().color = new Color(255 / 255f, 223 / 255f, 252 / 255f);
+                soulColor = new Color(255 / 255f, 223 / 255f, 252 / 255f);
+                break;
+            case "과일향":
+                getBackground.GetComponent<Image>().color = new Color(211 / 255f, 215 / 255f, 149 / 255f);
+                soulColor = new Color(211 / 255f, 215 / 255f, 149 / 255f);
+                break;
+			case "나무향":
+                getBackground.GetComponent<Image>().color = new Color(191 / 255f, 205 / 255f, 172 / 255f);
+                soulColor = new Color(191 / 255f, 205 / 255f, 172 / 255f);
+                break;
+			case "가죽향":
+                getBackground.GetComponent<Image>().color = new Color(88 / 255f, 92 / 255f, 82 / 255f);
+                soulColor = new Color(88 / 255f, 92 / 255f, 82 / 255f);
+                break;
+			case "기타":
+                getBackground.GetComponent<Image>().color = new Color(150 / 255f, 120 / 255f, 157 / 255f);
+                soulColor = new Color(150 / 255f, 120 / 255f, 157 / 255f);
+                break;
+			case "향수 안뿌린다":
+                getBackground.GetComponent<Image>().color = new Color(255 / 255f, 255 / 255f, 255 / 255f);
+                soulColor = new Color(255 / 255f, 255 / 255f, 255 / 255f);
+                break;
+        }
     }
 }

@@ -1091,6 +1091,7 @@ MonoBehaviour:
   routeSeventhText: {fileID: 2018587356}
   soul: {fileID: 0}
   viewPaperImage: {fileID: 0}
+  viewPaperText: {fileID: 0}
   roomImage: {fileID: 0}
   fadeScreenCanvas: {fileID: 797648128}
   customizingPrefab: {fileID: 0}
@@ -1098,6 +1099,7 @@ MonoBehaviour:
     dialogueArray: []
   dialogueWrapperName: 
   customizingManager: {fileID: 0}
+  soulBackGroundList: []
 --- !u!1 &1102876007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,6 +1569,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1070847056}
   soul: {fileID: 135853217}
+  light1: {fileID: 214036902}
+  light2: {fileID: 1776888215}
   dialoguePrefab: {fileID: 1934323248}
 --- !u!1 &1570084711
 GameObject:

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +32,8 @@ public class EndCreditManager : MonoBehaviour
         creditText.gameObject.SetActive(false);
         screenFadeModule = fadeScreenCanvas.GetComponent<UIFadeModule>();
         textFadeModule = imageCanvas.GetComponent<UIFadeModule>();
+        GameManager.Instance.saveData.isWatchDayStory[2] = true;
+        GameManager.Instance.SaveAllData();
         StartCoroutine(EndingCredit());
     }
 
@@ -70,7 +73,7 @@ public class EndCreditManager : MonoBehaviour
         }
         fadeScreenCanvas.SetActive(false);
         textFadeModule.TextFade(creditText.gameObject, 0, 1, 0.8f);
-        creditText.text = "플레이 ㄳ";
+        creditText.text = "플레이해주셔서 감사합니다.";
         yield return new WaitForSeconds(10); 
         textFadeModule.TextFade(creditText.gameObject, 1, 0, 0.8f);
         yield return new WaitForSeconds(1.2f);

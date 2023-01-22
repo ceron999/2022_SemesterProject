@@ -53,7 +53,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     Image viewPaperImage;
     [SerializeField]
-    GameObject viewPaperSoulImage;
+    Text viewPaperText;
     [SerializeField]
     GameObject roomImage;
     [SerializeField]
@@ -80,6 +80,7 @@ public class DialogueManager : MonoBehaviour
 
     GameObject prefab_obj;
     public GameObject customizingManager;
+    public List<GameObject> soulBackGroundList = new List<GameObject>();
     List<GameObject> soulFaceEyeList = new List<GameObject>();
     List<GameObject> soulFaceMouthList = new List<GameObject>();
     List<GameObject> soulFaceItemList = new List<GameObject>();
@@ -92,6 +93,12 @@ public class DialogueManager : MonoBehaviour
             customizingPrefab.name = "customizingPrefab"; // Prefab name 지정
             Vector2 pos = new Vector2(720, 2000); // Prefab 위치 지정
             customizingPrefab.transform.position = pos;
+
+            //영혼의 모양 추가
+            soulBackGroundList.Add(GameObject.Find("SoulBackGround0"));
+            soulBackGroundList.Add(GameObject.Find("SoulBackGround1"));
+            soulBackGroundList[0].SetActive(false);
+            soulBackGroundList[1].SetActive(false);
 
             //CustomizingManager.awake랑 유사
             string tempstr2="";
@@ -118,6 +125,8 @@ public class DialogueManager : MonoBehaviour
             }
 
             //CustomizingScene에서 정한 눈, 입, 아이템만 보이게 설정
+            soulBackGroundList[CustomizingManager.backgroundIndex].SetActive(true);
+            soulBackGroundList[CustomizingManager.backgroundIndex].GetComponent<Image>().color = CustomizingManager.soulColor;
             soulFaceEyeList[CustomizingManager.eyeIndex].SetActive(true);
             soulFaceMouthList[CustomizingManager.mouthIndex].SetActive(true);
             soulFaceItemList[CustomizingManager.itemIndex].SetActive(true);
@@ -518,13 +527,16 @@ public class DialogueManager : MonoBehaviour
     {
         DialoguePrefabToggle(false);
         SetScreenTouchCanvas(false);
-        viewPaperImage.gameObject.SetActive(true);
         soul.transform.SetParent(viewPaperImage.transform);
-        
-        UIFadeModule viewPaperModule = viewPaperImage.GetComponent<UIFadeModule>();
-        viewPaperModule.ObjectFade(viewPaperImage.gameObject, 0, 1, 1);
-        viewPaperModule.ObjectFade(viewPaperSoulImage.gameObject, 0, 1, 1);
-        SoulFade(0,1,1);
+        viewPaperText.text = "이름: " + GameManager.Instance.saveData.soulName;
+        yield return new WaitForSeconds(0.5f);
+
+        viewPaperImage.gameObject.SetActive(true);
+        soulBackGroundList[CustomizingManager.backgroundIndex].SetActive(true);
+        soulFaceEyeList[CustomizingManager.eyeIndex].SetActive(true);
+        soulFaceMouthList[CustomizingManager.mouthIndex].SetActive(true);
+        soulFaceItemList[CustomizingManager.itemIndex].SetActive(true);
+        SetSoulAlpha();
 
         //임시로 만듬
         while (!Input.GetMouseButtonDown(0))
@@ -532,9 +544,11 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
 
-        viewPaperModule.ObjectFade(viewPaperImage.gameObject, 1, 0, 1);
-        viewPaperModule.ObjectFade(viewPaperSoulImage.gameObject, 1, 0, 1);
-        SoulFade(1, 0, 1);
+        viewPaperImage.gameObject.SetActive(false);
+        soulBackGroundList[CustomizingManager.backgroundIndex].SetActive(false);
+        soulFaceEyeList[CustomizingManager.eyeIndex].SetActive(false);
+        soulFaceMouthList[CustomizingManager.mouthIndex].SetActive(false);
+        soulFaceItemList[CustomizingManager.itemIndex].SetActive(false);
 
         yield return new WaitForSeconds(1);
 
@@ -572,11 +586,18 @@ public class DialogueManager : MonoBehaviour
     void SoulFade(float start, float end, float time)
     {
         UIFadeModule soulModule = soul.GetComponent<UIFadeModule>();
-        Transform soulBackGround = soul.transform.GetChild(0);
-        soulModule.ObjectFade(soulBackGround.GetChild(0).gameObject, start, end, time);
-        soulModule.ObjectFade(soulBackGround.GetChild(1).gameObject, start, end, time);
+        soulModule.ObjectFade(soulBackGroundList[CustomizingManager.backgroundIndex].gameObject, start, end, time);
         soulModule.ObjectFade(soulFaceEyeList[CustomizingManager.eyeIndex].gameObject, start, end, time);
         soulModule.ObjectFade(soulFaceMouthList[CustomizingManager.mouthIndex].gameObject, start, end, time);
         soulModule.ObjectFade(soulFaceItemList[CustomizingManager.itemIndex].gameObject, start, end, time);
     }    
+
+    void SetSoulAlpha()
+    {
+        UIFadeModule soulModule = soul.GetComponent<UIFadeModule>();
+        soulModule.ObjectFade(soulBackGroundList[CustomizingManager.backgroundIndex].gameObject, 0, 1, 0);
+        soulModule.ObjectFade(soulFaceEyeList[CustomizingManager.eyeIndex].gameObject, 0, 1, 0);
+        soulModule.ObjectFade(soulFaceMouthList[CustomizingManager.mouthIndex].gameObject, 0, 1, 0);
+        soulModule.ObjectFade(soulFaceItemList[CustomizingManager.itemIndex].gameObject, 0, 1, 0);
+    }
 }
