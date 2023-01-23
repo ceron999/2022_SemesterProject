@@ -95,6 +95,7 @@ public class PuzzleManager : MonoBehaviour
     {
         if (Vector3.Distance(EmptyTilePosition, tile.GetComponent<RectTransform>().localPosition) == neighborTileDistance)
         {
+            Debug.Log("EmptyPosition : " + EmptyTilePosition + "\nnowPosition : " + tile.GetComponent<RectTransform>().localPosition);
             Vector3 goalPosition = EmptyTilePosition;
             EmptyTilePosition = tile.GetComponent<RectTransform>().localPosition;
             tile.OnMoveTo(goalPosition);

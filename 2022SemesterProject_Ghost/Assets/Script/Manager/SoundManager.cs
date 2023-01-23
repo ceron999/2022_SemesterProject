@@ -38,6 +38,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        PlayBgm(BGM.Main);
+    }
+
     public void PlayBgm(BGM getBgm)
     {
         switch(getBgm)

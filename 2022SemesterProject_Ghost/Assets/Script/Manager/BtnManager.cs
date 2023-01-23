@@ -96,6 +96,7 @@ public class BtnManager : MonoBehaviour
     public void TouchExitBtn()
     {
         //영혼과 잠시 멀어지겠습니까? yes/no 선택 후 이동 어디로?@@@@@@@@
+        Application.Quit();
     }
 
     //RoomSceneBtn
@@ -184,6 +185,7 @@ public class BtnManager : MonoBehaviour
     public void TouchHomeBtn()
     {
         SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        SoundManager.instance.PlayBgm(BGM.Main);
         SceneManager.LoadScene("WaitingScene");
     }
 
