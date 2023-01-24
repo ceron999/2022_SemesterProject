@@ -62,6 +62,8 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField]
     GameObject customizingPrefab;
+    [SerializeField]
+    Transform customizingPos;
 
     [SerializeField]
     DialogueWrapper dialogueWrapper;
@@ -92,7 +94,7 @@ public class DialogueManager : MonoBehaviour
             customizingPrefab = MonoBehaviour.Instantiate(prefab_obj, GameObject.Find("Canvas").transform); // Canvas위에 인스턴스화
             customizingPrefab.name = "customizingPrefab"; // Prefab name 지정
             Vector2 pos = new Vector2(720, 2000); // Prefab 위치 지정
-            customizingPrefab.transform.position = pos;
+            customizingPrefab.transform.position = customizingPos.position;
 
             //영혼의 모양 추가
             soulBackGroundList.Add(GameObject.Find("SoulBackGround0"));

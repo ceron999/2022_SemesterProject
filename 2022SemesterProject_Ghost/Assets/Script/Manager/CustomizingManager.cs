@@ -10,6 +10,8 @@ public class CustomizingManager : MonoBehaviour
     GameObject customizingPrefab;
 
     GameObject prefab_obj;
+    [SerializeField]
+    Transform customizingPos;
     List<GameObject> eyeList = new List<GameObject>();
     List<GameObject> mouthList = new List<GameObject>();
     public List<GameObject> itemList = new List<GameObject>();
@@ -32,7 +34,7 @@ public class CustomizingManager : MonoBehaviour
         customizingPrefab = MonoBehaviour.Instantiate(prefab_obj, GameObject.Find("Canvas").transform);
         customizingPrefab.name = "customizingPrefab";
         Vector2 pos = new Vector2(720, 2000);
-        customizingPrefab.transform.position = pos;
+        customizingPrefab.transform.position = customizingPos.position;
         
         string tempstr="";
         string tempstr2="";
