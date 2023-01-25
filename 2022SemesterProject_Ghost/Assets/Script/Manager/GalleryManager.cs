@@ -103,7 +103,7 @@ public class GalleryManager : MonoBehaviour
     {
         List<bool> isClearPuzzle;
         isClearPuzzle = GameManager.Instance.saveData.isClearPuzzle;
-        int changenum=0;
+        int changenum = 0;
         for(int i =0; i<8; i++)
         {
             if (!isClearPuzzle[i])

@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public string beforeSetDialogueName;
     public int puzzleArrayNum;
     public bool puzzleDialogue = false;
+    [SerializeField]
+    Text text;
     public static GameManager Instance
     {
         get
@@ -52,7 +54,18 @@ public class GameManager : MonoBehaviour
     {
         jsonManager = new JsonManager();
 
+        
+
         saveData = jsonManager.LoadSaveData();
+        if (saveData == null)
+        {
+            text.text = "NULL";
+            SetSaveDataClear();
+        }
+        else
+        {
+            text.text = saveData.isFirstPlay + "\n" + saveData.startYear + "\n" + saveData.startMonth + "\n" + saveData.startDay;
+        }
         SetNowDay();
         SoundManager.instance.PlayBgm(BGM.Main);
     }
