@@ -65,6 +65,7 @@ public class RoomManager : MonoBehaviour
             Destroy(soul);
             Destroy(light1);
             Destroy(light2);
+            Destroy(dialoguePrefab);
         }
     }
 }
