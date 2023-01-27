@@ -50,7 +50,7 @@ public class EndCreditManager : MonoBehaviour
 
         for(int i=1;i<4; i++)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(8);
             screenFadeModule.ScreenFade(0, 1, 0.8f);
             textFadeModule.TextFade(creditTextObj, 1, 0, 0.8f);
             yield return new WaitForSeconds(0.8f);
@@ -61,19 +61,27 @@ public class EndCreditManager : MonoBehaviour
             yield return new WaitForSeconds(0.8f);
         }
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(8);
 
-        screenFadeModule.ScreenFade(0, 1, 1);
-        yield return new WaitForSeconds(1);
+        screenFadeModule.ScreenFade(0, 1, 0.8f);
+        yield return new WaitForSeconds(0.8f);
 
         for(int i =0; i<4; i++)
         {
             endingImageArray[i].gameObject.SetActive(false);
         }
+
+        screenFadeModule.ScreenFade(1, 0, 1);
+        creditText.text = "폰트 \nNeo 둥근모 프로젝트 \nhttps://neodgm.dalgona.dev/";
+        textFadeModule.TextFade(creditText.gameObject, 0, 1, 0.8f);
+
+        yield return new WaitForSeconds(8);
+        screenFadeModule.ScreenFade(0, 1, 1);
+        //마무리
         fadeScreenCanvas.SetActive(false);
         textFadeModule.TextFade(creditText.gameObject, 0, 1, 0.8f);
         creditText.text = "플레이해주셔서 감사합니다.";
-        yield return new WaitForSeconds(10); 
+        yield return new WaitForSeconds(8); 
         textFadeModule.TextFade(creditText.gameObject, 1, 0, 0.8f);
         yield return new WaitForSeconds(1.2f);
 

@@ -2,12 +2,12 @@
     "isFirstPlay": false,
     "startYear": 2023,
     "startMonth": 1,
-    "startDay": 25,
-    "nowDay": 1,
+    "startDay": 26,
+    "nowDay": 3,
     "isWatchDayStory": [
         true,
-        false,
-        false
+        true,
+        true
     ],
     "isPuzzleOpen": [
         false,
@@ -20,17 +20,17 @@
         false
     ],
     "isClearPuzzle": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
     ],
-    "playerSpeechHabit": "",
+    "playerSpeechHabit": "habit",
     "soulName": "",
-    "soulShape": "직선이 많다.",
-    "perfumeScent": "꽃향"
+    "soulShape": "곡선이 많다.",
+    "perfumeScent": "물향"
 }

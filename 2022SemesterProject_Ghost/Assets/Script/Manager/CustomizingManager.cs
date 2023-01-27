@@ -33,6 +33,8 @@ public class CustomizingManager : MonoBehaviour
         prefab_obj = Resources.Load("Prefabs/CustomizingPrefab") as GameObject;
         customizingPrefab = MonoBehaviour.Instantiate(prefab_obj, GameObject.Find("Canvas").transform);
         customizingPrefab.name = "customizingPrefab";
+        customizingPrefab.transform.localScale *= 1.35f;
+
         Vector2 pos = new Vector2(720, 2000);
         customizingPrefab.transform.position = customizingPos.position;
         
@@ -93,7 +95,7 @@ public class CustomizingManager : MonoBehaviour
                     {
                         itemList.RemoveAt(itemList.Count - 1);
                         soulFaceItemList.RemoveAt(soulFaceItemList.Count - 1);
-
+                        Debug.Log(tempObj.name);
                         Destroy(tempObj);
                         Destroy(tempObj2);
                     }
@@ -104,7 +106,7 @@ public class CustomizingManager : MonoBehaviour
                     {
                         itemList.RemoveAt(itemList.Count - 1);
                         soulFaceItemList.RemoveAt(soulFaceItemList.Count - 1);
-
+                        Debug.Log(tempObj.name);
                         Destroy(tempObj);
                         Destroy(tempObj2);
                     }
