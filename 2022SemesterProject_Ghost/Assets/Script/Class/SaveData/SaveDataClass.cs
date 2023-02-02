@@ -17,6 +17,9 @@ public class SaveDataClass
     public int startMonth;
     public int startDay;
     public int nowDay;
+    public int startHour;
+    public int startMinute;
+    public int startSecond;
     public List<bool> isWatchDayStory;
 
     public List<bool> isPuzzleOpen;
@@ -36,6 +39,9 @@ public class SaveDataClass
         startYear = DateTime.Now.Year;
         startMonth = DateTime.Now.Month;
         startDay = DateTime.Now.Day;
+        startHour= DateTime.Now.Hour;
+        startMinute= DateTime.Now.Minute;
+        startSecond= DateTime.Now.Second;
         nowDay = 1;
         isWatchDayStory = new List<bool>();
         for (int i = 0; i < 3; i++)

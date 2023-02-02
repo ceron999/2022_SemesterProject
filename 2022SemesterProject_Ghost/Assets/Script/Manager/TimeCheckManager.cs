@@ -3,84 +3,83 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Runtime.InteropServices.ComTypes;
 
 public class TimeCheckManager : MonoBehaviour
 {
     [SerializeField]
     GameObject soul;
-    [SerializeField]
+    [SerializeField] 
+    Text typingText;
+    [SerializeField] 
+    Text blinkTextObject;
+    [SerializeField] 
     Text counterText;
-    [SerializeField] 
-    Text wakeupDateText;
-    [SerializeField] 
-    Text wakeupTimeText;
-    [SerializeField] 
-    Text wakeupText;
 
 
     [HideInInspector]
     public TimeSpan spare;
-    public DateTime midnightTime;
-    public DateTime standardTime;
+    public DateTime startTime;
     public DateTime nowTime;
     bool isSoulGone = false;
 
     private void Start()
     {
-        GameManager.Instance.isTalkTIme = false;
-        SetTImeText();
+        TypingText();
+        BlinkText();
+        SetCounterTime();
     }
 
     void Update()
     {
-        if(!isSoulGone)
-            SetSpareTime();
+        SetCounterTimeText();
     }
 
-    void SetTImeText()
+    void SetCounterTime()
     {
-        string standard = DateTime.Now.ToString("yyyy/MM/dd") + " 08:00"; // 오늘 오전 8시
-        standardTime = Convert.ToDateTime(standard); //기준시간을 오늘날짜 오전 8시로 설정
-        nowTime = DateTime.Now; //현재시간
+        int year = GameManager.Instance.saveData.startYear;
+        int month = GameManager.Instance.saveData.startMonth;
+        int day = GameManager.Instance.saveData.startDay;
+        int hour = GameManager.Instance.saveData.startHour;
+        int minute = GameManager.Instance.saveData.startMinute;
+        int second = GameManager.Instance.saveData.startSecond;
+        startTime = new DateTime(year, month, day, hour, minute, second);
+    }
 
-        int result = DateTime.Compare(nowTime, standardTime);
-        if (result >= 0)
-        {  // 오전 8시 이후인 경우(영혼 기상 후)
-            GameManager.Instance.isTalkTIme = true;
+    void SetCounterTimeText()
+    {
+        spare = DateTime.Now - startTime;
+        counterText.text = spare.ToString(@"hh\:mm\:ss");
+    }
 
-            wakeupText.text = "취침 시간";
-            wakeupTimeText.text = "00시"; //자정          
-            wakeupDateText.text = nowTime.AddDays(1).ToString("yyyy년 MM월 dd일"); // 기상날짜
+    void TypingText()
+    {
+        typingText.text = "";
+        string text = "안녕, 기다렸어!\n보러와줘서 고마워!";
+        StartCoroutine(TypingTextCoroutine(text));
+    }
 
-            string midnight = nowTime.AddDays(1).ToString("yyyy/MM/dd") + " 00:00"; // 자정 설정
-            midnightTime = Convert.ToDateTime(midnight);
-        }
-        else
-        { // 오전 8시 이전(영혼 취침 중)
-            GameManager.Instance.isTalkTIme = false;
-
-            wakeupText.text = "기상 시간";
-            wakeupTimeText.text = "08시";
-            wakeupDateText.text = standardTime.ToString("yyyy년 MM월 dd일");
+    IEnumerator TypingTextCoroutine(string getString)
+    {
+        for (int i = 0; i < getString.Length; i++)
+        {
+            typingText.text += getString[i];
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
-    void SetSpareTime()
+    void BlinkText()
     {
-
-        nowTime = DateTime.Now; //현재시간
-
-        int result = DateTime.Compare(DateTime.Now, standardTime);
-        if (result >= 0)
-        {  // 오전 8시 이후인 경우(영혼 기상 후)
-
-            spare = midnightTime - nowTime; //자정-현재시간
-            counterText.text = "<color=#DC143C>" + spare.ToString(@"hh\:mm\:ss") + "</color>";
-        }
-        else
-        { // 오전 8시 이전(영혼 취침 중)
-            spare = standardTime - nowTime;
-            counterText.text = "<color=#32CD32>" + spare.ToString(@"hh\:mm\:ss") + "</color>";
+        StartCoroutine(BlinkTextCoroutine());
+    }
+    IEnumerator BlinkTextCoroutine()
+    {
+        while (true)
+        {
+            blinkTextObject.color = new Color(255 / 255f, 217 / 255f, 102 / 255f, 1);
+            yield return new WaitForSeconds(2f);
+            blinkTextObject.color = new Color(255 / 255f, 217 / 255f, 102 / 255f, 0);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 
@@ -88,13 +87,13 @@ public class TimeCheckManager : MonoBehaviour
     {
         if (GameManager.Instance.saveData.isWatchDayStory[2])
         {
-            isSoulGone = true;
-            Destroy(soul);
-            Destroy(wakeupDateText);
-            Destroy(wakeupTimeText);
+            //isSoulGone = true;
+            //Destroy(soul);
+            //Destroy(wakeupDateText);
+            //Destroy(wakeupTimeText);
 
-            wakeupText.text = "영혼이 떠났다...";
-            Destroy(counterText);
+            //wakeupText.text = "영혼이 떠났다...";
+            //Destroy(counterText);
         }
     }
 }

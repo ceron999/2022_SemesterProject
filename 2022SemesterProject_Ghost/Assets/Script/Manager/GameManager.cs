@@ -62,10 +62,6 @@ public class GameManager : MonoBehaviour
             text.text = "NULL";
             SetSaveDataClear();
         }
-        else
-        {
-            text.text = saveData.isFirstPlay + "\n" + saveData.startYear + "\n" + saveData.startMonth + "\n" + saveData.startDay;
-        }
         SetNowDay();
         SoundManager.instance.PlayBgm(BGM.Main);
     }
