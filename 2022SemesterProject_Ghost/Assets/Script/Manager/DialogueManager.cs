@@ -275,7 +275,7 @@ public class DialogueManager : MonoBehaviour
                 while (isSaveDataPrinting)
                     yield return null;
             }
-            yield return new WaitForSeconds(0.07f);
+            yield return new WaitForSeconds(0.05f);
         }
 
         isDialoguePrinting = false;
@@ -297,7 +297,7 @@ public class DialogueManager : MonoBehaviour
         for (int i = 0; i < getSaveDataText.Length; i++)
         {
                 dialogueText.text += getSaveDataText[i];
-                yield return new WaitForSeconds(0.07f);
+                yield return new WaitForSeconds(0.05f);
         }
         isSaveDataPrinting = false;
     }

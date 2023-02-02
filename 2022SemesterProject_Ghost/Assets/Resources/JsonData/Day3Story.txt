@@ -3,46 +3,44 @@
     [
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"안녕 오늘이 마지막이 될 것 같아. ^"
         },
         {
             "type":"Dialog",
-            "characterName":"player",
+            "characterName":"나",
             "dialogue":"그러게."
         },
         {
             "type":"Dialog",
-            "characterName":"narration",
-            "dialogue":"마지막으로 얼굴을 닦아주었다. 영혼의 얼굴은..."
+            "dialogue":"(마지막으로 얼굴을 닦아주었다. 영혼의 얼굴은...)"
         },
         {
             "type":"Customizing"
         },
         {
             "type":"Dialog",
-            "characterName":"narration",
-            "dialogue":"영혼은 기쁜 모습으로 떠올랐다."
+            "dialogue":"(영혼은 기쁜 모습으로 떠올랐다.)"
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"정말 고마워. 혹시 나에게 이름을 지어줄 수 있어?"
         },
         {
             "type":"Dialog",
-            "characterName":"player",
+            "characterName":"나",
             "actionKeywordString":"GetSoulName",
             "dialogue":"영혼에게 이름을 지어주세요."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"@, 나의 새로운 이름이야. 고마워."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"그리고 잘 있어!"
         },
         {
@@ -50,33 +48,31 @@
         },
         {
             "type":"Dialog",
-            "characterName":"narration",
-            "dialogue":"영혼은 의문의 종이 한 장을 두고 떠났다."
+            "dialogue":"(영혼은 의문의 종이 한 장을 두고 떠났다.)"
         },
         {
             "type":"ViewPaper"
         },
         {
             "type":"Dialog",
-            "characterName":"narration",
-            "dialogue":"당신의 영혼 친구는 어째선지 당신을 닮아있는 것 같군요."
+            "dialogue":"(당신의 영혼 친구는 어째선지 당신을 닮아있는 것 같군요.)"
         },
         {
             "type":"RoomFade"
         },
         {
             "type":"Dialog",
-            "characterName":"player",
+            "characterName":"나",
             "dialogue":"...내 방에 혼자가 되니 괜히 적적한 느낌이 들었다."
         },
         {
             "type":"Dialog",
-            "characterName":"player",
+            "characterName":"나",
             "dialogue":"무언가 허전하고, 붕뜬 느낌이 들기도 하고..."
         },
         {
             "type":"Dialog",
-            "characterName":"player",
+            "characterName":"나",
             "dialogue":"앗 맞다! 지각이다!"
         },
         {

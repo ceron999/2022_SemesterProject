@@ -3,37 +3,37 @@
     [
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"난 가끔씩 실없는 농담으로 다른 사람을 놀리고 싶어져."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"맞아. 나쁜 짓인 거 알아."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"하지만 참을 수 없는 걸."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"지금도 딱 너에 대해 떠오른 말이 혀를 맴도는데 어떡하지?"
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"자 들어봐."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"아니다. 이번엔 꾹 참아볼게."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"메롱~"
         }
     ]

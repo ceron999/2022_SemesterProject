@@ -3,17 +3,17 @@
     [
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"영혼의 나이는 죽고난 후 처음부터 다시 센다는 거 알고 있니?"
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"그렇다면 보기에는 아주 어린 갓난아기라도 늙은 할아버지의 선배가 되어버려."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"직접 보면 조금 재밌을텐데."
         }
     ]

@@ -3,13 +3,12 @@
     [
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"나는 직육면체를 주로 다뤘고, 두께나 크기는 모두 달랐어."
         },
         {
             "type":"Dialog",
-            "characterName":"narration",
-            "dialogue":"영혼의 전생은 뭐였을까?"
+            "dialogue":"(영혼의 전생은 뭐였을까?)"
         }
     ]    
 }

@@ -3,7 +3,7 @@
     [
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"나랑 놀아주면 선물을 줄게."
         }
     ]

@@ -3,52 +3,50 @@
 	[
 		{
 			"type":"Dialog",
-			"characterName":"narration",
-			"dialogue":"문을 열고 방에 들어갔더니, 영혼이 있었다."
+			"dialogue":"(문을 열고 방에 들어갔더니, 영혼이 있었다.)"
 		},
 		{
 			"type":"Dialog",
-			"characterName":"narration",
-			"dialogue":"영혼이 내게 말을 걸어왔다."
+			"dialogue":"(영혼이 내게 말을 걸어왔다.)"
 		},
 		{
 			"type":"Dialog",
-			"characterName":"soul",
+			"characterName":"영혼",
 			"dialogue":"너, 사후세계가 있다고 생각해?"
 		},
 		{
 			"type":"Dialog",
-			"characterName":"player",
+			"characterName":"나",
 			"dialogue":"응"
 		},
 		{
 			"type":"Dialog",
-			"characterName":"soul",
+			"characterName":"영혼",
 			"dialogue":"그렇구나, 그곳이 궁금해?"
 		},
 		{
 			"type":"Dialog",
-			"characterName":"player",
+			"characterName":"나",
 			"dialogue":"아니, 나는 한번 살아가는 것만으로도 충분해. 죽고 난 후에도 다른 세계에서 또 살아야 한다니, 말도 안돼!"
 		},
 		{	
 			"type":"Dialog",
-			"characterName":"soul",
+			"characterName":"영혼",
 			"dialogue":"그렇구나! 잘됐다."
 		},
 		{	
 			"type":"Dialog",
-			"characterName":"soul",
+			"characterName":"영혼",
 			"dialogue":"네가 나의 형체를 만드는데 도움을 주면 내가 대신 너의 사후세계에 가줄게."
 		},
 		{
 			"type":"Dialog",
-			"characterName":"soul",
+			"characterName":"영혼",
 			"dialogue":"난 좀 더 살고 싶거든."
 		},
 		{	
 			"type":"Dialog",
-			"characterName":"player",
+			"characterName":"나",
 			"dialogue":"알았어."
 		}
 	]        

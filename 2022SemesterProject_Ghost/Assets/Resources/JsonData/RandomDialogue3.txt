@@ -3,17 +3,17 @@
     [
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"어제 점심 뭐 먹었어?"
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"10초 안에 기억 못하면 진짜진짜 바보래."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"물론 이 말을 믿는다면 바보~"
         }
     ]

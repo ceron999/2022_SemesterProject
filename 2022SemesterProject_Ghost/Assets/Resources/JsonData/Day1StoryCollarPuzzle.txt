@@ -3,17 +3,17 @@
     [
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"나의 근무지는 반려동물 출입 금지여서, 반려동물을 기르는 사람들은 출입구에 목줄을 걸어놓고 잠깐 들르는 경우가 많아."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"내가 앉아서 지키고 있는 곳에서는 바깥 출입구를 내다 볼 수 있는데, 나는 동물을 좋아해서 동물을 키우는 사람들이 올 때면 내심 좋아했어."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"그럴때마다 실내에서 출입구를 바라보며 몰래 웃기도했단다."
         }
     ]

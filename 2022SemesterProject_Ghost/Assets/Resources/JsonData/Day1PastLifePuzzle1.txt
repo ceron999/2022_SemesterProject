@@ -3,37 +3,37 @@
     [
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"아쉽게도 오늘은 더 이상의 질문은 없어."
         },
         {
             "type":"Dialog",
-            "characterName":"player",
+            "characterName":"나",
             "dialogue":"하지만 심심한걸"
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"..."
         },
         {
             "type":"Dialog",
-            "characterName":"player",
+            "characterName":"나",
             "dialogue":"..."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"내 전생에 대해 알려줄까?"
         },
         {
             "type":"Dialog",
-            "characterName":"player",
+            "characterName":"나",
             "dialogue":"응"
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"나랑 놀아주면 힌트를 줄게."
         }
     ]      

@@ -3,22 +3,22 @@
     [
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"또 찾아왔구나."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"노래를 추천해줄게. 오늘의 영혼픽 추천곡은 ..."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"Dancing With Your Ghost - Sasha Sloan"
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"한 번 들어보렴."
         }
     ]

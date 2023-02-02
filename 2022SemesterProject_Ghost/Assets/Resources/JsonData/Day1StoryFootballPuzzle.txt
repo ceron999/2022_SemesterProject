@@ -3,17 +3,17 @@
     [
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"엄청 더웠던 여름 낮에, 땀이 송글송글 맺힌 남자아이가 옆구리에 축구공을 차고 나의 근무지에 들렀어."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"아마 시원한 에어컨을 쐬고 싶었던 것 같아."
         },
         {
             "type":"Dialog",
-            "characterName":"soul",
+            "characterName":"영혼",
             "dialogue":"너무 조용한 분위기에 놀란 나머지 입구에서 우물쭈물하고 있는 모습이 가엽기도 하고 귀여워서, 에어컨이 잘 드는 곳에 의자를 두고 안내해줬던 기억이 나."
         }
     ]
