@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System;
 
 public class BtnManager : MonoBehaviour
 {
+    [SerializeField]
+    GameObject dialogueLogParent;
+    [SerializeField]
+    Text dialogueLogText;
     [SerializeField]
     GameObject fadeCanvas;
     [SerializeField]
@@ -22,7 +27,6 @@ public class BtnManager : MonoBehaviour
     {
         if (GameManager.Instance.saveData.isFirstPlay)
         {
-            GameManager.Instance.saveData.isFirstPlay = false;
             //처음 시작한 날 저장
             GameManager.Instance.saveData.startYear = DateTime.Now.Year;
             GameManager.Instance.saveData.startMonth = DateTime.Now.Month;
@@ -100,6 +104,18 @@ public class BtnManager : MonoBehaviour
     }
 
     //RoomSceneBtn
+
+    public void TouchDialogueLogBtn()
+    {
+        dialogueLogParent.SetActive(true);
+
+        //텍스트 나오게 하기
+    }
+
+    public void TouchDialogueLogExitBtn()
+    {
+        dialogueLogParent.SetActive(false);
+    }
 
     public void TouchInteriorObjectBtnlight1()
     {
