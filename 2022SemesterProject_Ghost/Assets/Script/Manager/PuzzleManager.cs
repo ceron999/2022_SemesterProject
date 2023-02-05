@@ -109,7 +109,7 @@ public class PuzzleManager : MonoBehaviour
         Debug.Log("Correct Count : " + tiles.Count);
         if (tiles.Count == puzzleSize.x * puzzleSize.y - 1)
         {
-            Debug.Log("GameClear");
+            Debug.Log(GameManager.Instance.puzzleArrayNum);
             PuzzleDataSave(GameManager.Instance.puzzleArrayNum);
             GameManager.Instance.puzzleDialogue = true;
             SceneManager.LoadScene("RoomScene");
@@ -175,5 +175,13 @@ public class PuzzleManager : MonoBehaviour
             GameManager.Instance.saveData.isClearPuzzle[puzzleIdx] = true;
             GameManager.Instance.SaveAllData();
         }
+    }
+
+    public void TouchPuzzleClearBtn()
+    {
+        PuzzleDataSave(GameManager.Instance.puzzleArrayNum);
+        Debug.Log(GameManager.Instance.puzzleArrayNum);
+        GameManager.Instance.puzzleDialogue = true;
+        SceneManager.LoadScene("RoomScene");
     }
 }

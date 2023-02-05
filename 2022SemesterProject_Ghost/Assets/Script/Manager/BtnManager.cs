@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System;
 
 public class BtnManager : MonoBehaviour
 {
     [SerializeField]
     GameObject dialogueLogParent;
-    [SerializeField]
-    Text dialogueLogText;
     [SerializeField]
     GameObject fadeCanvas;
     [SerializeField]
@@ -53,39 +50,44 @@ public class BtnManager : MonoBehaviour
     public void TouchWaitingSceneSoulBtn()
     {
         SoundManager.instance.PlaySoundEffect(SoundEffect.WaterDrop1);
-        if (GameManager.Instance.isTalkTIme == true)
+
+        //수정판
+        if (!GameManager.Instance.saveData.isWatchDayStory[0])
         {
-            //만약 그 날짜의 스토리를 보지 않았다면 스토리씬으로
-            int nowDay = GameManager.Instance.saveData.nowDay;
-            if (GameManager.Instance.saveData.isWatchDayStory[nowDay - 1] == false
-                    && GameManager.Instance.isTalkTIme)
+            GameManager.Instance.setDialogueName = "Day1Story";
+            SceneManager.LoadScene("StoryScene");
+        }
+        else if(!GameManager.Instance.saveData.isWatchDayStory[1])
+        {
+            for(int i =0; i<4; i++)
             {
-                switch (nowDay)
+                if (!GameManager.Instance.saveData.isClearPuzzle[i])
                 {
-                    case 1:
-                        GameManager.Instance.setDialogueName = "Day1Story";
-                        SceneManager.LoadScene("StoryScene");
-                        break;
-                    case 2:
-                        GameManager.Instance.setDialogueName = "Day2Story";
-                        SceneManager.LoadScene("StoryScene");
-                        break;
-                    case 3:
-                        GameManager.Instance.setDialogueName = "Day3Story";
-                        SceneManager.LoadScene("StoryScene");
-                        break;
+                    SceneManager.LoadScene("RoomScene");
+                    return;
                 }
             }
-            else
-            {
-                Debug.Log("Day" + nowDay + " 스토리 진행 끝남");
-                SceneManager.LoadScene("RoomScene");
-            }
+
+            GameManager.Instance.saveData.nowDay = 2;
+            GameManager.Instance.setDialogueName = "Day2Story";
+            GameManager.Instance.SaveAllData();
+            SceneManager.LoadScene("StoryScene");
         }
-        else
+        else if(!GameManager.Instance.saveData.isWatchDayStory[2])
         {
-            //아니면
-            SceneManager.LoadScene("RoomScene");
+            for (int i = 4; i < 8; i++)
+            {
+                if (!GameManager.Instance.saveData.isClearPuzzle[i])
+                {
+                    SceneManager.LoadScene("RoomScene");
+                    return;
+                }
+            }
+
+            GameManager.Instance.saveData.nowDay = 3;
+            GameManager.Instance.setDialogueName = "Day3Story";
+            GameManager.Instance.SaveAllData();
+            SceneManager.LoadScene("StoryScene");
         }
     }
 
@@ -104,6 +106,11 @@ public class BtnManager : MonoBehaviour
     }
 
     //RoomSceneBtn
+    public void TouchRoomHomeBtn()
+    {
+        SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
+        SceneManager.LoadScene("WaitingScene");
+    }
 
     public void TouchDialogueLogBtn()
     {
@@ -127,11 +134,11 @@ public class BtnManager : MonoBehaviour
             GameManager.Instance.beforeSetDialogueName = "Day1PastLifePuzzle2";
             GameManager.Instance.puzzleArrayNum = 0;
         }
-        else if (!GameManager.Instance.saveData.isClearPuzzle[1] && nowDay == 2) 
+        else if (!GameManager.Instance.saveData.isClearPuzzle[4] && nowDay == 2) 
         {
             GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Sherlock";
             GameManager.Instance.beforeSetDialogueName = "Day2PastLifePuzzle";
-            GameManager.Instance.puzzleArrayNum = 1;
+            GameManager.Instance.puzzleArrayNum = 4;
         }
         SoundManager.instance.PlaySoundEffect(SoundEffect.WaterDrop2);
         SceneManager.LoadScene("PuzzleScene");
@@ -154,19 +161,19 @@ public class BtnManager : MonoBehaviour
         {
             GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Clover";
             GameManager.Instance.beforeSetDialogueName = "Day1StoryCloverPuzzle";
-            GameManager.Instance.puzzleArrayNum = 2;
+            GameManager.Instance.puzzleArrayNum = 1;
         }
         else if (GameManager.Instance.countCheck == 3)
         {
             GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Leash";
             GameManager.Instance.beforeSetDialogueName = "Day1StoryCollarPuzzle";
-            GameManager.Instance.puzzleArrayNum = 3;
+            GameManager.Instance.puzzleArrayNum = 2;
         }
         else if (GameManager.Instance.countCheck == 4)
         {
             GameManager.Instance.puzzleImage = "PuzzleImage/Puzzle_Soccer_ball";
             GameManager.Instance.beforeSetDialogueName = "Day1StoryFootballPuzzle";
-            GameManager.Instance.puzzleArrayNum = 4;
+            GameManager.Instance.puzzleArrayNum = 3;
         }
         else if (GameManager.Instance.countCheck == 5 && nowDay == 2)
         {
@@ -198,11 +205,11 @@ public class BtnManager : MonoBehaviour
 
 
     //GallerySceneBtn
-    public void TouchHomeBtn()
+    public void TouchGalleryHomeBtn()
     {
         SoundManager.instance.PlaySoundEffect(SoundEffect.SceneMove);
         SoundManager.instance.PlayBgm(BGM.Main);
-        SceneManager.LoadScene("WaitingScene");
+        SceneManager.LoadScene("RoomScene");
     }
 
     public void TouchBookPuzzleBtn()

@@ -45,6 +45,7 @@ public class TutorialManager : MonoBehaviour
 
     void StartTutorial()
     {
+        tutorialCanvas.SetActive(true);
         nowTutorialTextArr = new string[6];
         nowTutorialTextArr[0] = "영혼이 자신의 모습을 기억하게 도와주어야 합니다.";
         nowTutorialTextArr[1] = "영혼을 터치하면, 영혼과 대화할 수 있습니다.";
@@ -78,6 +79,8 @@ public class TutorialManager : MonoBehaviour
                 yield return null;
             }
         }
+
+        tutorialCanvas.SetActive(false);
     }
 
     void SetClickImage(int nowIdx)

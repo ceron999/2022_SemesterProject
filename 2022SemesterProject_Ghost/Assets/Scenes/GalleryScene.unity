@@ -916,6 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3df66c33f759f74184c375abc3079de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueLogParent: {fileID: 0}
   fadeCanvas: {fileID: 0}
   customizingPrefab: {fileID: 0}
 --- !u!1 &496843283
@@ -3379,7 +3380,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496398925}
         m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
-        m_MethodName: TouchHomeBtn
+        m_MethodName: TouchGalleryHomeBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

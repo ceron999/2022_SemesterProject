@@ -791,7 +791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &452007546
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2101,7 +2101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1294976847
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2954,11 +2954,15 @@ MonoBehaviour:
     startMonth: 11
     startDay: 23
     nowDay: 1
+    startHour: 20
+    startMinute: 55
+    startSecond: 17
     isWatchDayStory: 000000
     isPuzzleOpen: 0000000000000000
     isClearPuzzle: 000000000000000000000000
     playerSpeechHabit: 
     soulName: 
+    logWapperName: 
     soulShape: 
     perfumeScent: 
   puzzleImage: 
@@ -3010,6 +3014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3df66c33f759f74184c375abc3079de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueLogParent: {fileID: 0}
   fadeCanvas: {fileID: 918932480}
   customizingPrefab: {fileID: 0}
 --- !u!4 &1976390718

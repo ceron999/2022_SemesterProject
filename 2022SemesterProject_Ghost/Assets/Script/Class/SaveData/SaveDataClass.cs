@@ -28,6 +28,7 @@ public class SaveDataClass
     //대화
     public string playerSpeechHabit;
     public string soulName;
+    public string logWapperName;
 
     //선택지
     public string soulShape;
@@ -57,6 +58,7 @@ public class SaveDataClass
 
         playerSpeechHabit = "";
         soulName = "";
+        logWapperName = "";
 
         soulShape = "";
         perfumeScent = "";

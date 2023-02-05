@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
+    JsonManager jsonManager;
     //해당 소품을 클릭하면 퍼즐로 이동하도록 설정
     [SerializeField]
     DialogueManager dialogueManager;
@@ -17,28 +19,29 @@ public class RoomManager : MonoBehaviour
     GameObject light2;
     [SerializeField]
     GameObject dialoguePrefab;
+    [SerializeField]
+    GameObject dialogueLogParent;
+    [SerializeField]
+    Text logText;
+
     string dialogueName;
+    DialogueWrapper puzzleDialogueWrapper;
 
     void Start()
     {
+        jsonManager = new JsonManager();
         GameClear();
         dialogueName = "RandomDialogue";
         SetPuzzleStory();
+        FixLogText();
     }
 
 
     public void TalkWithSoul()
     {
         SoundManager.instance.PlaySoundEffect(SoundEffect.WaterDrop1);
-        if (GameManager.Instance.isTalkTIme == true)
-        {
-            SetRandomDialogue();
-            dialogueManager.LoadDialogue();
-        }
-        else
-        {
-            Debug.Log("zzz");
-        }
+        SetRandomDialogue();
+        dialogueManager.LoadDialogue();
     }
 
     void SetRandomDialogue()
@@ -52,10 +55,42 @@ public class RoomManager : MonoBehaviour
         if (GameManager.Instance.puzzleDialogue)
         {
             GameManager.Instance.setDialogueName = GameManager.Instance.beforeSetDialogueName;
+            SetDialogueLog(GameManager.Instance.setDialogueName);
             dialogueManager.LoadDialogue();
             GameManager.Instance.puzzleDialogue = false;
         }
         
+    }
+
+    void SetDialogueLog(string dialogueName)
+    {
+        puzzleDialogueWrapper = jsonManager.ResourceDataLoad<DialogueWrapper>(dialogueName);
+        puzzleDialogueWrapper.Parse();
+
+        GameManager.Instance.saveData.logWapperName = dialogueName;
+
+        logText.text = "\n";
+        for(int i=0; i<puzzleDialogueWrapper.dialogueArray.Length; i++) 
+        {
+            logText.text += puzzleDialogueWrapper.dialogueArray[i].dialogue;
+            logText.text += "\n\n";
+        }
+    }
+
+    void FixLogText()
+    {
+        if(GameManager.Instance.saveData.logWapperName != "")
+        {
+            puzzleDialogueWrapper = jsonManager.ResourceDataLoad<DialogueWrapper>(GameManager.Instance.saveData.logWapperName);
+            puzzleDialogueWrapper.Parse();
+
+            logText.text = "\n";
+            for (int i = 0; i < puzzleDialogueWrapper.dialogueArray.Length; i++)
+            {
+                logText.text += puzzleDialogueWrapper.dialogueArray[i].dialogue;
+                logText.text += "\n\n";
+            }
+        }
     }
 
     void GameClear()

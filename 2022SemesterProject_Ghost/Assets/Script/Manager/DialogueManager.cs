@@ -58,6 +58,8 @@ public class DialogueManager : MonoBehaviour
     GameObject roomImage;
     [SerializeField]
     GameObject fadeScreenCanvas;
+    [SerializeField]
+    Text dayText;
     UIFadeModule screenFadeModule;
 
     [SerializeField]
@@ -118,12 +120,12 @@ public class DialogueManager : MonoBehaviour
                 soulFaceMouthList.Add(tempObj2);
                 soulFaceMouthList[i].SetActive(false);
             }
-            for(int i=0; i<7; i++){
+            for(int i=1; i<7; i++){
                 tempstr2 = "";
                 tempstr2 = "SoulFaceItem"+i.ToString();
                 tempObj2 = GameObject.Find(tempstr2);
                 soulFaceItemList.Add(tempObj2);
-                soulFaceItemList[i].SetActive(false);
+                soulFaceItemList[i - 1].SetActive(false);
             }
 
             //CustomizingScene에서 정한 눈, 입, 아이템만 보이게 설정
@@ -157,12 +159,47 @@ public class DialogueManager : MonoBehaviour
             dialogueWrapper = jsonManager.ResourceDataLoad<DialogueWrapper>(dialogueWrapperName);
             dialogueWrapper.Parse();
 
+            yield return StartCoroutine(SetDayText());
             screenFadeModule.ScreenFade(1, 0, 1);
             yield return new WaitForSeconds(1);
             DialoguePrefabToggle(true);
             SetScreenTouchCanvas(true);
             StartDialogue();
         } 
+    }
+    IEnumerator SetDayText()
+    {
+        screenFadeModule.ScreenFade(1, 1, 0.01f);
+        if (dialogueWrapperName == "Day1Story")
+        {
+            dayText.text = "1일차";
+            dayText.gameObject.SetActive(true);
+            screenFadeModule.TextFade(dayText.gameObject, 0, 1, 1);
+            yield return new WaitForSeconds(1);
+            screenFadeModule.TextFade(dayText.gameObject, 1, 0, 1);
+            yield return new WaitForSeconds(1);
+        }
+        else if(dialogueWrapperName == "Day2Story")
+        {
+            dayText.text = "2일차";
+            dayText.gameObject.SetActive(true);
+            screenFadeModule.TextFade(dayText.gameObject, 0, 1, 1);
+            yield return new WaitForSeconds(3);
+            screenFadeModule.TextFade(dayText.gameObject, 1, 0, 1);
+            yield return new WaitForSeconds(1);
+        }
+        else if(dialogueWrapperName == "Day3Story")
+        {
+            if (nowDialogueIndex == 0)
+            {
+                dayText.text = "3일차";
+                dayText.gameObject.SetActive(true);
+                screenFadeModule.TextFade(dayText.gameObject, 0, 1, 1);
+                yield return new WaitForSeconds(1);
+                screenFadeModule.TextFade(dayText.gameObject, 1, 0, 1);
+                yield return new WaitForSeconds(1);
+            }
+        }
     }
 
     public void LoadDialogue()

@@ -72,9 +72,9 @@
             "characterName":"나",
             "dialogue":"",
             "isDialogueJump" : "true",
-            "routeFirst":"내가 모르는 것",
-            "routeSecond":"내가 알고있는 것",
-            "routeThird":"난 세상에 무서운 게 하나도 없지."
+            "routeFirst":"모르는 것",
+            "routeSecond":"아는 것",
+            "routeThird":"없지."
         },
         {
             "type":"Dialog",

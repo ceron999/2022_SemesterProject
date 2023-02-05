@@ -74,7 +74,7 @@ public class CustomizingManager : MonoBehaviour
             soulFaceMouthList.Add(tempObj2);
             soulFaceMouthList[i].SetActive(false);
         }
-        for(int i=0; i<7; i++){
+        for(int i=1; i<7; i++){
             tempstr = ""; // item0~6
             tempstr = "Item"+i.ToString();
             tempObj = GameObject.Find(tempstr);
@@ -86,43 +86,17 @@ public class CustomizingManager : MonoBehaviour
             tempObj2 = GameObject.Find(tempstr2);
             soulFaceItemList.Add(tempObj2);
             tempObj2.SetActive(false);
-
-            if (i != 0)
-            {
-                if (i < 4)
-                {
-                    if (!GameManager.Instance.saveData.isClearPuzzle[i])
-                    {
-                        itemList.RemoveAt(itemList.Count - 1);
-                        soulFaceItemList.RemoveAt(soulFaceItemList.Count - 1);
-                        Debug.Log(tempObj.name);
-                        Destroy(tempObj);
-                        Destroy(tempObj2);
-                    }
-                }
-                else if (i >= 4)
-                {
-                    if (!GameManager.Instance.saveData.isClearPuzzle[i + 1])
-                    {
-                        itemList.RemoveAt(itemList.Count - 1);
-                        soulFaceItemList.RemoveAt(soulFaceItemList.Count - 1);
-                        Debug.Log(tempObj.name);
-                        Destroy(tempObj);
-                        Destroy(tempObj2);
-                    }
-                }
-            }
         }    
     }
 
     void Start(){ // 첫번째 눈, 입, 아이템 보이게 설정
         eyeList[0].SetActive(true);
         mouthList[0].SetActive(true);
-        itemList[0].SetActive(true);
+        itemList[1].SetActive(true);
         
         soulFaceEyeList[0].SetActive(true);
         soulFaceMouthList[0].SetActive(true);
-        soulFaceItemList[0].SetActive(true);
+        soulFaceItemList[1].SetActive(true);
 
         //곡선이 많다 = Character1 / 직선이 많다 = Character2
         jsonManager = new JsonManager();
@@ -199,7 +173,7 @@ public class CustomizingManager : MonoBehaviour
         SoundManager.instance.PlaySoundEffect(SoundEffect.SlotLeftBtn);
         itemList[itemIndex].SetActive(false); 
         soulFaceItemList[itemIndex].SetActive(false); 
-        if(itemIndex==0){
+        if(itemIndex==1){
             itemIndex= itemList.Count - 1;
         }
         else{
@@ -215,7 +189,7 @@ public class CustomizingManager : MonoBehaviour
         soulFaceItemList[itemIndex].SetActive(false); 
         if(itemIndex == itemList.Count - 1)
         {
-            itemIndex=0;
+            itemIndex=1;
         }
         else{
             itemIndex++;
