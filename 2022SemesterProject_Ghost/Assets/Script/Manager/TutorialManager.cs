@@ -47,11 +47,11 @@ public class TutorialManager : MonoBehaviour
     {
         tutorialCanvas.SetActive(true);
         nowTutorialTextArr = new string[6];
-        nowTutorialTextArr[0] = "영혼이 자신의 모습을 기억하게 도와주어야 합니다.";
-        nowTutorialTextArr[1] = "영혼을 터치하면, 영혼과 대화할 수 있습니다.";
-        nowTutorialTextArr[2] = "영혼 주변의 광원은 영혼의 기억입니다.";
-        nowTutorialTextArr[3] = "기억을 터치하여 퍼즐을 풀면, 영혼이 기억을 하나씩 되찾을 수 있습니다.";
-        nowTutorialTextArr[4] = "영혼의 기억은 다시 확인 할 수 있습니다.";
+        nowTutorialTextArr[0] = "영혼이 자신의 모습을 기억하게\n 도와주어야 합니다.";
+        nowTutorialTextArr[1] = "영혼을 터치하면,\n 영혼과 대화할 수 있습니다.";
+        nowTutorialTextArr[2] = "영혼 주변의 광원은\n 영혼의 기억입니다.";
+        nowTutorialTextArr[3] = "기억을 터치하여 퍼즐을 풀면,\n 영혼이 기억을 하나씩\n 되찾을 수 있습니다.";
+        nowTutorialTextArr[4] = "영혼의 기억은\n 다시 확인 할 수 있습니다.";
         nowTutorialTextArr[5] = "그럼 즐거운 조우 되세요!";
         
         StartCoroutine(TypingTutorialTextCoroutine());

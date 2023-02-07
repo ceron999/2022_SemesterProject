@@ -25,9 +25,7 @@ public class BtnManager : MonoBehaviour
         if (GameManager.Instance.saveData.isFirstPlay)
         {
             //처음 시작한 날 저장
-            GameManager.Instance.saveData.startYear = DateTime.Now.Year;
-            GameManager.Instance.saveData.startMonth = DateTime.Now.Month;
-            GameManager.Instance.saveData.startDay = DateTime.Now.Day;
+            GameManager.Instance.SetSaveDataClear();
             GameManager.Instance.setDialogueName = "Day1Encounter";
 
             UIFadeModule screenFadeModule = fadeCanvas.GetComponent<UIFadeModule>();
