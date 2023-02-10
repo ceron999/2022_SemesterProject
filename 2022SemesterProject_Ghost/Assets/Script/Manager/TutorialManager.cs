@@ -21,25 +21,50 @@ public class TutorialManager : MonoBehaviour
     Transform light2Transform;
     [SerializeField]
     Transform dialogueLogTransform;
+    [SerializeField]
+    GameObject dialoguePrefab;
 
     bool isTutorialEnd;
     string[] nowTutorialTextArr;
 
     private void Start()
     {
+        StartCoroutine(EndDay1PuzzleCoroutine());
         if(isTutorialEnd)
         {
-            Destroy(tutorialText);
-            Destroy(clickImage1);
-            Destroy(clickImage2);
-            Destroy(tutorialCanvas);
-            Destroy(this);
+            tutorialCanvas.SetActive(false);
             return;
         }
         if(GameManager.Instance.saveData.isFirstPlay)
         {
             GameManager.Instance.saveData.isFirstPlay = false;
             StartTutorial();
+        }
+    }
+
+    IEnumerator EndDay1PuzzleCoroutine()
+    {
+        if (GameManager.Instance.saveData.isWatchDayStory[0] && !GameManager.Instance.saveData.isWatchDayStory[1])
+        {
+            Debug.Log("1일차 퍼즐 끝났다고 들어옴");
+            for (int i = 0; i < 4; i++)
+            {
+                if (GameManager.Instance.saveData.isClearPuzzle[i] != true)
+                    break;
+                yield return new WaitForSeconds(1);
+                if (i == 3)
+                {
+                    if (dialoguePrefab.activeSelf == true)
+                        while (dialoguePrefab.activeSelf == true)
+                            yield return null;
+                    tutorialCanvas.SetActive(true);
+                    nowTutorialTextArr = new string[1];
+                    nowTutorialTextArr[0] = "1일차 퍼즐 4개를 클리어하셨습니다!\n" +
+                        "홈 버튼을 누르고 영혼을 클릭해주세요!\n";
+
+                    StartCoroutine(TypingTutorialTextCoroutine());
+                }
+            }
         }
     }
 
@@ -63,7 +88,7 @@ public class TutorialManager : MonoBehaviour
     IEnumerator TypingTutorialTextCoroutine()
     {
         string nowText;
-        for (int idx = 0; idx < 6; idx ++)
+        for (int idx = 0; idx < nowTutorialTextArr.Length; idx ++)
         {
             tutorialText.text = "";
             nowText = nowTutorialTextArr[idx];

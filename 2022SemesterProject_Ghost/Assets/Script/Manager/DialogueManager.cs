@@ -134,6 +134,7 @@ public class DialogueManager : MonoBehaviour
             soulFaceEyeList[CustomizingManager.eyeIndex].SetActive(true);
             soulFaceMouthList[CustomizingManager.mouthIndex].SetActive(true);
             soulFaceItemList[CustomizingManager.itemIndex].SetActive(true);
+            customizingPrefab.transform.localScale *= 1.3f;
         }
 
         jsonManager = new JsonManager();

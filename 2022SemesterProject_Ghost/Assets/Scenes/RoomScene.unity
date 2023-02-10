@@ -2272,6 +2272,7 @@ MonoBehaviour:
   light1Transform: {fileID: 214036903}
   light2Transform: {fileID: 1776888216}
   dialogueLogTransform: {fileID: 1658381808}
+  dialoguePrefab: {fileID: 1934323248}
 --- !u!1 &1480976880
 GameObject:
   m_ObjectHideFlags: 0

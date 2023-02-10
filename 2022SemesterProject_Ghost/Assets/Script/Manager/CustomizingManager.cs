@@ -92,11 +92,11 @@ public class CustomizingManager : MonoBehaviour
     void Start(){ // 첫번째 눈, 입, 아이템 보이게 설정
         eyeList[0].SetActive(true);
         mouthList[0].SetActive(true);
-        itemList[1].SetActive(true);
+        itemList[0].SetActive(true);
         
         soulFaceEyeList[0].SetActive(true);
         soulFaceMouthList[0].SetActive(true);
-        soulFaceItemList[1].SetActive(true);
+        soulFaceItemList[0].SetActive(true);
 
         //곡선이 많다 = Character1 / 직선이 많다 = Character2
         jsonManager = new JsonManager();
@@ -173,7 +173,7 @@ public class CustomizingManager : MonoBehaviour
         SoundManager.instance.PlaySoundEffect(SoundEffect.SlotLeftBtn);
         itemList[itemIndex].SetActive(false); 
         soulFaceItemList[itemIndex].SetActive(false); 
-        if(itemIndex==1){
+        if(itemIndex==0){
             itemIndex= itemList.Count - 1;
         }
         else{
@@ -189,7 +189,7 @@ public class CustomizingManager : MonoBehaviour
         soulFaceItemList[itemIndex].SetActive(false); 
         if(itemIndex == itemList.Count - 1)
         {
-            itemIndex=1;
+            itemIndex=0;
         }
         else{
             itemIndex++;
