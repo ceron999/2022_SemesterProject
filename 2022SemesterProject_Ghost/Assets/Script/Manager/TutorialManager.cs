@@ -51,7 +51,7 @@ public class TutorialManager : MonoBehaviour
             {
                 if (GameManager.Instance.saveData.isClearPuzzle[i] != true)
                     break;
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(0.1f);
                 if (i == 3)
                 {
                     if (dialoguePrefab.activeSelf == true)
@@ -60,7 +60,7 @@ public class TutorialManager : MonoBehaviour
                     tutorialCanvas.SetActive(true);
                     nowTutorialTextArr = new string[1];
                     nowTutorialTextArr[0] = "1일차 퍼즐 4개를 클리어하셨습니다!\n" +
-                        "홈 버튼을 누르고 영혼을 클릭해주세요!\n";
+                        "홈 버튼을 누르고 영혼을\n 클릭해주세요!\n";
 
                     StartCoroutine(TypingTutorialTextCoroutine());
                 }

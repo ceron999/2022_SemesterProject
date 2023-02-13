@@ -68,6 +68,11 @@ public class DialogueManager : MonoBehaviour
     Transform customizingPos;
 
     [SerializeField]
+    Image idCardCharImage;
+    [SerializeField]
+    GameObject glasses;
+
+    [SerializeField]
     DialogueWrapper dialogueWrapper;
     public string dialogueWrapperName;
 
@@ -399,7 +404,8 @@ public class DialogueManager : MonoBehaviour
                 SetScreenTouchCanvas(false);
                 DialoguePrefabToggle(false);
             }
-            
+
+            StartDay1Story();   //게임 시작하고 바로 1일차 시작하기 위해 넣음
             GameManager.Instance.SetIsWatchStory(dialogueWrapperName);
             GameManager.Instance.setDialogueName = "";
             jsonManager.SaveJson(GameManager.Instance.saveData, "SaveData");
@@ -567,16 +573,12 @@ public class DialogueManager : MonoBehaviour
     {
         DialoguePrefabToggle(false);
         SetScreenTouchCanvas(false);
-        soul.transform.SetParent(viewPaperImage.transform);
+        Destroy(soul);
         viewPaperText.text = "이름: " + GameManager.Instance.saveData.soulName;
         yield return new WaitForSeconds(0.5f);
 
         viewPaperImage.gameObject.SetActive(true);
-        soulBackGroundList[CustomizingManager.backgroundIndex].SetActive(true);
-        soulFaceEyeList[CustomizingManager.eyeIndex].SetActive(true);
-        soulFaceMouthList[CustomizingManager.mouthIndex].SetActive(true);
-        soulFaceItemList[CustomizingManager.itemIndex].SetActive(true);
-        SetSoulAlpha();
+        SetIDCardCharImage();
 
         //임시로 만듬
         while (!Input.GetMouseButtonDown(0))
@@ -585,10 +587,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         viewPaperImage.gameObject.SetActive(false);
-        soulBackGroundList[CustomizingManager.backgroundIndex].SetActive(false);
-        soulFaceEyeList[CustomizingManager.eyeIndex].SetActive(false);
-        soulFaceMouthList[CustomizingManager.mouthIndex].SetActive(false);
-        soulFaceItemList[CustomizingManager.itemIndex].SetActive(false);
 
         yield return new WaitForSeconds(1);
 
@@ -596,6 +594,42 @@ public class DialogueManager : MonoBehaviour
         SetScreenTouchCanvas(true);
         viewPaperImage.gameObject.SetActive(false);
         ScreenTouch();
+    }
+
+    void SetIDCardCharImage()
+    {
+        string hairColor = GameManager.Instance.saveData.perfumeScent;
+        Sprite[] iDCardCharImageArr = Resources.LoadAll<Sprite>("IDCard");
+
+        if (CustomizingManager.eyeIndex == 1)
+            glasses.SetActive(true);
+        else
+            glasses.SetActive(false);
+
+        switch(hairColor)
+        {
+            case "물향":
+                idCardCharImage.sprite = iDCardCharImageArr[0];
+                break;
+            case "꽃향":
+                idCardCharImage.sprite = iDCardCharImageArr[1];
+                break;
+			case "과일향":
+                idCardCharImage.sprite = iDCardCharImageArr[2];
+                break;
+            case "나무향":
+                idCardCharImage.sprite = iDCardCharImageArr[6];
+                break;
+            case "가죽향":
+                idCardCharImage.sprite = iDCardCharImageArr[3];
+                break;
+            case "기타":
+                idCardCharImage.sprite = iDCardCharImageArr[5];
+                break;
+            case "향수 안뿌린다":
+                idCardCharImage.sprite = iDCardCharImageArr[4];
+                break;
+        }
     }
 
     IEnumerator RoomFadeCoroutine()
@@ -632,12 +666,22 @@ public class DialogueManager : MonoBehaviour
         soulModule.ObjectFade(soulFaceItemList[CustomizingManager.itemIndex].gameObject, start, end, time);
     }    
 
-    void SetSoulAlpha()
+    void StartDay1Story()
     {
-        UIFadeModule soulModule = soul.GetComponent<UIFadeModule>();
-        soulModule.ObjectFade(soulBackGroundList[CustomizingManager.backgroundIndex].gameObject, 0, 1, 0);
-        soulModule.ObjectFade(soulFaceEyeList[CustomizingManager.eyeIndex].gameObject, 0, 1, 0);
-        soulModule.ObjectFade(soulFaceMouthList[CustomizingManager.mouthIndex].gameObject, 0, 1, 0);
-        soulModule.ObjectFade(soulFaceItemList[CustomizingManager.itemIndex].gameObject, 0, 1, 0);
+        if (dialogueWrapperName == "Day1Encounter")
+        {
+            Debug.Log(11);
+            GameManager.Instance.setDialogueName = "StartDay1";
+            UnityEngine.SceneManagement.SceneManager.LoadScene("TempScene");
+        }
     }
+
+    //void SetSoulAlpha()
+    //{
+    //    UIFadeModule soulModule = soul.GetComponent<UIFadeModule>();
+    //    soulModule.ObjectFade(soulBackGroundList[CustomizingManager.backgroundIndex].gameObject, 0, 1, 0);
+    //    soulModule.ObjectFade(soulFaceEyeList[CustomizingManager.eyeIndex].gameObject, 0, 1, 0);
+    //    soulModule.ObjectFade(soulFaceMouthList[CustomizingManager.mouthIndex].gameObject, 0, 1, 0);
+    //    soulModule.ObjectFade(soulFaceItemList[CustomizingManager.itemIndex].gameObject, 0, 1, 0);
+    //}
 }

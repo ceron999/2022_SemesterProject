@@ -89,8 +89,10 @@ public class GameManager : MonoBehaviour
         saveData.isFirstPlay = false;
         saveData.startYear = DateTime.Now.Year;
         saveData.startMonth = DateTime.Now.Month;
-        saveData.startDay = DateTime.Now.Day - 1;
-        saveData.nowDay = 2;
+        saveData.startDay = DateTime.Now.Day;
+        saveData.startHour = DateTime.Now.Hour;
+        saveData.startMinute = DateTime.Now.Minute;
+        saveData.startSecond = DateTime.Now.Second;
         saveData.isWatchDayStory[0] = true;
 
         saveData.playerSpeechHabit = "habit";
@@ -99,6 +101,9 @@ public class GameManager : MonoBehaviour
         saveData.soulShape = "곡선이 많다.";
         saveData.perfumeScent = "물향";
 
+        saveData.isClearPuzzle[0] = true;
+        saveData.isClearPuzzle[1] = true;
+        saveData.isClearPuzzle[2] = true;
 
         jsonManager.SaveJson(saveData, "SaveData");
         Debug.Log("Set Day2 Clear");

@@ -61,9 +61,11 @@ public class BtnManager : MonoBehaviour
             {
                 if (!GameManager.Instance.saveData.isClearPuzzle[i])
                 {
+                    Debug.Log(i + " 클리어 안함");
                     SceneManager.LoadScene("RoomScene");
                     return;
                 }
+                Debug.Log(i + " 클리어 함");
             }
 
             GameManager.Instance.saveData.nowDay = 2;

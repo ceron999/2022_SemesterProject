@@ -25,6 +25,8 @@ public class TimeCheckManager : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.Instance.saveData.isWatchDayStory[2])
+            GameClear();
         TypingText();
         BlinkText();
         SetCounterTime();
@@ -77,7 +79,7 @@ public class TimeCheckManager : MonoBehaviour
         while (true)
         {
             blinkTextObject.color = new Color(255 / 255f, 217 / 255f, 102 / 255f, 1);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             blinkTextObject.color = new Color(255 / 255f, 217 / 255f, 102 / 255f, 0);
             yield return new WaitForSeconds(0.2f);
         }
@@ -92,7 +94,7 @@ public class TimeCheckManager : MonoBehaviour
             //Destroy(wakeupDateText);
             //Destroy(wakeupTimeText);
 
-            //wakeupText.text = "영혼이 떠났다...";
+            typingText.text = "영혼이 떠났다...";
             //Destroy(counterText);
         }
     }
