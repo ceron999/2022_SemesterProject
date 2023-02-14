@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dd2cfad65c09e4fa9a36d68a623656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionRange: 0.1
+  actionRange: 0.35
   speed: 2
 --- !u!1 &499808945
 GameObject:
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dd2cfad65c09e4fa9a36d68a623656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionRange: 0.1
+  actionRange: 0.35
   speed: 2
 --- !u!1 &956154450
 GameObject:
@@ -1688,6 +1688,8 @@ MonoBehaviour:
   dayText: {fileID: 0}
   customizingPrefab: {fileID: 0}
   customizingPos: {fileID: 0}
+  idCardCharImage: {fileID: 0}
+  glasses: {fileID: 0}
   dialogueWrapper:
     dialogueArray: []
   dialogueWrapperName: 

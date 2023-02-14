@@ -67,8 +67,9 @@ public class GameManager : MonoBehaviour
             text.text = saveData.isFirstPlay.ToString();
             text.text += "\n" + saveData.startMonth +"/"+ saveData.startDay +"\n"+ saveData.startHour+":"
                 + saveData.startMinute;
-            if(saveData.startMonth ==1 && saveData.startDay <30 && saveData.startYear==2023)
-                SetSaveDataClear();
+            if(saveData.startMonth == 2 && saveData.startDay < 14 && saveData.startYear==2023)
+                if (saveData.isWatchDayStory[2])
+                    SetSaveDataClear();
         }
         SetNowDay();
         SoundManager.instance.PlayBgm(BGM.Main);

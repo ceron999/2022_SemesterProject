@@ -89,6 +89,8 @@ public class BtnManager : MonoBehaviour
             GameManager.Instance.SaveAllData();
             SceneManager.LoadScene("StoryScene");
         }
+        else
+            SceneManager.LoadScene("RoomScene");
     }
 
     public void TouchGalleryBtn()
