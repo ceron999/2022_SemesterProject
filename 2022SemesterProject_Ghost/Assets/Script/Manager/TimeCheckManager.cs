@@ -26,7 +26,10 @@ public class TimeCheckManager : MonoBehaviour
     private void Start()
     {
         if (GameManager.Instance.saveData.isWatchDayStory[2])
+        {
             GameClear();
+            return;
+        }
         TypingText();
         BlinkText();
         SetCounterTime();
