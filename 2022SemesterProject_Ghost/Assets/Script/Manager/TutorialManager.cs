@@ -29,7 +29,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(EndDay1PuzzleCoroutine());
+        StartCoroutine(EndDayPuzzleCoroutine());
         if(isTutorialEnd)
         {
             tutorialCanvas.SetActive(false);
@@ -42,7 +42,7 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    IEnumerator EndDay1PuzzleCoroutine()
+    IEnumerator EndDayPuzzleCoroutine()
     {
         if (GameManager.Instance.saveData.isWatchDayStory[0] && !GameManager.Instance.saveData.isWatchDayStory[1])
         {
@@ -60,6 +60,31 @@ public class TutorialManager : MonoBehaviour
                     tutorialCanvas.SetActive(true);
                     nowTutorialTextArr = new string[1];
                     nowTutorialTextArr[0] = "1일차 퍼즐 4개를 클리어하셨습니다!\n" +
+                        "홈 버튼을 누르고 영혼을\n 클릭해주세요!\n";
+
+                    StartCoroutine(TypingTutorialTextCoroutine());
+                }
+            }
+        }
+
+        else if(GameManager.Instance.saveData.isWatchDayStory[0] &&
+                GameManager.Instance.saveData.isWatchDayStory[1] &&
+                !GameManager.Instance.saveData.isWatchDayStory[2])
+        {
+            Debug.Log("2일차 퍼즐 끝났다고 들어옴");
+            for (int i = 4; i < 8; i++)
+            {
+                if (GameManager.Instance.saveData.isClearPuzzle[i] != true)
+                    break;
+                yield return new WaitForSeconds(0.1f);
+                if (i == 7)
+                {
+                    if (dialoguePrefab.activeSelf == true)
+                        while (dialoguePrefab.activeSelf == true)
+                            yield return null;
+                    tutorialCanvas.SetActive(true);
+                    nowTutorialTextArr = new string[1];
+                    nowTutorialTextArr[0] = "2일차 퍼즐 4개를 클리어하셨습니다!\n" +
                         "홈 버튼을 누르고 영혼을\n 클릭해주세요!\n";
 
                     StartCoroutine(TypingTutorialTextCoroutine());

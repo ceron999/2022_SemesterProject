@@ -3,11 +3,25 @@
 	[
 		{
 			"type":"Dialog",
-			"dialogue":"(우선 몸을 닦아주려고 한다.)"
+			"dialogue":"(영혼은 어떠한 사정이 있던 건지, 온몸이 흙투성이였다.)"
 		},
 		{
 			"type":"Dialog",
-			"dialogue":"(영혼의 몸은 어떤 형태일까?)",
+			"characterName":"나",
+			"dialogue":"음.. 내 방에 머물기엔 너무 지저분한 걸."
+		},
+		{
+			"type":"Dialog",
+			"characterName":"나",
+			"dialogue":"이리와 봐, 내가 좀 닦아줄게."
+		},
+		{
+			"type":"Dialog",
+			"dialogue":"(영혼을 자세히 살펴보았다.)"
+		},
+		{
+			"type":"Dialog",
+			"dialogue":"(영혼의 몸은 ... 형태였다.)",
 			"routeFirst":"곡선이 많다.",
 			"routeSecond":"직선이 많다."
 		},
@@ -19,7 +33,7 @@
 		{
 			"type":"Dialog",
 			"characterName":"나",
-			"dialogue":"향수를 뿌려줄게."
+			"dialogue":"향수도 뿌려줄게."
 		},
 		{
 			"type":"Dialog",
